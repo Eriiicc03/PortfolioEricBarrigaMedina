@@ -1,6 +1,6 @@
 # Portfolio profesional · Eric Barriga Medina
 
-[![Validar y desplegar](https://github.com/Eriiicc03/Eriiicc03.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/Eriiicc03/Eriiicc03.github.io/actions/workflows/deploy.yml)
+[![Validar y desplegar](https://github.com/Eriiicc03/PortfolioEricBarrigaMedina/actions/workflows/deploy.yml/badge.svg)](https://github.com/Eriiicc03/PortfolioEricBarrigaMedina/actions/workflows/deploy.yml)
 ![HTML5](https://img.shields.io/badge/HTML5-semántico-e34f26)
 ![CSS3](https://img.shields.io/badge/CSS3-propio-1572b6)
 ![JavaScript](https://img.shields.io/badge/JavaScript-sin_dependencias-f7df1e)
@@ -9,7 +9,7 @@ Web personal que funciona a la vez como **currículum** y como **portfolio**: pe
 entender mi perfil en pocos segundos y comprobar, mediante proyectos reales enlazados a su código,
 lo que sé hacer.
 
-### 🔗 Web publicada: **[eriiicc03.github.io](https://eriiicc03.github.io/)**
+### 🔗 Web publicada: **[eriiicc03.github.io/PortfolioEricBarrigaMedina](https://eriiicc03.github.io/PortfolioEricBarrigaMedina/)**
 
 ![Captura de la portada del portfolio en escritorio](docs/captura-escritorio.png)
 
@@ -121,8 +121,8 @@ convención **BEM** (`bloque__elemento--modificador`).
 No necesita instalación ni compilación. Tras clonar el repositorio:
 
 ```bash
-git clone https://github.com/Eriiicc03/Eriiicc03.github.io.git
-cd Eriiicc03.github.io
+git clone https://github.com/Eriiicc03/PortfolioEricBarrigaMedina.git
+cd PortfolioEricBarrigaMedina
 ```
 
 **Opción 1 · Abrir el archivo.** Haz doble clic en `index.html`. Todo funciona directamente desde el disco.
@@ -143,16 +143,16 @@ La web se publica en **GitHub Pages** mediante **GitHub Actions** ([`.github/wor
 2. Solo en `main`, si la validación pasa, se copian los archivos públicos a `_site/` y se **publica** en GitHub Pages.
 
 El estado de cada despliegue se puede consultar en la pestaña
-[Actions](https://github.com/Eriiicc03/Eriiicc03.github.io/actions) del repositorio.
+[Actions](https://github.com/Eriiicc03/PortfolioEricBarrigaMedina/actions) del repositorio.
 
 ### Publicarlo por primera vez
 
-1. Crear en GitHub un repositorio **público** llamado `Eriiicc03.github.io` (con ese nombre, GitHub Pages lo publica en la raíz `https://eriiicc03.github.io/`).
-2. Subir el código y las ramas:
+1. Crear en GitHub el repositorio `PortfolioEricBarrigaMedina` (debe ser **público** para usar GitHub Pages con una cuenta gratuita).
+2. Subir el código, las ramas y las etiquetas de versión:
 
    ```bash
-   git remote add origin git@github.com:Eriiicc03/Eriiicc03.github.io.git
-   git push -u origin main develop
+   git remote add origin git@github.com:Eriiicc03/PortfolioEricBarrigaMedina.git
+   git push -u origin main develop --tags
    ```
 
 3. En el repositorio: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
