@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Eric Barriga Medina · Desarrollador web full stack junior</title>
-  <meta name="description" content="Portfolio y CV de Eric Barriga Medina, estudiante de 2.º de DAW. Desarrollo web full stack con HTML, CSS, JavaScript, Vue, Java, Spring Boot, PostgreSQL y Docker. Disponible para prácticas en empresa.">
+  <meta name="description" content="Portfolio y CV de Eric Barriga Medina, estudiante de 2.º de DAW. Desarrollo web full stack con HTML, CSS, JavaScript, Vue, Java, Spring Boot, PostgreSQL y Docker. Realizando prácticas en empresa.">
   <meta name="author" content="Eric Barriga Medina">
   <meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://eriiicc03.github.io/PortfolioEricBarrigaMedina/">
   <meta property="og:site_name" content="Eric Barriga Medina">
   <meta property="og:title" content="Eric Barriga Medina · Desarrollador web full stack junior">
-  <meta property="og:description" content="Portfolio y CV: proyectos con Java, Spring Boot, JavaScript, Vue, PostgreSQL y Docker. Disponible para prácticas en empresa.">
+  <meta property="og:description" content="Portfolio y CV: proyectos con Java, Spring Boot, JavaScript, Vue, PostgreSQL y Docker. Realizando prácticas en empresa.">
   <meta property="og:image" content="https://eriiicc03.github.io/PortfolioEricBarrigaMedina/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -57,197 +57,200 @@
   </script>
 
   <!-- Fuentes propias: se precargan las dos que aparecen en la primera pantalla -->
-  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fuentes/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fuentes/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Aplica el tema elegido antes de pintar la página para evitar parpadeos -->
   <script>
     (function () {
-      var root = document.documentElement;
-      root.classList.add("js");
+      var raiz = document.documentElement;
+      raiz.classList.add("con-js");
       try {
-        var saved = localStorage.getItem("theme");
-        if (saved === "light" || saved === "dark") root.dataset.theme = saved;
-      } catch (e) { /* almacenamiento no disponible */ }
+        var temaGuardado = localStorage.getItem("tema");
+        if (temaGuardado === "claro" || temaGuardado === "oscuro") raiz.dataset.tema = temaGuardado;
+      } catch (error) { /* el navegador no deja guardar datos: no pasa nada */ }
     })();
   </script>
 
-  <link rel="stylesheet" href="css/fonts.css">
-  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/fuentes.css">
+  <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/print.css" media="print">
+  <link rel="stylesheet" href="css/estructura.css">
+  <link rel="stylesheet" href="css/componentes.css">
+  <link rel="stylesheet" href="css/hilo.css">
+  <link rel="stylesheet" href="css/impresion.css" media="print">
 
-  <script src="js/main.js" defer></script>
+  <script src="js/principal.js" defer></script>
+  <script src="js/hilo-conductor.js" defer></script>
 </head>
 <body>
-  <!-- Iconos reutilizables (se usan con <use href="#i-...">) -->
-  <svg class="icon-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-    <symbol id="i-github" viewBox="0 0 16 16">
+  <!-- Iconos: se dibujan una vez aquí y se reutilizan con <use href="#icono-..."> -->
+  <svg class="iconos" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icono-github" viewBox="0 0 16 16">
       <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
     </symbol>
-    <symbol id="i-linkedin" viewBox="0 0 24 24">
+    <symbol id="icono-linkedin" viewBox="0 0 24 24">
       <path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
     </symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24">
+    <symbol id="icono-correo" viewBox="0 0 24 24">
       <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></g>
     </symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24">
+    <symbol id="icono-ubicacion" viewBox="0 0 24 24">
       <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></g>
     </symbol>
-    <symbol id="i-arrow-down" viewBox="0 0 24 24">
+    <symbol id="icono-flecha-abajo" viewBox="0 0 24 24">
       <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 5v14m-7-7 7 7 7-7"/>
     </symbol>
-    <symbol id="i-arrow-up-right" viewBox="0 0 24 24">
+    <symbol id="icono-flecha" viewBox="0 0 24 24">
       <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/>
     </symbol>
-    <symbol id="i-download" viewBox="0 0 24 24">
+    <symbol id="icono-descargar" viewBox="0 0 24 24">
       <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m-5-5 5 5 5-5M5 21h14"/>
     </symbol>
-    <symbol id="i-copy" viewBox="0 0 24 24">
+    <symbol id="icono-copiar" viewBox="0 0 24 24">
       <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></g>
     </symbol>
-    <symbol id="i-check" viewBox="0 0 24 24">
+    <symbol id="icono-hecho" viewBox="0 0 24 24">
       <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/>
     </symbol>
-    <symbol id="i-menu" viewBox="0 0 24 24">
+    <symbol id="icono-menu" viewBox="0 0 24 24">
       <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/>
     </symbol>
-    <symbol id="i-close" viewBox="0 0 24 24">
+    <symbol id="icono-cerrar" viewBox="0 0 24 24">
       <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/>
     </symbol>
-    <symbol id="i-sun" viewBox="0 0 24 24">
+    <symbol id="icono-sol" viewBox="0 0 24 24">
       <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g>
     </symbol>
-    <symbol id="i-moon" viewBox="0 0 24 24">
+    <symbol id="icono-luna" viewBox="0 0 24 24">
       <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
     </symbol>
   </svg>
 
-  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
 
-  <header class="site-header">
-    <div class="container site-header__inner">
-      <a class="brand" href="#inicio">
-        <span class="brand__mark" aria-hidden="true">EB</span>
-        <span class="brand__name">Eric Barriga</span>
+  <header class="cabecera" data-cabecera>
+    <div class="contenedor cabecera__interior">
+      <a class="marca" href="#inicio">
+        <span class="marca__logo" aria-hidden="true">EB</span>
+        <span class="marca__nombre">Eric Barriga</span>
       </a>
 
-      <nav class="site-nav" aria-label="Principal">
-        <button class="site-nav__toggle icon-btn" type="button" aria-expanded="false" aria-controls="menu-principal">
-          <svg class="icon icon-menu" aria-hidden="true"><use href="#i-menu"/></svg>
-          <svg class="icon icon-close" aria-hidden="true"><use href="#i-close"/></svg>
-          <span class="visually-hidden">Menú</span>
+      <nav class="menu" aria-label="Principal" data-menu>
+        <button class="menu__boton boton-icono" type="button" aria-expanded="false" aria-controls="menu-principal" data-menu-boton>
+          <svg class="icono icono--menu" aria-hidden="true"><use href="#icono-menu"/></svg>
+          <svg class="icono icono--cerrar" aria-hidden="true"><use href="#icono-cerrar"/></svg>
+          <span class="solo-lectores">Menú</span>
         </button>
-        <ul class="site-nav__list" id="menu-principal">
-          <li><a class="site-nav__link" href="#perfil">Perfil</a></li>
-          <li><a class="site-nav__link" href="#competencias">Competencias</a></li>
-          <li><a class="site-nav__link" href="#proyectos">Proyectos</a></li>
-          <li><a class="site-nav__link" href="#trayectoria">Trayectoria</a></li>
-          <li><a class="site-nav__link" href="#contacto">Contacto</a></li>
+        <ul class="menu__lista" id="menu-principal">
+          <li><a class="menu__enlace" href="#perfil">Perfil</a></li>
+          <li><a class="menu__enlace" href="#competencias">Competencias</a></li>
+          <li><a class="menu__enlace" href="#proyectos">Proyectos</a></li>
+          <li><a class="menu__enlace" href="#trayectoria">Trayectoria</a></li>
+          <li><a class="menu__enlace" href="#contacto">Contacto</a></li>
         </ul>
       </nav>
 
-      <button class="theme-toggle icon-btn js-only" type="button" aria-pressed="false" data-theme-toggle>
-        <svg class="icon icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
-        <svg class="icon icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
-        <span class="visually-hidden">Tema oscuro</span>
+      <button class="boton-tema boton-icono solo-con-js" type="button" aria-pressed="false" data-boton-tema>
+        <svg class="icono icono--luna" aria-hidden="true"><use href="#icono-luna"/></svg>
+        <svg class="icono icono--sol" aria-hidden="true"><use href="#icono-sol"/></svg>
+        <span class="solo-lectores">Tema oscuro</span>
       </button>
     </div>
   </header>
 
-  <main id="contenido">
+  <!-- data-hilo: zona que recorre el hilo conductor (ver js/hilo-conductor.js) -->
+  <main class="zona-hilo" id="contenido" data-hilo>
     <!-- ============ INICIO ============ -->
-    <section class="hero" id="inicio" aria-labelledby="hero-title">
-      <div class="container hero__grid">
-        <div class="hero__content">
-          <p class="status"><span class="status__dot" aria-hidden="true"></span>Disponible para prácticas en empresa · curso 2026-27</p>
-          <h1 class="hero__title" id="hero-title">Eric Barriga Medina</h1>
-          <p class="hero__role">Desarrollador web <strong>full stack</strong> junior</p>
-          <p class="hero__lead">
+    <section class="portada" id="inicio" aria-labelledby="portada-titulo">
+      <div class="contenedor portada__rejilla">
+        <div class="portada__texto">
+          <p class="estado"><span class="estado__punto" aria-hidden="true"></span>Realizando prácticas en empresa · curso 2026-27</p>
+          <h1 class="portada__titulo" id="portada-titulo">Eric Barriga Medina</h1>
+          <p class="portada__puesto">Desarrollador web <strong>full stack</strong> junior</p>
+          <p class="portada__intro">
             Construyo aplicaciones web de principio a fin: interfaces con HTML, CSS, JavaScript y Vue,
             lógica de servidor con Java y Spring Boot, y entornos reproducibles con Docker.
-            Estudio 2.º de DAW y busco un equipo en el que aportar desde el primer día.
+            Estudio 2.º de DAW y estoy haciendo las prácticas en un equipo de desarrollo.
           </p>
 
           <!-- Solo en el CV impreso / PDF -->
-          <ul class="print-contact print-only">
+          <ul class="contacto-impreso solo-impresion">
             <li>ericbarrigamedina1@gmail.com</li>
             <li>github.com/Eriiicc03</li>
             <li>linkedin.com/in/eric-barriga-medina-5753632b2</li>
             <li>Mataró (Barcelona)</li>
           </ul>
 
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="#contacto">
+          <div class="portada__acciones">
+            <a class="boton boton--principal" href="#contacto">
               Contactar
-              <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+              <svg class="icono" aria-hidden="true"><use href="#icono-correo"/></svg>
             </a>
-            <a class="btn btn--ghost" href="#proyectos">
+            <a class="boton boton--borde" href="#proyectos">
               Ver proyectos
-              <svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg>
+              <svg class="icono" aria-hidden="true"><use href="#icono-flecha-abajo"/></svg>
             </a>
-            <button class="btn btn--text js-only" type="button" data-print>
-              <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+            <button class="boton boton--texto solo-con-js" type="button" data-imprimir>
+              <svg class="icono" aria-hidden="true"><use href="#icono-descargar"/></svg>
               Guardar CV en PDF
             </button>
           </div>
 
-          <ul class="hero__meta">
+          <ul class="portada__enlaces">
             <li>
-              <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+              <svg class="icono" aria-hidden="true"><use href="#icono-ubicacion"/></svg>
               Mataró, Barcelona
             </li>
             <li>
               <a href="https://github.com/Eriiicc03" rel="me noopener" target="_blank">
-                <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+                <svg class="icono" aria-hidden="true"><use href="#icono-github"/></svg>
                 GitHub
               </a>
             </li>
             <li>
               <a href="https://www.linkedin.com/in/eric-barriga-medina-5753632b2/" rel="me noopener" target="_blank">
-                <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>
+                <svg class="icono" aria-hidden="true"><use href="#icono-linkedin"/></svg>
                 LinkedIn
               </a>
             </li>
           </ul>
         </div>
 
-        <figure class="code-card" aria-labelledby="code-card-caption">
-          <div class="code-card__bar">
-            <span class="code-card__dots" aria-hidden="true"><span></span><span></span><span></span></span>
-            <span class="code-card__file">perfil.js</span>
+        <figure class="tarjeta-codigo" aria-labelledby="tarjeta-codigo-pie" data-hilo-inicio>
+          <div class="tarjeta-codigo__barra">
+            <span class="tarjeta-codigo__puntos" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="tarjeta-codigo__archivo">perfil.js</span>
           </div>
-          <pre class="code-card__body" tabindex="0"><code><span class="tk-c">// Mi perfil en una sola constante</span>
-<span class="tk-k">const</span> <span class="tk-v">eric</span> = {
-  <span class="tk-p">rol</span>: <span class="tk-s">"Full Stack Developer Jr."</span>,
-  <span class="tk-p">formacion</span>: [<span class="tk-s">"CFGM SMX"</span>, <span class="tk-s">"CFGS DAW"</span>],
-  <span class="tk-p">stack</span>: {
-    <span class="tk-p">front</span>: [<span class="tk-s">"HTML"</span>, <span class="tk-s">"CSS"</span>, <span class="tk-s">"JS"</span>, <span class="tk-s">"Vue"</span>],
-    <span class="tk-p">back</span>: [<span class="tk-s">"Java"</span>, <span class="tk-s">"Spring Boot"</span>],
-    <span class="tk-p">datos</span>: [<span class="tk-s">"SQL"</span>, <span class="tk-s">"PostgreSQL"</span>],
-    <span class="tk-p">ops</span>: [<span class="tk-s">"Git"</span>, <span class="tk-s">"Docker"</span>, <span class="tk-s">"Linux"</span>],
+          <pre class="tarjeta-codigo__cuerpo" tabindex="0"><code><span class="cod-comentario">// Mi perfil en una sola constante</span>
+<span class="cod-palabra">const</span> <span class="cod-variable">eric</span> = {
+  <span class="cod-propiedad">rol</span>: <span class="cod-texto">"Full Stack Developer Jr."</span>,
+  <span class="cod-propiedad">formacion</span>: [<span class="cod-texto">"CFGM SMX"</span>, <span class="cod-texto">"CFGS DAW"</span>],
+  <span class="cod-propiedad">stack</span>: {
+    <span class="cod-propiedad">front</span>: [<span class="cod-texto">"HTML"</span>, <span class="cod-texto">"CSS"</span>, <span class="cod-texto">"JS"</span>, <span class="cod-texto">"Vue"</span>],
+    <span class="cod-propiedad">back</span>: [<span class="cod-texto">"Java"</span>, <span class="cod-texto">"Spring Boot"</span>],
+    <span class="cod-propiedad">datos</span>: [<span class="cod-texto">"SQL"</span>, <span class="cod-texto">"PostgreSQL"</span>],
+    <span class="cod-propiedad">ops</span>: [<span class="cod-texto">"Git"</span>, <span class="cod-texto">"Docker"</span>, <span class="cod-texto">"Linux"</span>],
   },
-  <span class="tk-p">busca</span>: <span class="tk-s">"prácticas en empresa"</span>,
-  <span class="tk-p">disponible</span>: <span class="tk-b">true</span>,
-};<span class="code-card__cursor" aria-hidden="true"></span></code></pre>
-          <figcaption class="visually-hidden" id="code-card-caption">Resumen del perfil escrito como un objeto de JavaScript.</figcaption>
+  <span class="cod-propiedad">ahora</span>: <span class="cod-texto">"prácticas en empresa"</span>,
+  <span class="cod-propiedad">aprendiendo</span>: <span class="cod-booleano">true</span>,
+};<span class="tarjeta-codigo__cursor" aria-hidden="true"></span></code></pre>
+          <figcaption class="solo-lectores" id="tarjeta-codigo-pie">Resumen del perfil escrito como un objeto de JavaScript.</figcaption>
         </figure>
       </div>
     </section>
 
     <!-- ============ PERFIL ============ -->
-    <section class="section" id="perfil" aria-labelledby="perfil-title">
-      <div class="container">
-        <header class="section__header">
-          <p class="section__eyebrow"><span class="section__num">01 · </span>Perfil</p>
-          <h2 class="section__title" id="perfil-title">Del hardware y las redes al desarrollo full stack</h2>
+    <section class="seccion" id="perfil" aria-labelledby="perfil-titulo">
+      <div class="contenedor">
+        <header class="seccion__cabecera">
+          <p class="seccion__etiqueta"><span class="nodo solo-con-js" aria-hidden="true" data-nodo></span><span class="seccion__numero">01 · </span>Perfil</p>
+          <h2 class="seccion__titulo" id="perfil-titulo">Del hardware y las redes al desarrollo full stack</h2>
         </header>
 
-        <div class="profile">
-          <div class="profile__text">
-            <p class="profile__lead">
+        <div class="perfil">
+          <div class="perfil__texto">
+            <p class="perfil__entradilla">
               Soy estudiante de segundo curso del CFGS de Desarrollo de Aplicaciones Web en el Institut Thos i Codina.
               Llegué a la programación desde el Grado Medio de Sistemas Microinformáticos y Redes, así que entiendo
               lo que hay debajo de una aplicación: el sistema operativo, la red y el despliegue, no solo el código.
@@ -259,30 +262,30 @@
             </p>
             <p>
               Me interesan especialmente el <strong>backend con Java y Spring Boot</strong>, el <strong>despliegue con contenedores</strong>
-              y las interfaces bien construidas con Vue. Busco una empresa donde realizar las prácticas del ciclo
-              dentro de un equipo de desarrollo real, aprender de revisiones de código y asumir tareas con responsabilidad.
+              y las interfaces bien construidas con Vue. Ahora estoy realizando las prácticas del ciclo en un equipo
+              de desarrollo y, al terminarlo, quiero seguir creciendo como desarrollador junior.
             </p>
           </div>
 
-          <aside class="facts" aria-label="Datos rápidos">
-            <dl class="facts__list">
-              <div class="facts__row">
+          <aside class="datos" aria-label="Datos rápidos">
+            <dl class="datos__lista">
+              <div class="datos__fila">
                 <dt>Ubicación</dt>
                 <dd>Mataró (Barcelona)</dd>
               </div>
-              <div class="facts__row">
+              <div class="datos__fila">
                 <dt>Formación actual</dt>
                 <dd>CFGS DAW · 2.º curso</dd>
               </div>
-              <div class="facts__row">
-                <dt>Busco</dt>
-                <dd>Prácticas en empresa</dd>
+              <div class="datos__fila">
+                <dt>Situación</dt>
+                <dd>Prácticas en empresa (en curso)</dd>
               </div>
-              <div class="facts__row">
+              <div class="datos__fila">
                 <dt>Perfil</dt>
                 <dd>Full stack · Java y JavaScript</dd>
               </div>
-              <div class="facts__row">
+              <div class="datos__fila">
                 <dt>Idiomas</dt>
                 <dd>Castellano, catalán e inglés</dd>
               </div>
@@ -290,20 +293,20 @@
           </aside>
         </div>
 
-        <ul class="strengths">
-          <li class="strength" data-reveal>
-            <span class="strength__index" aria-hidden="true">A</span>
-            <h3 class="strength__title">Base de sistemas</h3>
+        <ul class="fortalezas">
+          <li class="fortaleza" data-aparecer>
+            <span class="fortaleza__letra" aria-hidden="true">A</span>
+            <h3 class="fortaleza__titulo">Base de sistemas</h3>
             <p>Vengo de SMX: Linux, redes y hardware no me son ajenos. Montar y depurar un entorno forma parte de mi trabajo, no es un obstáculo.</p>
           </li>
-          <li class="strength" data-reveal>
-            <span class="strength__index" aria-hidden="true">B</span>
-            <h3 class="strength__title">Visión full stack</h3>
+          <li class="fortaleza" data-aparecer>
+            <span class="fortaleza__letra" aria-hidden="true">B</span>
+            <h3 class="fortaleza__titulo">Visión full stack</h3>
             <p>Del HTML semántico a una API REST con Spring Boot y PostgreSQL: entiendo cómo encajan las piezas de una aplicación web.</p>
           </li>
-          <li class="strength" data-reveal>
-            <span class="strength__index" aria-hidden="true">C</span>
-            <h3 class="strength__title">Aprendizaje constante</h3>
+          <li class="fortaleza" data-aparecer>
+            <span class="fortaleza__letra" aria-hidden="true">C</span>
+            <h3 class="fortaleza__titulo">Aprendizaje constante</h3>
             <p>Aprendo por mi cuenta desde 2023 y lo dejo por escrito: repositorios con commits claros, README y código que otros pueden revisar.</p>
           </li>
         </ul>
@@ -311,50 +314,50 @@
     </section>
 
     <!-- ============ COMPETENCIAS ============ -->
-    <section class="section section--alt" id="competencias" aria-labelledby="competencias-title">
-      <div class="container">
-        <header class="section__header">
-          <p class="section__eyebrow"><span class="section__num">02 · </span>Competencias</p>
-          <h2 class="section__title" id="competencias-title">Tecnologías que sé explicar y demostrar</h2>
-          <p class="section__intro">
+    <section class="seccion seccion--alterna" id="competencias" aria-labelledby="competencias-titulo">
+      <div class="contenedor">
+        <header class="seccion__cabecera">
+          <p class="seccion__etiqueta"><span class="nodo solo-con-js" aria-hidden="true" data-nodo></span><span class="seccion__numero">02 · </span>Competencias</p>
+          <h2 class="seccion__titulo" id="competencias-titulo">Tecnologías que sé explicar y demostrar</h2>
+          <p class="seccion__intro">
             Agrupadas por área. Distingo lo que ya uso con soltura de lo que estoy consolidando durante este curso.
           </p>
         </header>
 
-        <ul class="legend">
+        <ul class="leyenda">
           <li><span class="chip">Uso con soltura</span></li>
-          <li><span class="chip chip--learning">Consolidando</span></li>
+          <li><span class="chip chip--aprendiendo">Consolidando</span></li>
         </ul>
 
-        <div class="skills">
-          <article class="skill-group" data-reveal>
-            <h3 class="skill-group__title">Frontend</h3>
-            <p class="skill-group__desc">Interfaces semánticas, accesibles y adaptadas a cualquier pantalla.</p>
+        <div class="rejilla-competencias">
+          <article class="grupo-competencias" data-aparecer>
+            <h3 class="grupo-competencias__titulo">Frontend</h3>
+            <p class="grupo-competencias__descripcion">Interfaces semánticas, accesibles y adaptadas a cualquier pantalla.</p>
             <ul class="chips">
               <li class="chip">HTML5 semántico</li>
               <li class="chip">CSS3 · Flexbox y Grid</li>
               <li class="chip">Diseño responsive</li>
               <li class="chip">JavaScript (ES6+) y DOM</li>
-              <li class="chip chip--learning">Vue 3<span class="visually-hidden"> (consolidando)</span></li>
-              <li class="chip chip--learning">Quasar<span class="visually-hidden"> (consolidando)</span></li>
+              <li class="chip chip--aprendiendo">Vue 3<span class="solo-lectores"> (consolidando)</span></li>
+              <li class="chip chip--aprendiendo">Quasar<span class="solo-lectores"> (consolidando)</span></li>
             </ul>
           </article>
 
-          <article class="skill-group" data-reveal>
-            <h3 class="skill-group__title">Backend</h3>
-            <p class="skill-group__desc">Lógica de negocio, programación orientada a objetos y servicios web.</p>
+          <article class="grupo-competencias" data-aparecer>
+            <h3 class="grupo-competencias__titulo">Backend</h3>
+            <p class="grupo-competencias__descripcion">Lógica de negocio, programación orientada a objetos y servicios web.</p>
             <ul class="chips">
               <li class="chip">Java · POO</li>
               <li class="chip">Java Swing</li>
-              <li class="chip chip--learning">Spring Boot<span class="visually-hidden"> (consolidando)</span></li>
-              <li class="chip chip--learning">APIs REST<span class="visually-hidden"> (consolidando)</span></li>
-              <li class="chip chip--learning">Python<span class="visually-hidden"> (consolidando)</span></li>
+              <li class="chip chip--aprendiendo">Spring Boot<span class="solo-lectores"> (consolidando)</span></li>
+              <li class="chip chip--aprendiendo">APIs REST<span class="solo-lectores"> (consolidando)</span></li>
+              <li class="chip chip--aprendiendo">Python<span class="solo-lectores"> (consolidando)</span></li>
             </ul>
           </article>
 
-          <article class="skill-group" data-reveal>
-            <h3 class="skill-group__title">Bases de datos</h3>
-            <p class="skill-group__desc">Diseño y consulta de datos relacionales.</p>
+          <article class="grupo-competencias" data-aparecer>
+            <h3 class="grupo-competencias__titulo">Bases de datos</h3>
+            <p class="grupo-competencias__descripcion">Diseño y consulta de datos relacionales.</p>
             <ul class="chips">
               <li class="chip">SQL</li>
               <li class="chip">PostgreSQL</li>
@@ -362,38 +365,38 @@
             </ul>
           </article>
 
-          <article class="skill-group" data-reveal>
-            <h3 class="skill-group__title">Despliegue y herramientas</h3>
-            <p class="skill-group__desc">Control de versiones, contenedores y entorno de desarrollo.</p>
+          <article class="grupo-competencias" data-aparecer>
+            <h3 class="grupo-competencias__titulo">Despliegue y herramientas</h3>
+            <p class="grupo-competencias__descripcion">Control de versiones, contenedores y entorno de desarrollo.</p>
             <ul class="chips">
               <li class="chip">Git y GitHub</li>
               <li class="chip">Docker y Docker Compose</li>
               <li class="chip">Vite</li>
               <li class="chip">ESLint</li>
-              <li class="chip chip--learning">GitHub Actions<span class="visually-hidden"> (consolidando)</span></li>
+              <li class="chip chip--aprendiendo">GitHub Actions<span class="solo-lectores"> (consolidando)</span></li>
             </ul>
           </article>
 
-          <article class="skill-group" data-reveal>
-            <h3 class="skill-group__title">Sistemas y redes</h3>
-            <p class="skill-group__desc">La base que traigo del Grado Medio de SMX.</p>
+          <article class="grupo-competencias" data-aparecer>
+            <h3 class="grupo-competencias__titulo">Sistemas y redes</h3>
+            <p class="grupo-competencias__descripcion">La base que traigo del Grado Medio de SMX.</p>
             <ul class="chips">
               <li class="chip">Linux (terminal)</li>
               <li class="chip">Windows</li>
               <li class="chip">Redes locales TCP/IP</li>
               <li class="chip">Montaje de equipos</li>
-              <li class="chip chip--learning">ERP Odoo<span class="visually-hidden"> (consolidando)</span></li>
+              <li class="chip chip--aprendiendo">ERP Odoo<span class="solo-lectores"> (consolidando)</span></li>
             </ul>
           </article>
 
-          <article class="skill-group" data-reveal>
-            <h3 class="skill-group__title">Forma de trabajar</h3>
-            <p class="skill-group__desc">Hábitos que hacen el código mantenible en equipo.</p>
+          <article class="grupo-competencias" data-aparecer>
+            <h3 class="grupo-competencias__titulo">Forma de trabajar</h3>
+            <p class="grupo-competencias__descripcion">Hábitos que hacen el código mantenible en equipo.</p>
             <ul class="chips">
               <li class="chip">Conventional Commits</li>
               <li class="chip">Documentación en Markdown</li>
               <li class="chip">Trabajo con ramas</li>
-              <li class="chip chip--learning">Accesibilidad web<span class="visually-hidden"> (consolidando)</span></li>
+              <li class="chip chip--aprendiendo">Accesibilidad web<span class="solo-lectores"> (consolidando)</span></li>
             </ul>
           </article>
         </div>
@@ -401,243 +404,243 @@
     </section>
 
     <!-- ============ PROYECTOS ============
-         Para añadir un proyecto nuevo, copia un <article class="project"> completo
+         Para añadir un proyecto nuevo, copia un <article class="proyecto"> completo
          y cambia textos, etiquetas y enlaces. Ver README → "Cómo añadir un proyecto". -->
-    <section class="section" id="proyectos" aria-labelledby="proyectos-title">
-      <div class="container">
-        <header class="section__header">
-          <p class="section__eyebrow"><span class="section__num">03 · </span>Proyectos</p>
-          <h2 class="section__title" id="proyectos-title">Proyectos con código que puedes revisar</h2>
-          <p class="section__intro">
+    <section class="seccion" id="proyectos" aria-labelledby="proyectos-titulo">
+      <div class="contenedor">
+        <header class="seccion__cabecera">
+          <p class="seccion__etiqueta"><span class="nodo solo-con-js" aria-hidden="true" data-nodo></span><span class="seccion__numero">03 · </span>Proyectos</p>
+          <h2 class="seccion__titulo" id="proyectos-titulo">Proyectos con código que puedes revisar</h2>
+          <p class="seccion__intro">
             Cada proyecto enlaza a su repositorio en GitHub e indica qué competencias demuestra,
             para que sea fácil comprobar lo que sé hacer.
           </p>
         </header>
 
-        <div class="projects">
+        <div class="proyectos">
           <!-- Proyecto destacado -->
-          <article class="project project--featured" data-reveal>
-            <div class="project__visual" aria-hidden="true">
-              <div class="mock-browser">
-                <div class="mock-browser__bar">
-                  <span class="mock-browser__dot"></span>
-                  <span class="mock-browser__dot"></span>
-                  <span class="mock-browser__dot"></span>
-                  <span class="mock-browser__url">eriiicc03.github.io/Portfolio…</span>
+          <article class="proyecto proyecto--destacado" data-aparecer>
+            <div class="proyecto__dibujo" aria-hidden="true">
+              <div class="mini-navegador">
+                <div class="mini-navegador__barra">
+                  <span class="mini-navegador__punto"></span>
+                  <span class="mini-navegador__punto"></span>
+                  <span class="mini-navegador__punto"></span>
+                  <span class="mini-navegador__direccion">eriiicc03.github.io/Portfolio…</span>
                 </div>
-                <div class="mock-browser__page">
-                  <span class="mock-line mock-line--title"></span>
-                  <span class="mock-line"></span>
-                  <span class="mock-line mock-line--short"></span>
-                  <span class="mock-cards"><span></span><span></span><span></span></span>
+                <div class="mini-navegador__pagina">
+                  <span class="mini-navegador__linea mini-navegador__linea--titulo"></span>
+                  <span class="mini-navegador__linea"></span>
+                  <span class="mini-navegador__linea mini-navegador__linea--corta"></span>
+                  <span class="mini-navegador__tarjetas"><span></span><span></span><span></span></span>
                 </div>
               </div>
             </div>
-            <div class="project__body">
-              <p class="project__meta">
-                <span class="badge badge--live">En producción</span>
+            <div class="proyecto__cuerpo">
+              <p class="proyecto__meta">
+                <span class="etiqueta-estado etiqueta-estado--produccion">En producción</span>
                 <span>2026 · Frontend y despliegue</span>
               </p>
-              <h3 class="project__title">Portfolio profesional</h3>
-              <p class="project__desc">
+              <h3 class="proyecto__titulo">Portfolio profesional</h3>
+              <p class="proyecto__descripcion">
                 Esta misma web: un sitio que funciona a la vez como CV y como portfolio,
                 construido sin frameworks y publicado automáticamente en GitHub Pages con cada cambio.
               </p>
-              <h4 class="project__subtitle">Qué demuestra</h4>
-              <ul class="project__proofs">
+              <h4 class="proyecto__subtitulo">Qué demuestra</h4>
+              <ul class="proyecto__pruebas">
                 <li>HTML semántico y accesible: landmarks, jerarquía de títulos y navegación por teclado.</li>
-                <li>CSS propio organizado en capas (tokens, base, layout y componentes) y diseño responsive.</li>
-                <li>JavaScript sin dependencias: tema claro/oscuro, menú móvil y exportación del CV a PDF.</li>
+                <li>CSS propio organizado por archivos (variables, base, estructura y componentes) y diseño responsive.</li>
+                <li>JavaScript sin dependencias: un hilo conductor en SVG que se dibuja con el scroll, tema claro/oscuro y CV en PDF.</li>
                 <li>Despliegue continuo con GitHub Actions y flujo de trabajo con ramas.</li>
               </ul>
-              <ul class="tags">
+              <ul class="tecnologias">
                 <li>HTML</li>
                 <li>CSS</li>
                 <li>JavaScript</li>
                 <li>GitHub Actions</li>
               </ul>
-              <p class="project__links">
-                <a class="link-arrow" href="https://github.com/Eriiicc03/PortfolioEricBarrigaMedina" target="_blank" rel="noopener">
+              <p class="proyecto__enlaces">
+                <a class="enlace-flecha" href="https://github.com/Eriiicc03/PortfolioEricBarrigaMedina" target="_blank" rel="noopener">
                   Código
-                  <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                  <svg class="icono" aria-hidden="true"><use href="#icono-flecha"/></svg>
                 </a>
-                <a class="link-arrow link-arrow--secondary" href="https://github.com/Eriiicc03/PortfolioEricBarrigaMedina/commits/main" target="_blank" rel="noopener">
+                <a class="enlace-flecha enlace-flecha--secundario" href="https://github.com/Eriiicc03/PortfolioEricBarrigaMedina/commits/main" target="_blank" rel="noopener">
                   Historial de commits
-                  <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                  <svg class="icono" aria-hidden="true"><use href="#icono-flecha"/></svg>
                 </a>
               </p>
             </div>
           </article>
 
-          <article class="project" data-reveal>
-            <div class="project__visual" aria-hidden="true">
-              <div class="diagram">
-                <span class="diagram__node">
-                  <span class="diagram__name">odoo:17</span>
-                  <span class="diagram__sub">puerto 8069</span>
+          <article class="proyecto" data-aparecer>
+            <div class="proyecto__dibujo" aria-hidden="true">
+              <div class="esquema">
+                <span class="esquema__nodo">
+                  <span class="esquema__nombre">odoo:17</span>
+                  <span class="esquema__detalle">puerto 8069</span>
                 </span>
-                <span class="diagram__link">depends_on</span>
-                <span class="diagram__node diagram__node--accent">
-                  <span class="diagram__name">postgres:15</span>
-                  <span class="diagram__sub">healthcheck ✓</span>
+                <span class="esquema__flecha">depends_on</span>
+                <span class="esquema__nodo esquema__nodo--destacado">
+                  <span class="esquema__nombre">postgres:15</span>
+                  <span class="esquema__detalle">healthcheck ✓</span>
                 </span>
               </div>
-              <div class="diagram__volumes">
+              <div class="esquema__volumenes">
                 <span>vol · odoo_web_data</span>
                 <span>vol · odoo_db_data</span>
               </div>
             </div>
-            <div class="project__body">
-              <p class="project__meta">
-                <span class="badge badge--done">Completado</span>
+            <div class="proyecto__cuerpo">
+              <p class="proyecto__meta">
+                <span class="etiqueta-estado etiqueta-estado--completado">Completado</span>
                 <span>2026 · Despliegue</span>
               </p>
-              <h3 class="project__title">Odoo 17 con Docker Compose</h3>
-              <p class="project__desc">
+              <h3 class="proyecto__titulo">Odoo 17 con Docker Compose</h3>
+              <p class="proyecto__descripcion">
                 Entorno ERP reproducible que se levanta con un solo comando: Odoo 17 y PostgreSQL 15
                 en contenedores separados y conectados por una red propia.
               </p>
-              <h4 class="project__subtitle">Qué demuestra</h4>
-              <ul class="project__proofs">
+              <h4 class="proyecto__subtitulo">Qué demuestra</h4>
+              <ul class="proyecto__pruebas">
                 <li>Orquestación de varios servicios con Docker Compose.</li>
                 <li>Arranque ordenado con <code>healthcheck</code> y <code>depends_on</code>: Odoo espera a que la base de datos esté lista.</li>
                 <li>Persistencia con volúmenes y configuración montada desde el host.</li>
               </ul>
-              <ul class="tags">
+              <ul class="tecnologias">
                 <li>Docker</li>
                 <li>Docker Compose</li>
                 <li>PostgreSQL</li>
                 <li>Odoo</li>
               </ul>
-              <p class="project__links">
-                <a class="link-arrow" href="https://github.com/Eriiicc03/Odoo" target="_blank" rel="noopener">
+              <p class="proyecto__enlaces">
+                <a class="enlace-flecha" href="https://github.com/Eriiicc03/Odoo" target="_blank" rel="noopener">
                   Código
-                  <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                  <svg class="icono" aria-hidden="true"><use href="#icono-flecha"/></svg>
                 </a>
               </p>
             </div>
           </article>
 
-          <article class="project" data-reveal>
-            <div class="project__visual" aria-hidden="true">
-              <div class="diagram">
-                <span class="diagram__node">
-                  <span class="diagram__name">supplier-api</span>
-                  <span class="diagram__sub">catálogo · stock</span>
+          <article class="proyecto" data-aparecer>
+            <div class="proyecto__dibujo" aria-hidden="true">
+              <div class="esquema">
+                <span class="esquema__nodo">
+                  <span class="esquema__nombre">supplier-api</span>
+                  <span class="esquema__detalle">catálogo · stock</span>
                 </span>
-                <span class="diagram__link">REST</span>
-                <span class="diagram__node diagram__node--accent">
-                  <span class="diagram__name">store-api</span>
-                  <span class="diagram__sub">⟳ @Scheduled</span>
+                <span class="esquema__flecha">REST</span>
+                <span class="esquema__nodo esquema__nodo--destacado">
+                  <span class="esquema__nombre">store-api</span>
+                  <span class="esquema__detalle">⟳ @Scheduled</span>
                 </span>
               </div>
-              <div class="diagram__volumes">
+              <div class="esquema__volumenes">
                 <span>db · proveedor</span>
                 <span>db · tienda</span>
               </div>
             </div>
-            <div class="project__body">
-              <p class="project__meta">
-                <span class="badge badge--wip">En desarrollo</span>
+            <div class="proyecto__cuerpo">
+              <p class="proyecto__meta">
+                <span class="etiqueta-estado etiqueta-estado--desarrollo">En desarrollo</span>
                 <span>2026 · Backend</span>
               </p>
-              <h3 class="project__title">Inventory Sync</h3>
-              <p class="project__desc">
+              <h3 class="proyecto__titulo">Inventory Sync</h3>
+              <p class="proyecto__descripcion">
                 Solución backend con arquitectura de microservicios que sincroniza el stock entre un
                 proveedor mayorista y una tienda online consumiendo APIs REST.
               </p>
-              <h4 class="project__subtitle">Qué demuestra</h4>
-              <ul class="project__proofs">
+              <h4 class="proyecto__subtitulo">Qué demuestra</h4>
+              <ul class="proyecto__pruebas">
                 <li>Diseño de dos microservicios desacoplados con Spring Boot (Web y Data JPA).</li>
                 <li>Sincronización periódica con tareas programadas y validación de datos.</li>
                 <li>Infraestructura definida con Docker Compose: servicios y bases de datos.</li>
               </ul>
-              <p class="project__note">Arquitectura definida y documentada; el código se publica por fases.</p>
-              <ul class="tags">
+              <p class="proyecto__nota">Arquitectura definida y documentada; el código se publica por fases.</p>
+              <ul class="tecnologias">
                 <li>Java</li>
                 <li>Spring Boot</li>
                 <li>REST</li>
                 <li>Docker</li>
               </ul>
-              <p class="project__links">
-                <a class="link-arrow" href="https://github.com/Eriiicc03/inventory-sync" target="_blank" rel="noopener">
+              <p class="proyecto__enlaces">
+                <a class="enlace-flecha" href="https://github.com/Eriiicc03/inventory-sync" target="_blank" rel="noopener">
                   Repositorio
-                  <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                  <svg class="icono" aria-hidden="true"><use href="#icono-flecha"/></svg>
                 </a>
               </p>
             </div>
           </article>
 
-          <article class="project" data-reveal>
-            <div class="project__visual" aria-hidden="true">
-              <div class="mock-calc">
-                <span class="mock-calc__screen">128</span>
-                <span class="mock-calc__keys">
-                  <span>7</span><span>8</span><span>9</span><span class="is-op">/</span>
-                  <span>4</span><span>5</span><span>6</span><span class="is-op">*</span>
-                  <span>1</span><span>2</span><span>3</span><span class="is-op">-</span>
-                  <span class="is-op">C</span><span>0</span><span class="is-eq">=</span><span class="is-op">+</span>
+          <article class="proyecto" data-aparecer>
+            <div class="proyecto__dibujo" aria-hidden="true">
+              <div class="mini-calculadora">
+                <span class="mini-calculadora__pantalla">128</span>
+                <span class="mini-calculadora__teclas">
+                  <span>7</span><span>8</span><span>9</span><span class="es-operacion">/</span>
+                  <span>4</span><span>5</span><span>6</span><span class="es-operacion">*</span>
+                  <span>1</span><span>2</span><span>3</span><span class="es-operacion">-</span>
+                  <span class="es-operacion">C</span><span>0</span><span class="es-igual">=</span><span class="es-operacion">+</span>
                 </span>
               </div>
             </div>
-            <div class="project__body">
-              <p class="project__meta">
-                <span class="badge badge--done">Completado</span>
+            <div class="proyecto__cuerpo">
+              <p class="proyecto__meta">
+                <span class="etiqueta-estado etiqueta-estado--completado">Completado</span>
                 <span>2026 · Java</span>
               </p>
-              <h3 class="project__title">Calculadora en Java Swing</h3>
-              <p class="project__desc">
+              <h3 class="proyecto__titulo">Calculadora en Java Swing</h3>
+              <p class="proyecto__descripcion">
                 Aplicación de escritorio con interfaz gráfica para realizar las operaciones aritméticas básicas.
               </p>
-              <h4 class="project__subtitle">Qué demuestra</h4>
-              <ul class="project__proofs">
+              <h4 class="proyecto__subtitulo">Qué demuestra</h4>
+              <ul class="proyecto__pruebas">
                 <li>Programación orientada a objetos en Java: una clase propia que extiende <code>JFrame</code>.</li>
                 <li>Layouts de Swing: <code>BorderLayout</code> para la pantalla y <code>GridLayout</code> para el teclado.</li>
                 <li>Gestión de eventos con <code>ActionListener</code> y botones generados en un bucle.</li>
               </ul>
-              <ul class="tags">
+              <ul class="tecnologias">
                 <li>Java</li>
                 <li>Swing</li>
                 <li>POO</li>
               </ul>
-              <p class="project__links">
-                <a class="link-arrow" href="https://github.com/Eriiicc03/CalculadoraBasica" target="_blank" rel="noopener">
+              <p class="proyecto__enlaces">
+                <a class="enlace-flecha" href="https://github.com/Eriiicc03/CalculadoraBasica" target="_blank" rel="noopener">
                   Código
-                  <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                  <svg class="icono" aria-hidden="true"><use href="#icono-flecha"/></svg>
                 </a>
               </p>
             </div>
           </article>
         </div>
 
-        <div class="coursework" data-reveal>
-          <div class="coursework__header">
-            <h3 class="coursework__title">Prácticas recientes del ciclo</h3>
-            <a class="link-arrow" href="https://github.com/Eriiicc03?tab=repositories" target="_blank" rel="noopener">
+        <div class="practicas" data-aparecer>
+          <div class="practicas__cabecera">
+            <h3 class="practicas__titulo">Prácticas recientes del ciclo</h3>
+            <a class="enlace-flecha" href="https://github.com/Eriiicc03?tab=repositories" target="_blank" rel="noopener">
               Todos mis repositorios
-              <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+              <svg class="icono" aria-hidden="true"><use href="#icono-flecha"/></svg>
             </a>
           </div>
-          <ul class="coursework__list">
-            <li class="coursework__item">
-              <span class="coursework__module">Diseño de interfaces web</span>
-              <span class="coursework__name">Maquetación de layouts con CSS Grid</span>
-              <span class="coursework__detail">Áreas con nombre (<code>grid-template-areas</code>), unidades <code>fr</code> y rejillas anidadas.</span>
+          <ul class="practicas__lista">
+            <li class="practicas__item">
+              <span class="practicas__modulo">Diseño de interfaces web</span>
+              <span class="practicas__nombre">Maquetación de layouts con CSS Grid</span>
+              <span class="practicas__detalle">Áreas con nombre (<code>grid-template-areas</code>), unidades <code>fr</code> y rejillas anidadas.</span>
             </li>
-            <li class="coursework__item">
-              <span class="coursework__module">Desarrollo en entorno cliente</span>
-              <span class="coursework__name">Entorno de desarrollo JavaScript con Vite y ESLint</span>
-              <span class="coursework__detail">Configuración del proyecto, servidor de desarrollo con recarga en caliente y reglas de linting.</span>
+            <li class="practicas__item">
+              <span class="practicas__modulo">Desarrollo en entorno cliente</span>
+              <span class="practicas__nombre">Entorno de desarrollo JavaScript con Vite y ESLint</span>
+              <span class="practicas__detalle">Configuración del proyecto, servidor de desarrollo con recarga en caliente y reglas de linting.</span>
             </li>
-            <li class="coursework__item">
-              <span class="coursework__module">Desarrollo en entorno cliente</span>
-              <span class="coursework__name">Menú de navegación generado con el DOM</span>
-              <span class="coursework__detail">Arrays, plantillas literales y comparación entre <code>innerHTML</code> y <code>createElement</code>.</span>
+            <li class="practicas__item">
+              <span class="practicas__modulo">Desarrollo en entorno cliente</span>
+              <span class="practicas__nombre">Menú de navegación generado con el DOM</span>
+              <span class="practicas__detalle">Arrays, plantillas literales y comparación entre <code>innerHTML</code> y <code>createElement</code>.</span>
             </li>
-            <li class="coursework__item">
-              <span class="coursework__module">Despliegue de aplicaciones web</span>
-              <span class="coursework__name">Documentación técnica en Markdown versionada con Git</span>
-              <span class="coursework__detail">Repositorio con historial de commits descriptivos y <code>.gitignore</code>.</span>
+            <li class="practicas__item">
+              <span class="practicas__modulo">Despliegue de aplicaciones web</span>
+              <span class="practicas__nombre">Documentación técnica en Markdown versionada con Git</span>
+              <span class="practicas__detalle">Repositorio con historial de commits descriptivos y <code>.gitignore</code>.</span>
             </li>
           </ul>
         </div>
@@ -645,74 +648,74 @@
     </section>
 
     <!-- ============ TRAYECTORIA ============ -->
-    <section class="section section--alt" id="trayectoria" aria-labelledby="trayectoria-title">
-      <div class="container">
-        <header class="section__header">
-          <p class="section__eyebrow"><span class="section__num">04 · </span>Trayectoria</p>
-          <h2 class="section__title" id="trayectoria-title">Formación y próximo paso</h2>
+    <section class="seccion seccion--alterna" id="trayectoria" aria-labelledby="trayectoria-titulo">
+      <div class="contenedor">
+        <header class="seccion__cabecera">
+          <p class="seccion__etiqueta"><span class="nodo solo-con-js" aria-hidden="true" data-nodo></span><span class="seccion__numero">04 · </span>Trayectoria</p>
+          <h2 class="seccion__titulo" id="trayectoria-titulo">Formación y próximo paso</h2>
         </header>
 
-        <div class="journey">
-          <ol class="timeline">
-            <li class="timeline__item timeline__item--next" data-reveal>
-              <p class="timeline__date">Curso 2026-27</p>
-              <h3 class="timeline__title">Prácticas en empresa · Desarrollo web</h3>
-              <p class="timeline__place">Buscando empresa</p>
-              <p class="timeline__desc">
-                Quiero incorporarme a un equipo de desarrollo para la formación en empresa del ciclo:
-                aportar en tareas reales de frontend o backend y aprender del flujo de trabajo profesional.
+        <div class="trayectoria">
+          <ol class="linea-tiempo">
+            <li class="linea-tiempo__hito linea-tiempo__hito--actual" data-aparecer>
+              <p class="linea-tiempo__fecha">Curso 2026-27</p>
+              <h3 class="linea-tiempo__titulo">Prácticas en empresa · Desarrollo web</h3>
+              <p class="linea-tiempo__lugar">En curso</p>
+              <p class="linea-tiempo__descripcion">
+                Formación en empresa del CFGS DAW: tareas reales de desarrollo dentro de un equipo
+                profesional y aprendizaje del flujo de trabajo de una empresa.
               </p>
             </li>
-            <li class="timeline__item" data-reveal>
-              <p class="timeline__date"><time datetime="2025">2025</time> – actualidad</p>
-              <h3 class="timeline__title">CFGS Desarrollo de Aplicaciones Web (DAW)</h3>
-              <p class="timeline__place">Institut Thos i Codina · Mataró</p>
-              <p class="timeline__desc">
+            <li class="linea-tiempo__hito" data-aparecer>
+              <p class="linea-tiempo__fecha"><time datetime="2025">2025</time> – actualidad</p>
+              <h3 class="linea-tiempo__titulo">CFGS Desarrollo de Aplicaciones Web (DAW)</h3>
+              <p class="linea-tiempo__lugar">Institut Thos i Codina · Mataró</p>
+              <p class="linea-tiempo__descripcion">
                 2.º curso: desarrollo en entorno cliente, diseño de interfaces web, despliegue de aplicaciones
                 web y programación con frameworks. En 1.º: programación en Java, bases de datos, lenguajes de marcas
                 y sistemas de gestión empresarial, y entornos de desarrollo.
               </p>
             </li>
-            <li class="timeline__item" data-reveal>
-              <p class="timeline__date"><time datetime="2023">2023</time> – <time datetime="2025">2025</time></p>
-              <h3 class="timeline__title">CFGM Sistemas Microinformáticos y Redes (SMX)</h3>
-              <p class="timeline__place">Grado Medio · Formación Profesional</p>
-              <p class="timeline__desc">
+            <li class="linea-tiempo__hito" data-aparecer>
+              <p class="linea-tiempo__fecha"><time datetime="2023">2023</time> – <time datetime="2025">2025</time></p>
+              <h3 class="linea-tiempo__titulo">CFGM Sistemas Microinformáticos y Redes (SMX)</h3>
+              <p class="linea-tiempo__lugar">Grado Medio · Formación Profesional</p>
+              <p class="linea-tiempo__descripcion">
                 Montaje y mantenimiento de equipos, sistemas operativos Linux y Windows, redes locales y servicios de red.
               </p>
             </li>
-            <li class="timeline__item" data-reveal>
-              <p class="timeline__date"><time datetime="2023">2023</time> – actualidad</p>
-              <h3 class="timeline__title">Formación autodidacta en desarrollo web</h3>
-              <p class="timeline__place">Proyectos personales</p>
-              <p class="timeline__desc">
+            <li class="linea-tiempo__hito" data-aparecer>
+              <p class="linea-tiempo__fecha"><time datetime="2023">2023</time> – actualidad</p>
+              <h3 class="linea-tiempo__titulo">Formación autodidacta en desarrollo web</h3>
+              <p class="linea-tiempo__lugar">Proyectos personales</p>
+              <p class="linea-tiempo__descripcion">
                 Aprendo con documentación oficial (MDN, Spring, Docker) y publico lo que construyo en GitHub.
               </p>
             </li>
           </ol>
 
-          <aside class="journey__aside" aria-label="Idiomas y objetivos">
-            <section class="panel" aria-labelledby="idiomas-title" data-reveal>
-              <h3 class="panel__title" id="idiomas-title">Idiomas</h3>
-              <dl class="languages">
-                <div class="languages__row">
+          <aside class="trayectoria__lateral" aria-label="Idiomas y objetivos">
+            <section class="panel" aria-labelledby="idiomas-titulo" data-aparecer>
+              <h3 class="panel__titulo" id="idiomas-titulo">Idiomas</h3>
+              <dl class="idiomas">
+                <div class="idiomas__fila">
                   <dt>Castellano</dt>
                   <dd>Nativo</dd>
                 </div>
-                <div class="languages__row">
+                <div class="idiomas__fila">
                   <dt>Catalán</dt>
                   <dd>Nativo</dd>
                 </div>
-                <div class="languages__row">
+                <div class="idiomas__fila">
                   <dt>Inglés</dt>
                   <dd>Intermedio</dd>
                 </div>
               </dl>
             </section>
 
-            <section class="panel" aria-labelledby="objetivos-title" data-reveal>
-              <h3 class="panel__title" id="objetivos-title">Hacia dónde voy</h3>
-              <ul class="panel__list">
+            <section class="panel" aria-labelledby="objetivos-titulo" data-aparecer>
+              <h3 class="panel__titulo" id="objetivos-titulo">Hacia dónde voy</h3>
+              <ul class="panel__lista">
                 <li>Terminar el ciclo con un proyecto full stack completo.</li>
                 <li>Especializarme en backend con Java y en despliegue con contenedores.</li>
                 <li>Seguir formándome, con interés por la experiencia internacional.</li>
@@ -724,44 +727,44 @@
     </section>
 
     <!-- ============ CONTACTO ============ -->
-    <section class="section contact" id="contacto" aria-labelledby="contacto-title">
-      <div class="container contact__inner">
-        <p class="section__eyebrow"><span class="section__num">05 · </span>Contacto</p>
-        <h2 class="contact__title" id="contacto-title">¿Buscas a alguien para tu equipo? <span>Hablemos.</span></h2>
-        <p class="contact__text">
-          Estoy disponible para prácticas en empresa durante el curso 2026-27.
-          La forma más rápida de contactar conmigo es por correo electrónico.
+    <section class="seccion contacto" id="contacto" aria-labelledby="contacto-titulo">
+      <div class="contenedor contacto__interior">
+        <p class="seccion__etiqueta"><span class="nodo solo-con-js" aria-hidden="true" data-nodo></span><span class="seccion__numero">05 · </span>Contacto</p>
+        <h2 class="contacto__titulo" id="contacto-titulo">¿Buscas a alguien para tu equipo? <span data-hilo-fin>Hablemos.</span></h2>
+        <p class="contacto__texto">
+          Si buscas un perfil junior con base de sistemas y ganas de aprender, o quieres comentar
+          alguno de mis proyectos, escríbeme. La forma más rápida es el correo electrónico.
         </p>
 
-        <div class="contact__email">
-          <a class="contact__mail" href="mailto:ericbarrigamedina1@gmail.com">
-            <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+        <div class="contacto__correo">
+          <a class="contacto__enlace-correo" href="mailto:ericbarrigamedina1@gmail.com">
+            <svg class="icono" aria-hidden="true"><use href="#icono-correo"/></svg>
             ericbarrigamedina1@gmail.com
           </a>
-          <button class="copy-btn js-only" type="button" data-copy="ericbarrigamedina1@gmail.com">
-            <svg class="icon icon-copy" aria-hidden="true"><use href="#i-copy"/></svg>
-            <svg class="icon icon-check" aria-hidden="true"><use href="#i-check"/></svg>
-            <span data-copy-label>Copiar</span>
+          <button class="boton-copiar solo-con-js" type="button" data-copiar="ericbarrigamedina1@gmail.com">
+            <svg class="icono icono--copiar" aria-hidden="true"><use href="#icono-copiar"/></svg>
+            <svg class="icono icono--hecho" aria-hidden="true"><use href="#icono-hecho"/></svg>
+            <span data-copiar-texto>Copiar</span>
           </button>
-          <span class="visually-hidden" role="status" data-copy-status></span>
+          <span class="solo-lectores" role="status" data-copiar-aviso></span>
         </div>
 
-        <ul class="contact__links">
+        <ul class="contacto__enlaces">
           <li>
-            <a class="btn btn--light" href="https://www.linkedin.com/in/eric-barriga-medina-5753632b2/" rel="me noopener" target="_blank">
-              <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>
+            <a class="boton boton--claro" href="https://www.linkedin.com/in/eric-barriga-medina-5753632b2/" rel="me noopener" target="_blank">
+              <svg class="icono" aria-hidden="true"><use href="#icono-linkedin"/></svg>
               LinkedIn
             </a>
           </li>
           <li>
-            <a class="btn btn--light" href="https://github.com/Eriiicc03" rel="me noopener" target="_blank">
-              <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+            <a class="boton boton--claro" href="https://github.com/Eriiicc03" rel="me noopener" target="_blank">
+              <svg class="icono" aria-hidden="true"><use href="#icono-github"/></svg>
               GitHub
             </a>
           </li>
-          <li class="js-only">
-            <button class="btn btn--light" type="button" data-print>
-              <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+          <li class="solo-con-js">
+            <button class="boton boton--claro" type="button" data-imprimir>
+              <svg class="icono" aria-hidden="true"><use href="#icono-descargar"/></svg>
               Guardar CV en PDF
             </button>
           </li>
@@ -770,15 +773,15 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container site-footer__inner">
-      <p>© <span data-year>2026</span> Eric Barriga Medina</p>
+  <footer class="pie">
+    <div class="contenedor pie__interior">
+      <p>© <span data-anio>2026</span> Eric Barriga Medina</p>
       <p>
         Diseñado y programado con HTML, CSS y JavaScript ·
         Última actualización: <time datetime="2026-09">septiembre de 2026</time>
       </p>
-      <p class="print-only">Versión interactiva y proyectos: https://eriiicc03.github.io/PortfolioEricBarrigaMedina/</p>
-      <a class="site-footer__top" href="#inicio">Volver arriba ↑</a>
+      <p class="solo-impresion">Versión interactiva y proyectos: https://eriiicc03.github.io/PortfolioEricBarrigaMedina/</p>
+      <a class="pie__arriba" href="#inicio">Volver arriba ↑</a>
     </div>
   </footer>
 </body>
