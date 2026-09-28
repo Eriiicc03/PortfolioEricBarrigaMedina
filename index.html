@@ -77,9 +77,11 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/estructura.css">
   <link rel="stylesheet" href="css/componentes.css">
+  <link rel="stylesheet" href="css/hilo.css">
   <link rel="stylesheet" href="css/impresion.css" media="print">
 
   <script src="js/principal.js" defer></script>
+  <script src="js/hilo-conductor.js" defer></script>
 </head>
 <body>
   <!-- Iconos: se dibujan una vez aquí y se reutilizan con <use href="#icono-..."> -->
@@ -157,7 +159,8 @@
     </div>
   </header>
 
-  <main id="contenido">
+  <!-- data-hilo: zona que recorre el hilo conductor (ver js/hilo-conductor.js) -->
+  <main class="zona-hilo" id="contenido" data-hilo>
     <!-- ============ INICIO ============ -->
     <section class="portada" id="inicio" aria-labelledby="portada-titulo">
       <div class="contenedor portada__rejilla">
@@ -214,7 +217,7 @@
           </ul>
         </div>
 
-        <figure class="tarjeta-codigo" aria-labelledby="tarjeta-codigo-pie">
+        <figure class="tarjeta-codigo" aria-labelledby="tarjeta-codigo-pie" data-hilo-inicio>
           <div class="tarjeta-codigo__barra">
             <span class="tarjeta-codigo__puntos" aria-hidden="true"><span></span><span></span><span></span></span>
             <span class="tarjeta-codigo__archivo">perfil.js</span>
@@ -241,7 +244,7 @@
     <section class="seccion" id="perfil" aria-labelledby="perfil-titulo">
       <div class="contenedor">
         <header class="seccion__cabecera">
-          <p class="seccion__etiqueta"><span class="seccion__numero">01 · </span>Perfil</p>
+          <p class="seccion__etiqueta"><span class="nodo solo-con-js" aria-hidden="true" data-nodo></span><span class="seccion__numero">01 · </span>Perfil</p>
           <h2 class="seccion__titulo" id="perfil-titulo">Del hardware y las redes al desarrollo full stack</h2>
         </header>
 
@@ -314,7 +317,7 @@
     <section class="seccion seccion--alterna" id="competencias" aria-labelledby="competencias-titulo">
       <div class="contenedor">
         <header class="seccion__cabecera">
-          <p class="seccion__etiqueta"><span class="seccion__numero">02 · </span>Competencias</p>
+          <p class="seccion__etiqueta"><span class="nodo solo-con-js" aria-hidden="true" data-nodo></span><span class="seccion__numero">02 · </span>Competencias</p>
           <h2 class="seccion__titulo" id="competencias-titulo">Tecnologías que sé explicar y demostrar</h2>
           <p class="seccion__intro">
             Agrupadas por área. Distingo lo que ya uso con soltura de lo que estoy consolidando durante este curso.
@@ -406,7 +409,7 @@
     <section class="seccion" id="proyectos" aria-labelledby="proyectos-titulo">
       <div class="contenedor">
         <header class="seccion__cabecera">
-          <p class="seccion__etiqueta"><span class="seccion__numero">03 · </span>Proyectos</p>
+          <p class="seccion__etiqueta"><span class="nodo solo-con-js" aria-hidden="true" data-nodo></span><span class="seccion__numero">03 · </span>Proyectos</p>
           <h2 class="seccion__titulo" id="proyectos-titulo">Proyectos con código que puedes revisar</h2>
           <p class="seccion__intro">
             Cada proyecto enlaza a su repositorio en GitHub e indica qué competencias demuestra,
@@ -446,8 +449,8 @@
               <h4 class="proyecto__subtitulo">Qué demuestra</h4>
               <ul class="proyecto__pruebas">
                 <li>HTML semántico y accesible: landmarks, jerarquía de títulos y navegación por teclado.</li>
-                <li>CSS propio organizado en capas (tokens, base, layout y componentes) y diseño responsive.</li>
-                <li>JavaScript sin dependencias: tema claro/oscuro, menú móvil y exportación del CV a PDF.</li>
+                <li>CSS propio organizado por archivos (variables, base, estructura y componentes) y diseño responsive.</li>
+                <li>JavaScript sin dependencias: un hilo conductor en SVG que se dibuja con el scroll, tema claro/oscuro y CV en PDF.</li>
                 <li>Despliegue continuo con GitHub Actions y flujo de trabajo con ramas.</li>
               </ul>
               <ul class="tecnologias">
@@ -648,7 +651,7 @@
     <section class="seccion seccion--alterna" id="trayectoria" aria-labelledby="trayectoria-titulo">
       <div class="contenedor">
         <header class="seccion__cabecera">
-          <p class="seccion__etiqueta"><span class="seccion__numero">04 · </span>Trayectoria</p>
+          <p class="seccion__etiqueta"><span class="nodo solo-con-js" aria-hidden="true" data-nodo></span><span class="seccion__numero">04 · </span>Trayectoria</p>
           <h2 class="seccion__titulo" id="trayectoria-titulo">Formación y próximo paso</h2>
         </header>
 
@@ -726,8 +729,8 @@
     <!-- ============ CONTACTO ============ -->
     <section class="seccion contacto" id="contacto" aria-labelledby="contacto-titulo">
       <div class="contenedor contacto__interior">
-        <p class="seccion__etiqueta"><span class="seccion__numero">05 · </span>Contacto</p>
-        <h2 class="contacto__titulo" id="contacto-titulo">¿Buscas a alguien para tu equipo? <span>Hablemos.</span></h2>
+        <p class="seccion__etiqueta"><span class="nodo solo-con-js" aria-hidden="true" data-nodo></span><span class="seccion__numero">05 · </span>Contacto</p>
+        <h2 class="contacto__titulo" id="contacto-titulo">¿Buscas a alguien para tu equipo? <span data-hilo-fin>Hablemos.</span></h2>
         <p class="contacto__texto">
           Si buscas un perfil junior con base de sistemas y ganas de aprender, o quieres comentar
           alguno de mis proyectos, escríbeme. La forma más rápida es el correo electrónico.

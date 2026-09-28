@@ -64,7 +64,9 @@ body {
 .pie__arriba,
 .enlace-flecha .icono,
 [data-imprimir],
-[data-copiar] {
+[data-copiar],
+.hilo,
+.nodo {
   display: none !important;
 }
 
