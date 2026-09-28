@@ -1,0 +1,144 @@
+/* ==========================================================================
+   TOKENS DE DISEÑO
+   Variables globales: color, tipografía, espaciado, radios y sombras.
+   Cambiar aquí un valor actualiza todo el sitio.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* --- Color · tema claro (papel cálido + tinta + bermellón) --- */
+  --color-bg: #f5f3ee;
+  --color-bg-alt: #edeae3;
+  --color-surface: #ffffff;
+  --color-surface-2: #f9f8f5;
+  --color-ink: #15171c;
+  --color-text: #373b45;
+  --color-muted: #5f6573;
+  --color-line: #e0dcd3;
+  --color-line-strong: #c8c2b6;
+  --color-accent: #b93a12;
+  --color-accent-soft: #f7e3da;
+  --color-on-accent: #ffffff;
+  --color-success: #1a7a43;
+
+  /* Bloque invertido (sección de contacto) */
+  --color-invert-bg: #15171c;
+  --color-invert-ink: #f5f3ee;
+  --color-invert-muted: #a9adb8;
+  --color-invert-line: #30333b;
+
+  /* Tarjeta de código (oscura en ambos temas) */
+  --code-bg: #15171c;
+  --code-bar: #1c1f25;
+  --code-line: #2b2f37;
+  --code-text: #d6d9e0;
+  --code-comment: #8a91a0;
+  --code-keyword: #ff8a5c;
+  --code-var: #f1efe9;
+  --code-prop: #8ec5ff;
+  --code-string: #b5e08a;
+  --code-bool: #ffcf66;
+
+  /* --- Tipografía --- */
+  --font-display: "Bricolage Grotesque", "Bricolage Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", "Inter Fallback", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Escala fluida: crece suavemente entre móvil y escritorio */
+  --step--1: clamp(0.82rem, 0.8rem + 0.1vw, 0.88rem);
+  --step-0: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+  --step-1: clamp(1.15rem, 1.08rem + 0.35vw, 1.35rem);
+  --step-2: clamp(1.35rem, 1.2rem + 0.75vw, 1.8rem);
+  --step-3: clamp(1.9rem, 1.45rem + 2.2vw, 3.1rem);
+  --step-4: clamp(2.75rem, 1.7rem + 5.2vw, 5.4rem);
+
+  /* --- Espaciado --- */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-s: 0.75rem;
+  --space-m: 1rem;
+  --space-l: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4.5rem;
+  --space-section: clamp(4rem, 2.8rem + 5vw, 7.5rem);
+
+  /* --- Layout --- */
+  --container: 72rem;
+  --gutter: clamp(1rem, 0.6rem + 2vw, 2rem);
+  --header-height: 4rem;
+
+  /* --- Forma --- */
+  --radius-s: 0.5rem;
+  --radius-m: 0.875rem;
+  --radius-l: 1.25rem;
+  --radius-pill: 999px;
+
+  --shadow-s: 0 1px 2px rgb(21 23 28 / 0.06);
+  --shadow-m: 0 10px 30px -12px rgb(21 23 28 / 0.18);
+  --shadow-l: 0 30px 60px -25px rgb(21 23 28 / 0.35);
+
+  /* --- Movimiento --- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration: 220ms;
+}
+
+/* --- Tema oscuro ---------------------------------------------------------
+   Se aplica si el sistema lo prefiere (y el usuario no ha elegido "claro")
+   o si el usuario lo elige con el botón (data-theme="dark").
+   Los valores se repiten en ambos selectores para que funcione sin JS. */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --color-bg: #0f1013;
+    --color-bg-alt: #14161a;
+    --color-surface: #181a1f;
+    --color-surface-2: #1d2026;
+    --color-ink: #f1efe9;
+    --color-text: #c9ccd4;
+    --color-muted: #9aa0ad;
+    --color-line: #262930;
+    --color-line-strong: #373b45;
+    --color-accent: #ff7a4d;
+    --color-accent-soft: #33201a;
+    --color-on-accent: #16110e;
+    --color-success: #4ade80;
+    --color-invert-bg: #181a1f;
+    --color-invert-ink: #f1efe9;
+    --color-invert-muted: #a9adb8;
+    --color-invert-line: #30333b;
+    --code-bg: #121317;
+    --code-bar: #17191e;
+    --code-line: #262930;
+    --shadow-m: 0 10px 30px -12px rgb(0 0 0 / 0.6);
+    --shadow-l: 0 30px 60px -25px rgb(0 0 0 / 0.8);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #0f1013;
+  --color-bg-alt: #14161a;
+  --color-surface: #181a1f;
+  --color-surface-2: #1d2026;
+  --color-ink: #f1efe9;
+  --color-text: #c9ccd4;
+  --color-muted: #9aa0ad;
+  --color-line: #262930;
+  --color-line-strong: #373b45;
+  --color-accent: #ff7a4d;
+  --color-accent-soft: #33201a;
+  --color-on-accent: #16110e;
+  --color-success: #4ade80;
+  --color-invert-bg: #181a1f;
+  --color-invert-ink: #f1efe9;
+  --color-invert-muted: #a9adb8;
+  --color-invert-line: #30333b;
+  --code-bg: #121317;
+  --code-bar: #17191e;
+  --code-line: #262930;
+  --shadow-m: 0 10px 30px -12px rgb(0 0 0 / 0.6);
+  --shadow-l: 0 30px 60px -25px rgb(0 0 0 / 0.8);
+}
