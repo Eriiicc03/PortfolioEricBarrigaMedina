@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
 
   <script src="js/main.js" defer></script>
 </head>
@@ -120,6 +121,14 @@
             Estudio 2.º de DAW y busco un equipo en el que aportar desde el primer día.
           </p>
 
+          <!-- Solo en el CV impreso / PDF -->
+          <ul class="print-contact print-only">
+            <li>ericbarrigamedina1@gmail.com</li>
+            <li>github.com/Eriiicc03</li>
+            <li>linkedin.com/in/eric-barriga-medina-5753632b2</li>
+            <li>Mataró (Barcelona)</li>
+          </ul>
+
           <div class="hero__actions">
             <a class="btn btn--primary" href="#contacto">
               Contactar
@@ -182,7 +191,7 @@
     <section class="section" id="perfil" aria-labelledby="perfil-title">
       <div class="container">
         <header class="section__header">
-          <p class="section__eyebrow">01 · Perfil</p>
+          <p class="section__eyebrow"><span class="section__num">01 · </span>Perfil</p>
           <h2 class="section__title" id="perfil-title">Del hardware y las redes al desarrollo full stack</h2>
         </header>
 
@@ -255,7 +264,7 @@
     <section class="section section--alt" id="competencias" aria-labelledby="competencias-title">
       <div class="container">
         <header class="section__header">
-          <p class="section__eyebrow">02 · Competencias</p>
+          <p class="section__eyebrow"><span class="section__num">02 · </span>Competencias</p>
           <h2 class="section__title" id="competencias-title">Tecnologías que sé explicar y demostrar</h2>
           <p class="section__intro">
             Agrupadas por área. Distingo lo que ya uso con soltura de lo que estoy consolidando durante este curso.
@@ -347,7 +356,7 @@
     <section class="section" id="proyectos" aria-labelledby="proyectos-title">
       <div class="container">
         <header class="section__header">
-          <p class="section__eyebrow">03 · Proyectos</p>
+          <p class="section__eyebrow"><span class="section__num">03 · </span>Proyectos</p>
           <h2 class="section__title" id="proyectos-title">Proyectos con código que puedes revisar</h2>
           <p class="section__intro">
             Cada proyecto enlaza a su repositorio en GitHub e indica qué competencias demuestra,
@@ -402,7 +411,7 @@
                   Código
                   <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
                 </a>
-                <a class="link-arrow" href="https://github.com/Eriiicc03/Eriiicc03.github.io/commits/main" target="_blank" rel="noopener">
+                <a class="link-arrow link-arrow--secondary" href="https://github.com/Eriiicc03/Eriiicc03.github.io/commits/main" target="_blank" rel="noopener">
                   Historial de commits
                   <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
                 </a>
@@ -589,7 +598,7 @@
     <section class="section section--alt" id="trayectoria" aria-labelledby="trayectoria-title">
       <div class="container">
         <header class="section__header">
-          <p class="section__eyebrow">04 · Trayectoria</p>
+          <p class="section__eyebrow"><span class="section__num">04 · </span>Trayectoria</p>
           <h2 class="section__title" id="trayectoria-title">Formación y próximo paso</h2>
         </header>
 
@@ -667,7 +676,7 @@
     <!-- ============ CONTACTO ============ -->
     <section class="section contact" id="contacto" aria-labelledby="contacto-title">
       <div class="container contact__inner">
-        <p class="section__eyebrow">05 · Contacto</p>
+        <p class="section__eyebrow"><span class="section__num">05 · </span>Contacto</p>
         <h2 class="contact__title" id="contacto-title">¿Buscas a alguien para tu equipo? <span>Hablemos.</span></h2>
         <p class="contact__text">
           Estoy disponible para prácticas en empresa durante el curso 2026-27.
@@ -718,6 +727,7 @@
         Diseñado y programado con HTML, CSS y JavaScript ·
         Última actualización: <time datetime="2026-09">septiembre de 2026</time>
       </p>
+      <p class="print-only">Versión interactiva y proyectos: https://eriiicc03.github.io</p>
       <a class="site-footer__top" href="#inicio">Volver arriba ↑</a>
     </div>
   </footer>

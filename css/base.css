@@ -154,6 +154,11 @@ pre {
   transform: translateY(0);
 }
 
+/* Contenido que solo aparece en el CV impreso (ver css/print.css) */
+.print-only {
+  display: none;
+}
+
 /* El sprite de iconos no ocupa espacio, pero sus <symbol> siguen disponibles */
 .icon-sprite {
   position: absolute;
