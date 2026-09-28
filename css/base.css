@@ -59,6 +59,12 @@ button {
   display: none !important;
 }
 
+/* Controles que necesitan JavaScript: ocultos si no se ejecuta.
+   La clase .js se añade en el <head> antes de pintar, así no hay saltos. */
+html:not(.js) .js-only {
+  display: none !important;
+}
+
 /* :where() deja la especificidad a 0 para que cualquier clase pueda sobrescribirlo */
 :where(ul[class], ol[class]) {
   list-style: none;

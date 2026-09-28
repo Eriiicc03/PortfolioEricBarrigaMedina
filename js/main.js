@@ -4,6 +4,7 @@
  * Interacciones de la página, sin librerías ni frameworks.
  * Mejora progresiva: todo el contenido es accesible sin JavaScript;
  * este archivo solo añade comodidad (tema, menú móvil, copiar, imprimir...).
+ * Los botones que dependen de él llevan la clase .js-only (ver css/base.css).
  */
 'use strict';
 
@@ -35,7 +36,6 @@
 
     const sync = () => button.setAttribute('aria-pressed', String(getTheme() === 'dark'));
 
-    button.hidden = false;
     sync();
 
     button.addEventListener('click', () => {
@@ -174,8 +174,6 @@
       const originalText = label.textContent;
       let resetTimer;
 
-      button.hidden = false;
-
       button.addEventListener('click', async () => {
         const copied = await copyText(button.dataset.copy);
 
@@ -204,7 +202,6 @@
     const buttons = document.querySelectorAll('[data-print]');
 
     buttons.forEach((button) => {
-      button.hidden = false;
       button.addEventListener('click', () => window.print());
     });
 
