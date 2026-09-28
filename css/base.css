@@ -54,6 +54,11 @@ button {
   cursor: pointer;
 }
 
+/* El atributo hidden siempre gana, aunque un componente defina display */
+[hidden] {
+  display: none !important;
+}
+
 /* :where() deja la especificidad a 0 para que cualquier clase pueda sobrescribirlo */
 :where(ul[class], ol[class]) {
   list-style: none;

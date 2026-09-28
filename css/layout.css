@@ -57,6 +57,15 @@
   display: none;
 }
 
+.site-nav__toggle .icon-close,
+.site-nav.is-open .site-nav__toggle .icon-menu {
+  display: none;
+}
+
+.site-nav.is-open .site-nav__toggle .icon-close {
+  display: block;
+}
+
 @media (max-width: 47.99rem) {
   .js .site-nav__toggle {
     display: inline-grid;
@@ -91,6 +100,12 @@
     border-bottom: 1px solid var(--color-line);
     border-radius: 0;
     font-size: var(--step-1);
+  }
+
+  .js .site-nav__link[aria-current="location"] {
+    background: none;
+    box-shadow: none;
+    color: var(--color-accent);
   }
 }
 
@@ -358,6 +373,7 @@
   /* Sobre fondo oscuro el acento se aclara para mantener el contraste AA */
   --color-accent: #ff7a4d;
   --color-on-accent: #16110e;
+  --color-success: #4ade80;
 
   position: relative;
   overflow: hidden;

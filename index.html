@@ -11,10 +11,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 
+  <!-- Aplica el tema elegido antes de pintar la página para evitar parpadeos -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add("js");
+      try {
+        var saved = localStorage.getItem("theme");
+        if (saved === "light" || saved === "dark") root.dataset.theme = saved;
+      } catch (e) { /* almacenamiento no disponible */ }
+    })();
+  </script>
+
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
+
+  <script src="js/main.js" defer></script>
 </head>
 <body>
   <!-- Iconos reutilizables (se usan con <use href="#i-...">) -->
@@ -37,6 +51,27 @@
     <symbol id="i-arrow-up-right" viewBox="0 0 24 24">
       <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/>
     </symbol>
+    <symbol id="i-download" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m-5-5 5 5 5-5M5 21h14"/>
+    </symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></g>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/>
+    </symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/>
+    </symbol>
+    <symbol id="i-close" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/>
+    </symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g>
+    </symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+    </symbol>
   </svg>
 
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -49,6 +84,11 @@
       </a>
 
       <nav class="site-nav" aria-label="Principal">
+        <button class="site-nav__toggle icon-btn" type="button" aria-expanded="false" aria-controls="menu-principal">
+          <svg class="icon icon-menu" aria-hidden="true"><use href="#i-menu"/></svg>
+          <svg class="icon icon-close" aria-hidden="true"><use href="#i-close"/></svg>
+          <span class="visually-hidden">Menú</span>
+        </button>
         <ul class="site-nav__list" id="menu-principal">
           <li><a class="site-nav__link" href="#perfil">Perfil</a></li>
           <li><a class="site-nav__link" href="#competencias">Competencias</a></li>
@@ -57,6 +97,12 @@
           <li><a class="site-nav__link" href="#contacto">Contacto</a></li>
         </ul>
       </nav>
+
+      <button class="theme-toggle icon-btn" type="button" aria-pressed="false" data-theme-toggle hidden>
+        <svg class="icon icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="icon icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        <span class="visually-hidden">Tema oscuro</span>
+      </button>
     </div>
   </header>
 
@@ -83,6 +129,10 @@
               Ver proyectos
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg>
             </a>
+            <button class="btn btn--text" type="button" data-print hidden>
+              <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+              Guardar CV en PDF
+            </button>
           </div>
 
           <ul class="hero__meta">
@@ -629,6 +679,12 @@
             <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
             ericbarrigamedina1@gmail.com
           </a>
+          <button class="copy-btn" type="button" data-copy="ericbarrigamedina1@gmail.com" hidden>
+            <svg class="icon icon-copy" aria-hidden="true"><use href="#i-copy"/></svg>
+            <svg class="icon icon-check" aria-hidden="true"><use href="#i-check"/></svg>
+            <span data-copy-label>Copiar</span>
+          </button>
+          <span class="visually-hidden" role="status" data-copy-status></span>
         </div>
 
         <ul class="contact__links">
@@ -643,6 +699,12 @@
               <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
               GitHub
             </a>
+          </li>
+          <li>
+            <button class="btn btn--light" type="button" data-print hidden>
+              <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+              Guardar CV en PDF
+            </button>
           </li>
         </ul>
       </div>
