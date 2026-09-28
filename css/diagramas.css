@@ -1,0 +1,428 @@
+/* ==========================================================================
+   DIAGRAMAS
+   Dibujos técnicos hechos con HTML y CSS (sin imágenes):
+     1. Diagrama de bloques (sección 2)
+     2. Esquemas pequeños de cada proyecto (sección 4)
+     3. Decodificador del código de referencia (sección 6)
+   ========================================================================== */
+
+/* ==========================================================================
+   1. DIAGRAMA DE BLOQUES
+   ========================================================================== */
+.diagrama-bloques {
+  display: grid;
+  gap: var(--espacio-3);
+}
+
+/* Marco discontinuo = el entorno donde vive la aplicación (Docker, Git...) */
+.diagrama-bloques__entorno {
+  padding: var(--espacio-4);
+  border: var(--grosor-linea) dashed var(--color-tinta);
+}
+
+.diagrama-bloques__etiqueta {
+  display: inline-block;
+  margin-bottom: var(--espacio-4);
+  padding: 0.2rem 0.55rem;
+  background-color: var(--color-tinta);
+  color: var(--color-papel);
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-xs);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* En móvil los bloques van uno debajo de otro */
+.diagrama-bloques__fila {
+  display: grid;
+}
+
+.bloque {
+  display: grid;
+  gap: var(--espacio-2);
+  align-content: start;
+  padding: var(--espacio-4);
+  border: var(--grosor-linea) solid var(--color-tinta);
+  background-color: var(--color-superficie);
+}
+
+/* El servidor es el "núcleo": lleva sombra sólida */
+.bloque--central {
+  box-shadow: var(--sombra-dura);
+}
+
+.bloque__tipo {
+  color: var(--color-acento);
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bloque__titulo {
+  font-size: var(--texto-l);
+}
+
+.bloque__lista {
+  display: grid;
+  gap: 0.3rem;
+  font-size: var(--texto-s);
+}
+
+/* ● = lo uso con soltura · ◐ = lo estoy consolidando */
+.bloque__lista li::before {
+  content: "●";
+  display: inline-block;
+  width: 1.3em;
+  color: var(--color-tinta);
+  font-size: 0.95em;
+}
+
+.bloque__lista .bloque__item--pruebas {
+  color: var(--color-texto-suave);
+}
+
+.bloque__lista .bloque__item--pruebas::before {
+  content: "◐";
+}
+
+/* Conexión entre bloques: texto + flecha doble */
+.conexion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block: var(--espacio-2);
+  color: var(--color-texto-suave);
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-xs);
+  text-align: center;
+}
+
+.conexion::after {
+  content: "↕";
+  color: var(--color-tinta);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+/* En pantallas grandes: los tres bloques en fila */
+@media (min-width: 56rem) {
+  .diagrama-bloques__fila {
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: stretch;
+  }
+
+  .conexion {
+    justify-content: center;
+    padding-inline: var(--espacio-3);
+  }
+
+  .conexion::after {
+    content: "⟷";
+    font-size: 2rem;
+  }
+}
+
+/* Barra inferior con rayado diagonal (como los cortes de un plano) */
+.diagrama-bloques__base {
+  padding: var(--espacio-3) var(--espacio-4);
+  border: var(--grosor-linea) solid var(--color-tinta);
+  background-color: var(--color-superficie);
+  background-image: repeating-linear-gradient(-45deg, transparent 0 7px, var(--color-linea) 7px 8px);
+  color: var(--color-tinta);
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-s);
+  text-align: center;
+}
+
+.diagrama-bloques__base strong {
+  padding: 0 0.3rem;
+  background-color: var(--color-superficie);
+}
+
+/* ==========================================================================
+   2. ESQUEMAS DE LOS PROYECTOS
+   Todo en "em" para que se adapte al tamaño de la tarjeta.
+   ========================================================================== */
+.proyecto__esquema {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.7em;
+  min-height: 10em;
+  padding: 1em;
+  border: 1px solid var(--color-linea);
+  background-color: var(--color-papel);
+  background-image: radial-gradient(var(--color-linea) 1px, transparent 1px);
+  background-size: 0.75rem 0.75rem;
+  font-size: clamp(0.8rem, 0.55rem + 1vw, 1.2rem);
+}
+
+/* Dos nodos unidos por una flecha */
+.esquema {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  font-family: var(--fuente-mono);
+}
+
+.esquema__nodo {
+  display: grid;
+  gap: 0.1em;
+  padding: 0.45em 0.6em;
+  border: var(--grosor-linea) solid var(--color-tinta);
+  background-color: var(--color-superficie);
+  text-align: center;
+}
+
+.esquema__nodo--destacado {
+  border-color: var(--color-acento);
+  box-shadow: 3px 3px 0 var(--color-acento);
+}
+
+.esquema__nombre {
+  color: var(--color-tinta);
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.esquema__detalle {
+  color: var(--color-texto-suave);
+  font-size: 0.65em;
+}
+
+/* Flecha: texto encima de una línea discontinua con punta */
+.esquema__flecha {
+  position: relative;
+  min-width: 3.4em;
+  padding-bottom: 0.5em;
+  color: var(--color-texto-suave);
+  font-size: 0.62em;
+  text-align: center;
+}
+
+.esquema__flecha::before {
+  content: "";
+  position: absolute;
+  right: 0.4em;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--color-tinta) 0 5px, transparent 5px 8px);
+}
+
+.esquema__flecha::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -0.25em;
+  width: 0.6em;
+  height: 0.6em;
+  background-color: var(--color-tinta);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.esquema__volumenes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4em;
+}
+
+.esquema__volumenes span {
+  padding: 0.1em 0.45em;
+  border: 1px dashed var(--color-tinta);
+  background-color: var(--color-superficie);
+  color: var(--color-texto-suave);
+  font-family: var(--fuente-mono);
+  font-size: 0.62em;
+}
+
+/* ----- Navegador en miniatura (proyecto: este portfolio) ----- */
+.mini-navegador {
+  width: 12em;
+  border: var(--grosor-linea) solid var(--color-tinta);
+  background-color: var(--color-superficie);
+  box-shadow: 4px 4px 0 var(--color-tinta);
+}
+
+.mini-navegador__barra {
+  display: flex;
+  gap: 0.3em;
+  padding: 0.4em 0.5em;
+  border-bottom: var(--grosor-linea) solid var(--color-tinta);
+}
+
+.mini-navegador__barra span {
+  width: 0.45em;
+  height: 0.45em;
+  border: 1px solid var(--color-tinta);
+}
+
+.mini-navegador__pagina {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.45em 0.8em;
+  align-items: center;
+  padding: 0.8em;
+}
+
+.mini-navegador__linea {
+  grid-column: 1;
+  height: 0.4em;
+  background-color: var(--color-linea);
+}
+
+.mini-navegador__linea--titulo {
+  height: 0.8em;
+  background-color: var(--color-tinta);
+}
+
+/* Mini chip dentro del mini navegador */
+.mini-navegador__chip {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: 2.2em;
+  height: 2.2em;
+  border-inline: 0.3em dashed var(--color-tinta);
+  background-color: var(--color-acento);
+  background-clip: padding-box;
+}
+
+/* ----- Calculadora en miniatura (mismo teclado que la real) ----- */
+.mini-calculadora {
+  display: grid;
+  gap: 0.45em;
+  width: 9em;
+  padding: 0.55em;
+  border: var(--grosor-linea) solid var(--color-tinta);
+  background-color: var(--color-superficie);
+  box-shadow: 4px 4px 0 var(--color-tinta);
+}
+
+.mini-calculadora__pantalla {
+  padding: 0.25em 0.5em;
+  background-color: var(--color-tinta);
+  color: var(--color-papel);
+  font-family: var(--fuente-mono);
+  font-size: 0.9em;
+  text-align: right;
+}
+
+.mini-calculadora__teclas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.25em;
+}
+
+.mini-calculadora__teclas span {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border: 1px solid var(--color-tinta);
+  color: var(--color-tinta);
+  font-family: var(--fuente-mono);
+  font-size: 0.65em;
+}
+
+.mini-calculadora__teclas .es-operacion {
+  color: var(--color-acento);
+  font-weight: 600;
+}
+
+.mini-calculadora__teclas .es-igual {
+  border-color: var(--color-acento);
+  background-color: var(--color-acento);
+  color: var(--color-sobre-acento);
+}
+
+/* ==========================================================================
+   3. DECODIFICADOR DEL CÓDIGO DE REFERENCIA (EBM-26-DAW-FS)
+   Se usa la unidad "ch" (ancho de un carácter de la fuente monoespaciada)
+   para que las líneas bajen justo debajo de cada parte del código:
+
+      E B M - 2 6 - D A W - F S
+      0 1 2 3 4 5 6 7 8 9 10 11 12   ← posición de cada letra
+
+   Centro de cada parte: EBM = 1.5ch · 26 = 5ch · DAW = 8.5ch · FS = 12ch
+   Si cambias el código, recalcula estos valores (--x) más abajo.
+   ========================================================================== */
+.decodificador {
+  --tam-codigo: clamp(1.25rem, 0.9rem + 1.6vw, 1.75rem);
+
+  align-self: center;
+  color: var(--color-tinta);
+  font-family: var(--fuente-mono);
+  font-size: var(--tam-codigo);
+}
+
+.decodificador__codigo {
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.decodificador__codigo span {
+  border-bottom: 3px solid var(--color-acento);
+}
+
+.decodificador__lista {
+  display: grid;
+  overflow: hidden;
+  padding-top: 0.3em;
+}
+
+.decodificador__parte {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 1.7em;
+  padding-left: 15.5ch;
+}
+
+/* Línea vertical que baja desde la parte del código */
+.decodificador__parte::before {
+  content: "";
+  position: absolute;
+  top: -100vh;
+  bottom: 50%;
+  left: var(--x);
+  border-left: 2px solid var(--color-tinta);
+}
+
+/* Línea horizontal que va hasta la explicación */
+.decodificador__parte::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: var(--x);
+  width: calc(15ch - var(--x));
+  border-top: 2px solid var(--color-tinta);
+}
+
+.decodificador__parte:nth-child(1) { --x: 12ch; }   /* FS  */
+.decodificador__parte:nth-child(2) { --x: 8.5ch; }  /* DAW */
+.decodificador__parte:nth-child(3) { --x: 5ch; }    /* 26  */
+.decodificador__parte:nth-child(4) { --x: 1.5ch; }  /* EBM */
+
+.decodificador__parte dt {
+  min-width: 2.6rem;
+  color: var(--color-acento);
+  font-size: var(--texto-s);
+  font-weight: 600;
+}
+
+.decodificador__parte dd {
+  color: var(--color-texto);
+  font-family: var(--fuente-texto);
+  font-size: var(--texto-s);
+  line-height: 1.35;
+}
+
+.decodificador .figura__pie {
+  margin-top: var(--espacio-3);
+  font-family: var(--fuente-texto);
+}
