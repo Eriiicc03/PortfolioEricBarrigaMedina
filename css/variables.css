@@ -1,0 +1,145 @@
+/* ==========================================================================
+   VARIABLES DE DISEÑO
+   Colores, tipografías, tamaños, espacios, esquinas y sombras de toda la web.
+   Si cambias un valor aquí, cambia en todas partes.
+   Ejemplo: --color-acento es el color principal (el bermellón).
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* --- Color · tema claro (papel cálido + tinta + bermellón) --- */
+  --color-fondo: #f5f3ee;
+  --color-fondo-alterno: #edeae3;
+  --color-superficie: #ffffff;
+  --color-superficie-2: #f9f8f5;
+  --color-tinta: #15171c;
+  --color-texto: #373b45;
+  --color-suave: #5f6573;
+  --color-linea: #e0dcd3;
+  --color-linea-fuerte: #c8c2b6;
+  --color-acento: #b93a12;
+  --color-acento-suave: #f7e3da;
+  --color-sobre-acento: #ffffff;
+  --color-exito: #1a7a43;
+
+  /* Bloque invertido (sección de contacto) */
+  --color-invertido-fondo: #15171c;
+  --color-invertido-tinta: #f5f3ee;
+  --color-invertido-suave: #a9adb8;
+  --color-invertido-linea: #30333b;
+
+  /* Tarjeta de código (oscura en ambos temas) */
+  --codigo-fondo: #15171c;
+  --codigo-barra: #1c1f25;
+  --codigo-linea: #2b2f37;
+  --codigo-texto: #d6d9e0;
+  --codigo-comentario: #8a91a0;
+  --codigo-palabra: #ff8a5c;
+  --codigo-variable: #f1efe9;
+  --codigo-propiedad: #8ec5ff;
+  --codigo-cadena: #b5e08a;
+  --codigo-booleano: #ffcf66;
+
+  /* --- Tipografía --- */
+  --fuente-titulos: "Bricolage Grotesque", "Bricolage Reserva", ui-sans-serif, system-ui, sans-serif;
+  --fuente-texto: "Inter", "Inter Reserva", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fuente-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Escala fluida: crece suavemente entre móvil y escritorio */
+  --texto-s: clamp(0.82rem, 0.8rem + 0.1vw, 0.88rem);
+  --texto-m: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+  --texto-l: clamp(1.15rem, 1.08rem + 0.35vw, 1.35rem);
+  --texto-xl: clamp(1.35rem, 1.2rem + 0.75vw, 1.8rem);
+  --texto-2xl: clamp(1.9rem, 1.45rem + 2.2vw, 3.1rem);
+  --texto-portada: clamp(2.75rem, 1.7rem + 5.2vw, 5.4rem);
+
+  /* --- Espaciado --- */
+  --espacio-2xs: 0.25rem;
+  --espacio-xs: 0.5rem;
+  --espacio-s: 0.75rem;
+  --espacio-m: 1rem;
+  --espacio-l: 1.5rem;
+  --espacio-xl: 2rem;
+  --espacio-2xl: 3rem;
+  --espacio-3xl: 4.5rem;
+  --espacio-seccion: clamp(4rem, 2.8rem + 5vw, 7.5rem);
+
+  /* --- Layout --- */
+  --ancho-maximo: 72rem;
+  --margen-lateral: clamp(1rem, 0.6rem + 2vw, 2rem);
+  --alto-cabecera: 4rem;
+
+  /* --- Forma --- */
+  --radio-s: 0.5rem;
+  --radio-m: 0.875rem;
+  --radio-l: 1.25rem;
+  --radio-pastilla: 999px;
+
+  --sombra-s: 0 1px 2px rgb(21 23 28 / 0.06);
+  --sombra-m: 0 10px 30px -12px rgb(21 23 28 / 0.18);
+  --sombra-l: 0 30px 60px -25px rgb(21 23 28 / 0.35);
+
+  /* --- Movimiento --- */
+  --curva: cubic-bezier(0.22, 1, 0.36, 1);
+  --duracion: 220ms;
+}
+
+/* --- Tema oscuro ---------------------------------------------------------
+   Se aplica si el sistema lo prefiere (y el usuario no ha elegido "claro")
+   o si el usuario lo elige con el botón (data-tema="oscuro").
+   Los valores se repiten en ambos selectores para que funcione sin JS. */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) {
+    color-scheme: dark;
+    --color-fondo: #0f1013;
+    --color-fondo-alterno: #14161a;
+    --color-superficie: #181a1f;
+    --color-superficie-2: #1d2026;
+    --color-tinta: #f1efe9;
+    --color-texto: #c9ccd4;
+    --color-suave: #9aa0ad;
+    --color-linea: #262930;
+    --color-linea-fuerte: #373b45;
+    --color-acento: #ff7a4d;
+    --color-acento-suave: #33201a;
+    --color-sobre-acento: #16110e;
+    --color-exito: #4ade80;
+    --color-invertido-fondo: #181a1f;
+    --color-invertido-tinta: #f1efe9;
+    --color-invertido-suave: #a9adb8;
+    --color-invertido-linea: #30333b;
+    --codigo-fondo: #121317;
+    --codigo-barra: #17191e;
+    --codigo-linea: #262930;
+    --sombra-m: 0 10px 30px -12px rgb(0 0 0 / 0.6);
+    --sombra-l: 0 30px 60px -25px rgb(0 0 0 / 0.8);
+  }
+}
+
+:root[data-tema="oscuro"] {
+  color-scheme: dark;
+  --color-fondo: #0f1013;
+  --color-fondo-alterno: #14161a;
+  --color-superficie: #181a1f;
+  --color-superficie-2: #1d2026;
+  --color-tinta: #f1efe9;
+  --color-texto: #c9ccd4;
+  --color-suave: #9aa0ad;
+  --color-linea: #262930;
+  --color-linea-fuerte: #373b45;
+  --color-acento: #ff7a4d;
+  --color-acento-suave: #33201a;
+  --color-sobre-acento: #16110e;
+  --color-exito: #4ade80;
+  --color-invertido-fondo: #181a1f;
+  --color-invertido-tinta: #f1efe9;
+  --color-invertido-suave: #a9adb8;
+  --color-invertido-linea: #30333b;
+  --codigo-fondo: #121317;
+  --codigo-barra: #17191e;
+  --codigo-linea: #262930;
+  --sombra-m: 0 10px 30px -12px rgb(0 0 0 / 0.6);
+  --sombra-l: 0 30px 60px -25px rgb(0 0 0 / 0.8);
+}

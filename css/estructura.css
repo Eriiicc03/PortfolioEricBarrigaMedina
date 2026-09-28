@@ -1,341 +1,342 @@
 /* ==========================================================================
-   LAYOUT
-   Contenedores, cabecera, secciones, rejillas y pie de página.
-   Enfoque mobile-first: los estilos base son para móvil y las
-   media queries amplían el diseño en tableta (48rem) y escritorio (60rem).
+   ESTRUCTURA
+   La "maqueta" de la página: contenedor, cabecera, portada, secciones,
+   rejillas y pie de página.
+   Se diseña primero para móvil; las @media amplían el diseño en pantallas
+   más grandes:  48rem ≈ tableta · 60rem ≈ portátil.
    ========================================================================== */
 
-.container {
-  width: min(100% - 2 * var(--gutter), var(--container));
+.contenedor {
+  width: min(100% - 2 * var(--margen-lateral), var(--ancho-maximo));
   margin-inline: auto;
 }
 
 /* --------------------------------------------------------------------------
    Cabecera fija
    -------------------------------------------------------------------------- */
-.site-header {
+.cabecera {
   position: sticky;
   top: 0;
   z-index: 50;
-  height: var(--header-height);
+  height: var(--alto-cabecera);
   border-bottom: 1px solid transparent;
-  background-color: color-mix(in srgb, var(--color-bg) 82%, transparent);
+  background-color: color-mix(in srgb, var(--color-fondo) 82%, transparent);
   -webkit-backdrop-filter: saturate(160%) blur(12px);
   backdrop-filter: saturate(160%) blur(12px);
-  transition: border-color var(--duration) ease, background-color var(--duration) ease;
+  transition: border-color var(--duracion) ease, background-color var(--duracion) ease;
 }
 
-.site-header.is-scrolled {
-  border-bottom-color: var(--color-line);
+.cabecera.con-scroll {
+  border-bottom-color: var(--color-linea);
 }
 
-.site-header__inner {
+.cabecera__interior {
   display: flex;
   align-items: center;
-  gap: var(--space-m);
+  gap: var(--espacio-m);
   height: 100%;
 }
 
 /* --------------------------------------------------------------------------
    Navegación principal
    Sin JS: la lista se muestra siempre (con scroll horizontal en móvil).
-   Con JS (.js): en móvil se convierte en un menú desplegable.
+   Con JS (.con-js): en móvil se convierte en un menú desplegable.
    -------------------------------------------------------------------------- */
-.site-nav {
+.menu {
   margin-left: auto;
   min-width: 0;
 }
 
-.site-nav__list {
+.menu__lista {
   display: flex;
-  gap: var(--space-2xs);
+  gap: var(--espacio-2xs);
   overflow-x: auto;
   scrollbar-width: none;
 }
 
-.site-nav__toggle {
+.menu__boton {
   display: none;
 }
 
-.site-nav__toggle .icon-close,
-.site-nav.is-open .site-nav__toggle .icon-menu {
+.menu__boton .icono--cerrar,
+.menu.esta-abierto .menu__boton .icono--menu {
   display: none;
 }
 
-.site-nav.is-open .site-nav__toggle .icon-close {
+.menu.esta-abierto .menu__boton .icono--cerrar {
   display: block;
 }
 
 @media (max-width: 47.99rem) {
-  .js .site-nav__toggle {
+  .con-js .menu__boton {
     display: inline-grid;
   }
 
-  .js .site-nav__list {
+  .con-js .menu__lista {
     position: absolute;
-    top: var(--header-height);
+    top: var(--alto-cabecera);
     left: 0;
     right: 0;
     flex-direction: column;
     gap: 0;
-    padding: var(--space-s) var(--gutter) var(--space-l);
-    border-bottom: 1px solid var(--color-line);
-    background-color: var(--color-bg);
-    box-shadow: var(--shadow-m);
+    padding: var(--espacio-s) var(--margen-lateral) var(--espacio-l);
+    border-bottom: 1px solid var(--color-linea);
+    background-color: var(--color-fondo);
+    box-shadow: var(--sombra-m);
     visibility: hidden;
     opacity: 0;
     transform: translateY(-0.5rem);
-    transition: opacity var(--duration) ease, transform var(--duration) var(--ease-out), visibility var(--duration);
+    transition: opacity var(--duracion) ease, transform var(--duracion) var(--curva), visibility var(--duracion);
   }
 
-  .js .site-nav.is-open .site-nav__list {
+  .con-js .menu.esta-abierto .menu__lista {
     visibility: visible;
     opacity: 1;
     transform: none;
   }
 
-  .js .site-nav__link {
+  .con-js .menu__enlace {
     display: block;
-    padding: var(--space-s) 0;
-    border-bottom: 1px solid var(--color-line);
+    padding: var(--espacio-s) 0;
+    border-bottom: 1px solid var(--color-linea);
     border-radius: 0;
-    font-size: var(--step-1);
+    font-size: var(--texto-l);
   }
 
-  .js .site-nav__link[aria-current="location"] {
+  .con-js .menu__enlace[aria-current="location"] {
     background: none;
     box-shadow: none;
-    color: var(--color-accent);
+    color: var(--color-acento);
   }
 }
 
 /* --------------------------------------------------------------------------
    Hero / presentación
    -------------------------------------------------------------------------- */
-.hero {
+.portada {
   position: relative;
-  padding-block: clamp(3rem, 2rem + 6vw, 7rem) var(--space-section);
+  padding-block: clamp(3rem, 2rem + 6vw, 7rem) var(--espacio-seccion);
   overflow: hidden;
   isolation: isolate;
 }
 
 /* Cuadrícula de fondo: guiño a la maquetación, se desvanece hacia los bordes */
-.hero::before {
+.portada::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
   background-image:
-    linear-gradient(to right, var(--color-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+    linear-gradient(to right, var(--color-linea) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-linea) 1px, transparent 1px);
   background-size: 3rem 3rem;
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 30% 35%, #000 20%, transparent 75%);
   mask-image: radial-gradient(ellipse 70% 60% at 30% 35%, #000 20%, transparent 75%);
   opacity: 0.7;
 }
 
-.hero__grid {
+.portada__rejilla {
   display: grid;
-  gap: var(--space-2xl);
+  gap: var(--espacio-2xl);
   align-items: center;
 }
 
-.hero__content {
+.portada__texto {
   display: grid;
-  gap: var(--space-l);
+  gap: var(--espacio-l);
   justify-items: start;
 }
 
-.hero__title {
-  font-size: var(--step-4);
+.portada__titulo {
+  font-size: var(--texto-portada);
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.035em;
 }
 
-.hero__role {
-  margin-top: calc(-1 * var(--space-xs));
-  color: var(--color-ink);
-  font-family: var(--font-display);
-  font-size: var(--step-2);
+.portada__puesto {
+  margin-top: calc(-1 * var(--espacio-xs));
+  color: var(--color-tinta);
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-xl);
   font-weight: 600;
   line-height: 1.2;
 }
 
-.hero__role strong {
-  color: var(--color-accent);
+.portada__puesto strong {
+  color: var(--color-acento);
   font-weight: 700;
 }
 
-.hero__lead {
+.portada__intro {
   max-width: 36rem;
-  font-size: var(--step-1);
+  font-size: var(--texto-l);
   line-height: 1.6;
 }
 
-.hero__actions {
+.portada__acciones {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-s);
+  gap: var(--espacio-s);
 }
 
-.hero__meta {
+.portada__enlaces {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-xs) var(--space-l);
-  color: var(--color-muted);
-  font-size: var(--step--1);
+  gap: var(--espacio-xs) var(--espacio-l);
+  color: var(--color-suave);
+  font-size: var(--texto-s);
 }
 
-.hero__meta li,
-.hero__meta a {
+.portada__enlaces li,
+.portada__enlaces a {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-xs);
+  gap: var(--espacio-xs);
 }
 
-.hero__meta a {
+.portada__enlaces a {
   text-decoration: none;
 }
 
 @media (min-width: 60rem) {
-  .hero__grid {
+  .portada__rejilla {
     grid-template-columns: 1.2fr 0.8fr;
-    gap: var(--space-3xl);
+    gap: var(--espacio-3xl);
   }
 }
 
 /* --------------------------------------------------------------------------
    Secciones genéricas
    -------------------------------------------------------------------------- */
-.section {
-  padding-block: var(--space-section);
+.seccion {
+  padding-block: var(--espacio-seccion);
 }
 
-.section--alt {
-  border-block: 1px solid var(--color-line);
-  background-color: var(--color-bg-alt);
+.seccion--alterna {
+  border-block: 1px solid var(--color-linea);
+  background-color: var(--color-fondo-alterno);
 }
 
 /* Dos secciones "alt" seguidas no duplican el borde */
-.section--alt + .section--alt {
+.seccion--alterna + .seccion--alterna {
   border-top: 0;
 }
 
-.section__header {
+.seccion__cabecera {
   display: grid;
-  gap: var(--space-m);
+  gap: var(--espacio-m);
   max-width: 46rem;
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--espacio-2xl);
 }
 
-.section__eyebrow {
-  color: var(--color-accent);
-  font-family: var(--font-mono);
-  font-size: var(--step--1);
+.seccion__etiqueta {
+  color: var(--color-acento);
+  font-family: var(--fuente-mono);
+  font-size: var(--texto-s);
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.section__eyebrow::after {
+.seccion__etiqueta::after {
   content: "";
   display: inline-block;
   width: 3rem;
   height: 1px;
-  margin-left: var(--space-s);
+  margin-left: var(--espacio-s);
   vertical-align: middle;
   background-color: currentColor;
 }
 
-.section__title {
-  font-size: var(--step-3);
+.seccion__titulo {
+  font-size: var(--texto-2xl);
 }
 
-.section__intro {
+.seccion__intro {
   max-width: 40rem;
-  color: var(--color-muted);
-  font-size: var(--step-1);
+  color: var(--color-suave);
+  font-size: var(--texto-l);
 }
 
 /* --------------------------------------------------------------------------
    Perfil
    -------------------------------------------------------------------------- */
-.profile {
+.perfil {
   display: grid;
-  gap: var(--space-2xl);
+  gap: var(--espacio-2xl);
   align-items: start;
 }
 
-.profile__text {
+.perfil__texto {
   display: grid;
-  gap: var(--space-m);
+  gap: var(--espacio-m);
   max-width: 42rem;
 }
 
-.profile__lead {
-  color: var(--color-ink);
-  font-size: var(--step-1);
+.perfil__entradilla {
+  color: var(--color-tinta);
+  font-size: var(--texto-l);
   line-height: 1.55;
 }
 
-.strengths {
+.fortalezas {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
-  gap: var(--space-m);
-  margin-top: var(--space-3xl);
+  gap: var(--espacio-m);
+  margin-top: var(--espacio-3xl);
 }
 
 @media (min-width: 60rem) {
-  .profile {
+  .perfil {
     grid-template-columns: 1.6fr 1fr;
-    gap: var(--space-3xl);
+    gap: var(--espacio-3xl);
   }
 }
 
 /* --------------------------------------------------------------------------
    Competencias
    -------------------------------------------------------------------------- */
-.skills {
+.rejilla-competencias {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
-  gap: var(--space-m);
+  gap: var(--espacio-m);
 }
 
 /* --------------------------------------------------------------------------
    Proyectos
    -------------------------------------------------------------------------- */
-.projects {
+.proyectos {
   display: grid;
-  gap: var(--space-l);
+  gap: var(--espacio-l);
 }
 
-.coursework {
-  margin-top: var(--space-3xl);
+.practicas {
+  margin-top: var(--espacio-3xl);
 }
 
 @media (min-width: 48rem) {
-  .projects {
+  .proyectos {
     grid-template-columns: repeat(2, 1fr);
   }
 
   /* El proyecto destacado ocupa toda la fila */
-  .project--featured {
+  .proyecto--destacado {
     grid-column: 1 / -1;
   }
 
   /* Si la última tarjeta queda sola en su fila, ocupa todo el ancho */
-  .project:not(.project--featured):last-child:nth-child(even) {
+  .proyecto:not(.proyecto--destacado):last-child:nth-child(even) {
     grid-column: 1 / -1;
   }
 }
 
 @media (min-width: 64rem) {
-  .projects {
+  .proyectos {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .project:not(.project--featured):last-child:nth-child(even) {
+  .proyecto:not(.proyecto--destacado):last-child:nth-child(even) {
     grid-column: auto;
   }
 }
@@ -343,47 +344,47 @@
 /* --------------------------------------------------------------------------
    Trayectoria
    -------------------------------------------------------------------------- */
-.journey {
+.trayectoria {
   display: grid;
-  gap: var(--space-2xl);
+  gap: var(--espacio-2xl);
   align-items: start;
 }
 
-.journey__aside {
+.trayectoria__lateral {
   display: grid;
-  gap: var(--space-m);
+  gap: var(--espacio-m);
 }
 
 @media (min-width: 60rem) {
-  .journey {
+  .trayectoria {
     grid-template-columns: 1.6fr 1fr;
-    gap: var(--space-3xl);
+    gap: var(--espacio-3xl);
   }
 
-  .journey__aside {
+  .trayectoria__lateral {
     position: sticky;
-    top: calc(var(--header-height) + var(--space-l));
+    top: calc(var(--alto-cabecera) + var(--espacio-l));
   }
 }
 
 /* --------------------------------------------------------------------------
    Contacto (bloque invertido)
    -------------------------------------------------------------------------- */
-.contact {
+.contacto {
   /* Sobre fondo oscuro el acento se aclara para mantener el contraste AA */
-  --color-accent: #ff7a4d;
-  --color-on-accent: #16110e;
-  --color-success: #4ade80;
+  --color-acento: #ff7a4d;
+  --color-sobre-acento: #16110e;
+  --color-exito: #4ade80;
 
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background-color: var(--color-invert-bg);
-  color: var(--color-invert-muted);
+  background-color: var(--color-invertido-fondo);
+  color: var(--color-invertido-suave);
 }
 
 /* Halo de color sutil detrás del título */
-.contact::before {
+.contacto::before {
   content: "";
   position: absolute;
   top: -40%;
@@ -392,42 +393,42 @@
   width: min(48rem, 90vw);
   aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--color-accent) 35%, transparent), transparent 65%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-acento) 35%, transparent), transparent 65%);
   opacity: 0.5;
 }
 
-.contact__inner {
+.contacto__interior {
   display: grid;
-  gap: var(--space-l);
+  gap: var(--espacio-l);
   justify-items: start;
 }
 
 /* --------------------------------------------------------------------------
    Pie de página
    -------------------------------------------------------------------------- */
-.site-footer {
-  padding-block: var(--space-xl);
-  border-top: 1px solid var(--color-line);
-  color: var(--color-muted);
-  font-size: var(--step--1);
+.pie {
+  padding-block: var(--espacio-xl);
+  border-top: 1px solid var(--color-linea);
+  color: var(--color-suave);
+  font-size: var(--texto-s);
 }
 
-.site-footer__inner {
+.pie__interior {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-xs) var(--space-l);
+  gap: var(--espacio-xs) var(--espacio-l);
   align-items: center;
   justify-content: space-between;
 }
 
-.site-footer__top {
+.pie__arriba {
   text-decoration: none;
 }
 
 /* --------------------------------------------------------------------------
    Página 404
    -------------------------------------------------------------------------- */
-.not-found {
+.error {
   display: grid;
   align-items: center;
   min-height: 100vh;

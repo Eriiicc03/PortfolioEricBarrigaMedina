@@ -9,35 +9,35 @@
 
   <script>
     (function () {
-      var root = document.documentElement;
-      root.classList.add("js");
+      var raiz = document.documentElement;
+      raiz.classList.add("con-js");
       try {
-        var saved = localStorage.getItem("theme");
-        if (saved === "light" || saved === "dark") root.dataset.theme = saved;
-      } catch (e) { /* almacenamiento no disponible */ }
+        var temaGuardado = localStorage.getItem("tema");
+        if (temaGuardado === "claro" || temaGuardado === "oscuro") raiz.dataset.tema = temaGuardado;
+      } catch (error) { /* el navegador no deja guardar datos: no pasa nada */ }
     })();
   </script>
 
-  <link rel="preload" href="/PortfolioEricBarrigaMedina/assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/PortfolioEricBarrigaMedina/assets/fuentes/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Rutas absolutas (incluyen el nombre del repositorio): esta página
        se sirve para cualquier URL inexistente, esté en la carpeta que esté -->
-  <link rel="stylesheet" href="/PortfolioEricBarrigaMedina/css/fonts.css">
-  <link rel="stylesheet" href="/PortfolioEricBarrigaMedina/css/tokens.css">
+  <link rel="stylesheet" href="/PortfolioEricBarrigaMedina/css/fuentes.css">
+  <link rel="stylesheet" href="/PortfolioEricBarrigaMedina/css/variables.css">
   <link rel="stylesheet" href="/PortfolioEricBarrigaMedina/css/base.css">
-  <link rel="stylesheet" href="/PortfolioEricBarrigaMedina/css/layout.css">
-  <link rel="stylesheet" href="/PortfolioEricBarrigaMedina/css/components.css">
+  <link rel="stylesheet" href="/PortfolioEricBarrigaMedina/css/estructura.css">
+  <link rel="stylesheet" href="/PortfolioEricBarrigaMedina/css/componentes.css">
 </head>
 <body>
-  <main class="hero not-found">
-    <div class="container hero__content">
-      <p class="section__eyebrow">Error 404</p>
-      <h1 class="hero__title">Esta página no existe</h1>
-      <p class="hero__lead">
+  <main class="portada error">
+    <div class="contenedor portada__texto">
+      <p class="seccion__etiqueta">Error 404</p>
+      <h1 class="portada__titulo">Esta página no existe</h1>
+      <p class="portada__intro">
         Puede que el enlace esté mal escrito o que la página se haya movido.
         Todo el portfolio está en la página principal.
       </p>
-      <a class="btn btn--primary" href="/PortfolioEricBarrigaMedina/">Volver al portfolio</a>
+      <a class="boton boton--principal" href="/PortfolioEricBarrigaMedina/">Volver al portfolio</a>
     </div>
   </main>
 </body>

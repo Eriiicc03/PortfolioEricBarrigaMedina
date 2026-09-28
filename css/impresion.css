@@ -11,24 +11,24 @@
 
 /* Siempre en claro y con tinta de impresión, sea cual sea el tema elegido */
 :root,
-:root[data-theme="dark"],
-:root:not([data-theme="light"]) {
+:root[data-tema="oscuro"],
+:root:not([data-tema="claro"]) {
   color-scheme: light;
-  --color-bg: #ffffff;
-  --color-bg-alt: #ffffff;
-  --color-surface: #ffffff;
-  --color-surface-2: #ffffff;
-  --color-ink: #111318;
-  --color-text: #2b2f38;
-  --color-muted: #555b68;
-  --color-line: #d9d5cc;
-  --color-line-strong: #bdb7aa;
-  --color-accent: #b5390f;
-  --color-accent-soft: #f7e3da;
-  --color-success: #1a7a43;
-  --shadow-s: none;
-  --shadow-m: none;
-  --shadow-l: none;
+  --color-fondo: #ffffff;
+  --color-fondo-alterno: #ffffff;
+  --color-superficie: #ffffff;
+  --color-superficie-2: #ffffff;
+  --color-tinta: #111318;
+  --color-texto: #2b2f38;
+  --color-suave: #555b68;
+  --color-linea: #d9d5cc;
+  --color-linea-fuerte: #bdb7aa;
+  --color-acento: #b5390f;
+  --color-acento-suave: #f7e3da;
+  --color-exito: #1a7a43;
+  --sombra-s: none;
+  --sombra-m: none;
+  --sombra-l: none;
 }
 
 html {
@@ -43,37 +43,37 @@ body {
 }
 
 /* --- Lo que no aporta en papel --- */
-.skip-link,
-.site-header,
-.hero::before,
-.hero__actions,
-.hero__meta,
-.hero__lead,
-.code-card,
-.section__num,
-.link-arrow--secondary,
-.section__title,
-.section__intro,
-.legend,
-.strengths,
-.project__visual,
-.project__subtitle,
-.project__proofs,
-.coursework,
-.contact,
-.site-footer__top,
-.link-arrow .icon,
-[data-print],
-[data-copy] {
+.saltar-contenido,
+.cabecera,
+.portada::before,
+.portada__acciones,
+.portada__enlaces,
+.portada__intro,
+.tarjeta-codigo,
+.seccion__numero,
+.enlace-flecha--secundario,
+.seccion__titulo,
+.seccion__intro,
+.leyenda,
+.fortalezas,
+.proyecto__dibujo,
+.proyecto__subtitulo,
+.proyecto__pruebas,
+.practicas,
+.contacto,
+.pie__arriba,
+.enlace-flecha .icono,
+[data-imprimir],
+[data-copiar] {
   display: none !important;
 }
 
-.print-only {
+.solo-impresion {
   display: block !important;
 }
 
 /* Animaciones y efectos fuera: todo visible y estático */
-[data-reveal] {
+[data-aparecer] {
   opacity: 1 !important;
   translate: none !important;
 }
@@ -85,7 +85,7 @@ body {
   transition: none !important;
 }
 
-.container {
+.contenedor {
   width: 100%;
 }
 
@@ -107,116 +107,116 @@ main {
   order: 3;
 }
 
-.contact {
+.contacto {
   order: 4;
 }
 
 /* --- Cabecera del CV --- */
-.hero {
+.portada {
   padding: 0 0 4mm;
-  border-bottom: 2px solid var(--color-ink);
+  border-bottom: 2px solid var(--color-tinta);
 }
 
-.hero__grid {
+.portada__rejilla {
   display: block;
 }
 
-.hero__content {
+.portada__texto {
   gap: 2mm;
 }
 
-.status {
+.estado {
   order: 3;
   padding: 0.5mm 2.5mm;
-  border-color: var(--color-line);
+  border-color: var(--color-linea);
   font-size: 8.5pt;
 }
 
-.hero__title {
+.portada__titulo {
   font-size: 25pt;
   line-height: 1;
 }
 
-.hero__role {
+.portada__puesto {
   margin: 0;
   font-size: 13pt;
 }
 
-.print-contact {
+.contacto-impreso {
   display: flex !important;
   flex-wrap: wrap;
   gap: 1mm 6mm;
-  color: var(--color-ink);
-  font-family: var(--font-mono);
+  color: var(--color-tinta);
+  font-family: var(--fuente-mono);
   font-size: 8.5pt;
 }
 
 /* --- Secciones --- */
-.section,
-.section--alt {
+.seccion,
+.seccion--alterna {
   padding: 5mm 0 0;
   border: 0;
   background: none;
 }
 
-.section__header {
+.seccion__cabecera {
   max-width: none;
   margin-bottom: 3mm;
 }
 
 /* El "eyebrow" pasa a ser el título de cada apartado del CV */
-.section__eyebrow {
+.seccion__etiqueta {
   width: 100%;
   padding-bottom: 1mm;
-  border-bottom: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-linea);
   font-size: 9pt;
   font-weight: 600;
 }
 
-.section__eyebrow::after {
+.seccion__etiqueta::after {
   display: none;
 }
 
 /* --- Perfil --- */
-.profile {
+.perfil {
   grid-template-columns: 1.7fr 1fr;
   gap: 6mm;
 }
 
-.profile__text {
+.perfil__texto {
   gap: 1.5mm;
   max-width: none;
 }
 
-.profile__lead {
+.perfil__entradilla {
   font-size: 9.3pt;
 }
 
-.facts {
+.datos {
   padding: 3mm 4mm;
 }
 
-.facts__row {
+.datos__fila {
   padding-block: 1.2mm;
 }
 
-.skill-group__title,
-.panel__title {
+.grupo-competencias__titulo,
+.panel__titulo {
   font-size: 10pt;
 }
 
 /* --- Competencias --- */
-.skills {
+.rejilla-competencias {
   grid-template-columns: repeat(3, 1fr);
   gap: 3mm;
 }
 
-.skill-group {
+.grupo-competencias {
   gap: 1.5mm;
   padding: 2.5mm 3mm;
 }
 
-.skill-group__desc {
+.grupo-competencias__descripcion {
   display: none;
 }
 
@@ -235,51 +235,51 @@ main {
 }
 
 /* --- Proyectos --- */
-.projects {
+.proyectos {
   grid-template-columns: repeat(2, 1fr);
   gap: 3mm;
 }
 
-.project,
-.project--featured {
+.proyecto,
+.proyecto--destacado {
   display: block;
   grid-column: auto;
 }
 
-.project__body,
-.project--featured .project__body {
+.proyecto__cuerpo,
+.proyecto--destacado .proyecto__cuerpo {
   gap: 1.2mm;
   padding: 3mm 4mm;
 }
 
-.project__title {
+.proyecto__titulo {
   font-size: 11pt;
 }
 
-.project__desc {
+.proyecto__descripcion {
   font-size: 8.8pt;
 }
 
-.project__note {
+.proyecto__nota {
   padding: 1mm 2mm;
   font-size: 8.5pt;
 }
 
-.tags {
+.tecnologias {
   margin-top: 0.5mm;
 }
 
-.tags li {
+.tecnologias li {
   padding: 0 1.5mm;
   font-size: 7.5pt;
 }
 
 /* Muestra la URL de cada repositorio para que el PDF siga siendo verificable */
-.project__links {
+.proyecto__enlaces {
   margin-top: 0.5mm;
 }
 
-.project__links .link-arrow {
+.proyecto__enlaces .enlace-flecha {
   display: block;
   font-size: 8pt;
   font-weight: 500;
@@ -287,38 +287,38 @@ main {
   overflow-wrap: anywhere;
 }
 
-.project__links .link-arrow::after {
+.proyecto__enlaces .enlace-flecha::after {
   content: " · " attr(href);
-  color: var(--color-muted);
-  font-family: var(--font-mono);
+  color: var(--color-suave);
+  font-family: var(--fuente-mono);
   font-size: 7.5pt;
   font-weight: 400;
 }
 
 /* --- Trayectoria --- */
-.journey {
+.trayectoria {
   grid-template-columns: 1.7fr 1fr;
   gap: 6mm;
 }
 
-.journey__aside {
+.trayectoria__lateral {
   position: static;
   gap: 3mm;
 }
 
-.timeline {
+.linea-tiempo {
   gap: 3mm;
 }
 
-.timeline__title {
+.linea-tiempo__titulo {
   font-size: 10pt;
 }
 
-.timeline__desc {
+.linea-tiempo__descripcion {
   font-size: 8.8pt;
 }
 
-.timeline__item::before {
+.linea-tiempo__hito::before {
   border-color: #fff;
 }
 
@@ -328,7 +328,7 @@ main {
 }
 
 /* --- Pie: enlace a la versión online --- */
-.site-footer {
+.pie {
   margin-top: 5mm;
   padding: 2mm 0 0;
   font-size: 7.5pt;
@@ -337,14 +337,14 @@ main {
 /* --- Saltos de página limpios --- */
 h2,
 h3,
-.section__eyebrow {
+.seccion__etiqueta {
   break-after: avoid;
 }
 
-.facts,
-.skill-group,
-.project,
-.timeline__item,
+.datos,
+.grupo-competencias,
+.proyecto,
+.linea-tiempo__hito,
 .panel {
   break-inside: avoid;
 }
