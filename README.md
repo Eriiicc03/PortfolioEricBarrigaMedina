@@ -6,28 +6,30 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-sin_dependencias-f7df1e)
 
 Web personal que funciona a la vez como **currículum** y como **portfolio**: permite a una empresa
-entender mi perfil en pocos segundos y comprobar, mediante proyectos reales enlazados a su código,
-lo que sé hacer.
+entender mi perfil en pocos segundos y comprobar, con proyectos reales enlazados a su código,
+lo que sé hacer. Un **hilo conductor** recorre toda la página: nace en mi código y se va dibujando
+a medida que se baja, sección a sección, hasta llegar al contacto.
 
 ### 🔗 Web publicada: **[eriiicc03.github.io/PortfolioEricBarrigaMedina](https://eriiicc03.github.io/PortfolioEricBarrigaMedina/)**
 
-![Captura de la portada del portfolio en escritorio](docs/captura-escritorio.png)
+![Portada: el hilo conductor nace en la tarjeta de código y baja hacia el perfil](docs/captura-escritorio.png)
 
 ---
 
 ## Índice
 
 1. [Objetivo](#objetivo)
-2. [Contenido de la web](#contenido-de-la-web)
-3. [Tecnologías](#tecnologías)
-4. [Características](#características)
-5. [Estructura del proyecto](#estructura-del-proyecto)
-6. [Cómo visualizarlo en local](#cómo-visualizarlo-en-local)
-7. [Despliegue](#despliegue)
-8. [Flujo de trabajo con Git](#flujo-de-trabajo-con-git)
-9. [Cómo añadir un proyecto](#cómo-añadir-un-proyecto)
-10. [Calidad y validación](#calidad-y-validación)
-11. [Autor y licencia](#autor-y-licencia)
+2. [La idea: el hilo conductor](#la-idea-el-hilo-conductor)
+3. [Contenido de la web](#contenido-de-la-web)
+4. [Tecnologías](#tecnologías)
+5. [Características](#características)
+6. [Estructura del proyecto](#estructura-del-proyecto)
+7. [Cómo visualizarlo en local](#cómo-visualizarlo-en-local)
+8. [Cómo editar la web a mano](#cómo-editar-la-web-a-mano)
+9. [Despliegue](#despliegue)
+10. [Flujo de trabajo con Git y versiones](#flujo-de-trabajo-con-git-y-versiones)
+11. [Calidad y validación](#calidad-y-validación)
+12. [Autor y licencia](#autor-y-licencia)
 
 ---
 
@@ -36,47 +38,65 @@ lo que sé hacer.
 Práctica **PR01 · Portfolio profesional** del módulo *0614 · Despliegue de aplicaciones web*
 (CFGS Desarrollo de Aplicaciones Web, Institut Thos i Codina).
 
-El objetivo es construir un sitio que:
+El objetivo es un sitio que:
 
 - Transmita una **identidad profesional propia** y se consulte con comodidad desde el **móvil**.
 - Sirva como **CV**: presentación, perfil, competencias, formación, idiomas y contacto.
 - Aporte **evidencias verificables**: cada proyecto enlaza a su repositorio e indica qué competencias demuestra.
-- Se mantenga **vivo**: está pensado para añadir proyectos nuevos en minutos (ver [Cómo añadir un proyecto](#cómo-añadir-un-proyecto)).
+- Se mantenga **vivo**: está pensado para añadir proyectos nuevos en pocos minutos.
+
+## La idea: el hilo conductor
+
+Llegué al desarrollo web desde el Grado Medio de Sistemas Microinformáticos y Redes. Para contar ese
+recorrido, una línea abstracta atraviesa la web de arriba abajo:
+
+1. **Nace en la tarjeta de código** de la portada (`perfil.js`).
+2. **Baja por el margen** de cada sección y **se enciende un nodo** cuando llega a su título.
+3. Entre sección y sección **hace una curva o un bucle** por el espacio vacío, sin pisar nunca el texto.
+4. **Termina subrayando "Hablemos."** en la sección de contacto.
+
+La línea se va dibujando con el scroll, con un punto brillante en la punta y el camino pendiente en
+punteado. Se recalcula sola si cambia el tamaño de la pantalla y respeta la opción de *reducir
+movimiento* (en ese caso aparece dibujada entera).
+
+![El hilo en tema oscuro, con un nodo encendido en cada sección](docs/captura-oscuro.png)
 
 ## Contenido de la web
 
 | Sección | Qué contiene |
 | :-- | :-- |
-| **Inicio** | Nombre, perfil profesional objetivo, disponibilidad, contacto directo y enlaces a GitHub y LinkedIn. |
-| **01 · Perfil** | Presentación redactada para una empresa: qué sé hacer, qué me interesa y qué oportunidad busco. |
-| **02 · Competencias** | Tecnologías agrupadas por área (frontend, backend, datos, despliegue, sistemas y forma de trabajar), distinguiendo lo que uso con soltura de lo que estoy consolidando. |
-| **03 · Proyectos** | Proyectos reales con enlace al código y la lista de competencias que demuestran, más un resumen de las prácticas recientes del ciclo. |
-| **04 · Trayectoria** | Formación (CFGS DAW, CFGM SMX, formación autodidacta), prácticas que busco, idiomas y objetivos. |
+| **Inicio** | Nombre, perfil profesional objetivo, estado actual, contacto directo y enlaces a GitHub y LinkedIn. |
+| **01 · Perfil** | Presentación redactada para una empresa: qué sé hacer, qué me interesa y hacia dónde voy. |
+| **02 · Competencias** | Tecnologías agrupadas por área, distinguiendo lo que uso con soltura de lo que estoy consolidando. |
+| **03 · Proyectos** | Proyectos reales con enlace al código y la lista de competencias que demuestran, más las prácticas recientes del ciclo. |
+| **04 · Trayectoria** | Formación (CFGS DAW, CFGM SMX, formación autodidacta), prácticas en empresa, idiomas y objetivos. |
 | **05 · Contacto** | Correo (con botón para copiarlo), LinkedIn, GitHub y botón para descargar el CV en PDF. |
 
 ## Tecnologías
 
 - **HTML5 semántico**: `header`, `nav`, `main`, `section`, `article`, `aside`, `footer`, listas de definición y jerarquía de títulos coherente.
-- **CSS3 propio**, sin frameworks: variables (custom properties), Grid, Flexbox, tipografía fluida con `clamp()`, `color-mix()`, `@media (prefers-color-scheme)`, `@media (prefers-reduced-motion)` y hoja de impresión.
-- **JavaScript** (ES2020+) sin librerías ni dependencias.
-- **GitHub Actions** + **GitHub Pages** para validación y despliegue continuo.
-- **html-validate** para validar el HTML en cada push.
+- **CSS3 propio**, sin frameworks: variables, Grid, Flexbox, tipografía fluida con `clamp()`, `color-mix()`, `@media (prefers-color-scheme)`, `@media (prefers-reduced-motion)` y hoja de impresión.
+- **SVG** generado con JavaScript para el hilo conductor (curvas de Bézier calculadas a partir de la posición real de cada sección).
+- **JavaScript** (ES2020+) sin librerías.
+- **GitHub Actions** + **GitHub Pages** para validar y publicar automáticamente.
+- **html-validate** para comprobar el HTML en cada push.
 - Fuentes autoalojadas: [Bricolage Grotesque](https://fonts.google.com/specimen/Bricolage+Grotesque), [Inter](https://rsms.me/inter/) y [JetBrains Mono](https://www.jetbrains.com/lp/mono/) (licencia SIL OFL 1.1).
 
-No hay paso de compilación: el código que hay en el repositorio es exactamente el que se publica.
+No hay paso de compilación: el código del repositorio es exactamente el que se publica.
 
 ## Características
 
-- 📱 **Responsive *mobile-first***: probado en móvil (375 px), tableta (820 px) y escritorio (1366–1440 px).
-- 🌗 **Tema claro y oscuro**: sigue la preferencia del sistema y recuerda la elección del usuario.
-- 📄 **CV en PDF desde la propia web**: el botón *Guardar CV en PDF* usa `css/print.css` para generar un currículum A4 de dos páginas con las URL de los repositorios.
-- ♿ **Accesibilidad**: enlace para saltar al contenido, foco visible, menú móvil con `aria-expanded`, sección activa con `aria-current`, contraste AA en ambos temas, respeto a *reducir movimiento* y todo el contenido disponible **sin JavaScript** (mejora progresiva).
-- ⚡ **Rendimiento**: fuentes autoalojadas con precarga y fuentes de reserva con métricas ajustadas (sin saltos de maquetación), ilustraciones hechas solo con CSS y ninguna dependencia externa.
-- 🔎 **SEO**: metadatos, Open Graph con imagen para compartir en LinkedIn, datos estructurados `schema.org/Person`, `sitemap.xml` y `robots.txt`.
+- 🧵 **Hilo conductor** que se dibuja con el scroll y enciende un nodo en cada sección.
+- 📱 **Responsive *mobile-first***: probado en móvil (375–390 px), tableta (768–820 px) y escritorio (1024–1440 px).
+- 🌗 **Tema claro y oscuro**: sigue la preferencia del sistema y recuerda la elección.
+- 📄 **CV en PDF desde la propia web**: el botón *Guardar CV en PDF* usa `css/impresion.css` para generar un currículum A4 de dos páginas con las URL de los repositorios.
+- ♿ **Accesible**: enlace para saltar al contenido, foco visible, menú móvil con `aria-expanded`, sección activa con `aria-current`, contraste AA, el hilo es decorativo (`aria-hidden`) y todo el contenido funciona **sin JavaScript**.
+- ⚡ **Rápido**: fuentes propias con precarga y reservas ajustadas (sin saltos de maquetación); el hilo se mide con cálculos propios en lugar de pedirle al navegador punto por punto.
+- 🔎 **SEO**: metadatos, Open Graph con imagen para LinkedIn, datos estructurados `schema.org/Person`, `sitemap.xml` y `robots.txt`.
 - 🚧 **Página 404** personalizada.
 
 <p align="center">
-  <img src="docs/captura-movil.png" alt="Portada del portfolio en móvil con tema oscuro" width="280">
+  <img src="docs/captura-movil.png" alt="El hilo conductor en un móvil con el tema oscuro" width="280">
 </p>
 
 **CV generado con el botón «Guardar CV en PDF»:**
@@ -87,150 +107,163 @@ No hay paso de compilación: el código que hay en el repositorio es exactamente
 
 ```text
 .
-├── index.html                 # Página principal (todo el contenido del CV y portfolio)
+├── index.html                 # Toda la web: textos, proyectos, trayectoria...
 ├── 404.html                   # Página de error personalizada
 ├── css/
-│   ├── fonts.css              # @font-face de las fuentes propias y fuentes de reserva
-│   ├── tokens.css             # Variables de diseño: color, tipografía, espaciado, temas
-│   ├── base.css               # Reset, tipografía base y utilidades de accesibilidad
-│   ├── layout.css             # Estructura: cabecera, secciones, rejillas, pie
-│   ├── components.css         # Componentes BEM: botones, tarjetas, chips, timeline...
-│   └── print.css              # Estilos de impresión (CV en PDF)
+│   ├── fuentes.css            # Fuentes propias y fuentes de reserva
+│   ├── variables.css          # Colores, tamaños y espacios (tema claro y oscuro)
+│   ├── base.css               # Estilos de las etiquetas HTML y utilidades
+│   ├── estructura.css         # Cabecera, portada, secciones, rejillas y pie
+│   ├── componentes.css        # Botones, tarjetas, chips, línea de tiempo...
+│   ├── hilo.css               # Aspecto del hilo conductor y de los nodos
+│   └── impresion.css          # Versión para imprimir / PDF (CV A4)
 ├── js/
-│   └── main.js                # Tema, menú móvil, sección activa, copiar, imprimir
+│   ├── principal.js           # Tema, menú móvil, sección activa, copiar, PDF
+│   └── hilo-conductor.js      # Cálculo y dibujo del hilo conductor
 ├── assets/
-│   ├── fonts/                 # Fuentes .woff2 (subconjunto latino)
-│   └── img/                   # Favicon, icono iOS e imagen para redes sociales
-├── docs/                      # Capturas usadas en este README (no se publican)
+│   ├── fuentes/               # Archivos .woff2
+│   └── img/                   # Favicon, icono para móvil e imagen para redes
+├── docs/                      # Capturas de este README (no se publican)
 ├── .github/workflows/
-│   └── deploy.yml             # CI/CD: validación de HTML y publicación en GitHub Pages
+│   └── deploy.yml             # Validación del HTML y publicación en GitHub Pages
 ├── .htmlvalidate.json         # Reglas del validador de HTML
 ├── .editorconfig              # Formato común para cualquier editor
 ├── robots.txt
 └── sitemap.xml
 ```
 
-**Organización del CSS.** Los archivos se cargan en orden de lo más general a lo más concreto
-(fuentes → tokens → base → layout → componentes). Los colores, tamaños y espacios nunca se
-escriben "a mano" en los componentes: salen de las variables de `tokens.css`, así que cambiar
-el color de acento o la escala tipográfica es cuestión de una línea. Las clases siguen la
-convención **BEM** (`bloque__elemento--modificador`).
+### Nombres de clases
+
+Clases, ids, variables y funciones están en castellano y siguen el formato **BEM**
+(`bloque__elemento--variante`):
+
+| Ejemplo | Qué es |
+| :-- | :-- |
+| `.proyecto` | Bloque: una tarjeta de proyecto. |
+| `.proyecto__titulo` | Elemento: el título dentro de la tarjeta. |
+| `.proyecto--destacado` | Variante: el proyecto que ocupa toda la fila. |
+
+El JavaScript no depende de las clases, sino de atributos `data-` (`data-boton-tema`, `data-copiar`,
+`data-imprimir`, `data-aparecer`, `data-nodo`…). Así se pueden cambiar los estilos sin romper nada.
 
 ## Cómo visualizarlo en local
 
-No necesita instalación ni compilación. Tras clonar el repositorio:
+No necesita instalación ni compilación:
 
 ```bash
 git clone https://github.com/Eriiicc03/PortfolioEricBarrigaMedina.git
 cd PortfolioEricBarrigaMedina
 ```
 
-**Opción 1 · Abrir el archivo.** Haz doble clic en `index.html`. Todo funciona directamente desde el disco.
+**Opción 1 · Abrir el archivo.** Doble clic en `index.html`.
 
-**Opción 2 · Servidor local (recomendado).** Así se comporta igual que en producción:
+**Opción 2 · Servidor local (recomendado)**, que se comporta igual que en producción:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-y abre <http://localhost:8000>. También sirve la extensión *Live Server* de VS Code o `npx serve`.
+y abrir <http://localhost:8000>. También sirve la extensión *Live Server* de VS Code.
+
+## Cómo editar la web a mano
+
+Todo el código está comentado en castellano. Estos son los cambios más habituales:
+
+**Cambiar un texto.** Busca el texto en `index.html` y cámbialo. Cada sección empieza con un comentario
+(`PERFIL`, `PROYECTOS`…) para encontrarla rápido.
+
+**Cambiar los colores o tamaños.** Todo está en `css/variables.css`. Por ejemplo, `--color-acento`
+es el bermellón de los botones y detalles.
+
+**Cambiar el hilo conductor.**
+- Color y grosor: `--color-hilo` y `--grosor-hilo` en `css/hilo.css`.
+- Recorrido: la sección *AJUSTES DEL RECORRIDO* al principio de `js/hilo-conductor.js`
+  (hacia dónde se abren las curvas, entre qué secciones hace bucles, etc.).
+- Por dónde pasa: cada nodo es un `<span class="nodo" data-nodo>` dentro del título de una sección.
+  Si añades una sección nueva, copia ese `<span>` en su título y el hilo pasará también por ella.
+
+**Añadir un proyecto.** En `index.html`, dentro de `<div class="proyectos">`, copia un
+`<article class="proyecto">` completo y cambia:
+
+1. El estado: `etiqueta-estado--produccion`, `--completado` o `--desarrollo`.
+2. Año, título, descripción, lista *Qué demuestra* y tecnologías.
+3. El enlace al repositorio.
+4. El dibujo `proyecto__dibujo` es opcional: puedes reutilizar los que hay o borrarlo.
+
+**Añadir una tecnología.** En la sección de competencias, copia un `<li class="chip">` dentro del grupo
+que toque. Si la estás aprendiendo, usa `chip chip--aprendiendo`.
+
+**Añadir una etapa de formación.** En la trayectoria, copia un `<li class="linea-tiempo__hito">`
+(la más reciente va arriba).
+
+**Actualizar la fecha.** Cambia *Última actualización* en el pie de `index.html` y `<lastmod>` en `sitemap.xml`.
+
+Después de editar, comprueba el HTML con `npx html-validate@9 index.html 404.html`.
 
 ## Despliegue
 
-La web se publica en **GitHub Pages** mediante **GitHub Actions** ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)):
+La web se publica en **GitHub Pages** con **GitHub Actions** ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)):
 
-1. En cada *push* o *pull request* a `main` o `develop` se **valida el HTML** con html-validate.
-2. Solo en `main`, si la validación pasa, se copian los archivos públicos a `_site/` y se **publica** en GitHub Pages.
+1. En cada *push* o *pull request* a `main` o `develop` se **valida el HTML**.
+2. Solo en `main`, si la validación pasa, se copian los archivos públicos a `_site/` y se **publica**.
 
-El estado de cada despliegue se puede consultar en la pestaña
-[Actions](https://github.com/Eriiicc03/PortfolioEricBarrigaMedina/actions) del repositorio.
+El estado de cada despliegue se ve en la pestaña [Actions](https://github.com/Eriiicc03/PortfolioEricBarrigaMedina/actions) del repositorio.
 
 ### Publicarlo por primera vez
 
-1. Crear en GitHub el repositorio `PortfolioEricBarrigaMedina` (debe ser **público** para usar GitHub Pages con una cuenta gratuita).
-2. Subir el código, las ramas y las etiquetas de versión:
+1. El repositorio `PortfolioEricBarrigaMedina` debe ser **público** (GitHub Pages gratuito lo necesita).
+2. Subir el código, las ramas y las etiquetas:
 
    ```bash
-   git remote add origin git@github.com:Eriiicc03/PortfolioEricBarrigaMedina.git
    git push -u origin main develop --tags
    ```
 
 3. En el repositorio: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-4. Volver a lanzar el workflow (pestaña *Actions → Validar y desplegar → Run workflow*) o hacer un nuevo push a `main`.
+4. Lanzar el workflow (*Actions → Validar y desplegar → Run workflow*) o hacer un nuevo push a `main`.
 
-## Flujo de trabajo con Git
-
-El proyecto sigue un flujo de ramas sencillo inspirado en *Git Flow*:
+## Flujo de trabajo con Git y versiones
 
 | Rama | Uso |
 | :-- | :-- |
 | `main` | Versión publicada. Cada push despliega la web. |
-| `develop` | Rama de integración donde se prueban los cambios antes de publicarlos. |
-| `feature/*`, `fix/*`, `docs/*` | Ramas cortas para cada tarea; se integran en `develop` con `git merge --no-ff` para que quede constancia en el historial. |
+| `develop` | Rama de integración donde se prueban los cambios. |
+| `feature/*`, `fix/*`, `docs/*` | Ramas cortas para cada tarea, integradas en `develop` con `git merge --no-ff`. |
+| `diseno-clasico` | Primer diseño del portfolio. |
+| `diseno-hoja-de-datos` | Diseño alternativo "hoja de datos de un chip". |
 
-Los mensajes de commit siguen **[Conventional Commits](https://www.conventionalcommits.org/es/)**:
-`feat` (funcionalidad), `fix` (corrección), `style` (estilos), `perf` (rendimiento),
-`docs` (documentación), `ci` (integración continua) y `chore` (mantenimiento).
+Los mensajes de commit siguen **[Conventional Commits](https://www.conventionalcommits.org/es/)**
+(`feat`, `fix`, `style`, `perf`, `refactor`, `docs`, `ci`, `chore`) y cada versión publicada lleva una etiqueta:
+
+| Etiqueta | Versión |
+| :-- | :-- |
+| `v1.0.3` | Diseño clásico. |
+| `v2.0.0` | Diseño "hoja de datos". |
+| `v3.0.0` | Diseño clásico en castellano + hilo conductor (actual). |
+
+**Ver un diseño anterior** sin tocar nada (luego se vuelve con `git switch main`):
 
 ```bash
-git log --oneline --graph --all   # ver el historial con las ramas
+git switch diseno-clasico
 ```
 
-## Cómo añadir un proyecto
+**Deshacer el diseño actual** con un commit nuevo (vuelve exactamente a la versión anterior):
 
-El portfolio está pensado para crecer con cada práctica o proyecto nuevo:
-
-1. Crear una rama: `git switch develop && git switch -c feature/proyecto-nombre`.
-2. En `index.html`, dentro de `<div class="projects">`, copiar esta plantilla:
-
-   ```html
-   <article class="project" data-reveal>
-     <div class="project__visual" aria-hidden="true">
-       <!-- Ilustración opcional: reutiliza .diagram, .mock-browser o .mock-calc -->
-     </div>
-     <div class="project__body">
-       <p class="project__meta">
-         <span class="badge badge--done">Completado</span>   <!-- badge--live | badge--done | badge--wip -->
-         <span>2026 · Backend</span>
-       </p>
-       <h3 class="project__title">Nombre del proyecto</h3>
-       <p class="project__desc">Qué es y qué problema resuelve, en una o dos frases.</p>
-       <h4 class="project__subtitle">Qué demuestra</h4>
-       <ul class="project__proofs">
-         <li>Competencia concreta que se puede comprobar en el código.</li>
-       </ul>
-       <ul class="tags">
-         <li>Tecnología</li>
-       </ul>
-       <p class="project__links">
-         <a class="link-arrow" href="https://github.com/Eriiicc03/REPO" target="_blank" rel="noopener">
-           Código
-           <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
-         </a>
-       </p>
-     </div>
-   </article>
-   ```
-
-3. Actualizar la fecha de *Última actualización* del pie y `<lastmod>` en `sitemap.xml`.
-4. Validar (`npx html-validate@9 index.html 404.html`), hacer commit (`feat: añade proyecto X`), integrar en `develop` y después en `main` para publicarlo.
-
-La rejilla se adapta sola al número de proyectos.
+```bash
+git switch main && git revert --no-edit -m 1 v3.0.0
+```
 
 ## Calidad y validación
 
-- **HTML**: `npx html-validate@9 index.html 404.html` → sin errores (se ejecuta también en cada push).
+- **HTML**: `npx html-validate@9 index.html 404.html` → sin errores (también se ejecuta en cada push).
 - **Lighthouse** (Chrome, servidor local, septiembre de 2026):
 
   | | Rendimiento | Accesibilidad | Buenas prácticas | SEO |
   | :-- | :-: | :-: | :-: | :-: |
   | Escritorio | 100 | 100 | 100 | 100 |
-  | Móvil | 90 | 100 | 100 | 100 |
+  | Móvil | 93 | 100 | 100 | 100 |
 
-  En móvil, lo que resta son la compresión y la caché del servidor local de pruebas; GitHub Pages ya sirve los archivos comprimidos.
-
-- **Responsive** revisado a 375, 390, 820, 1024, 1366 y 1440 px de ancho, en tema claro y oscuro.
-- **Sin JavaScript**: todo el contenido y la navegación siguen funcionando.
+- **Sin saltos de maquetación** (CLS 0) gracias a las fuentes de reserva ajustadas.
+- **Sin JavaScript** todo el contenido y la navegación siguen funcionando (el hilo simplemente no aparece).
 
 ## Autor y licencia
 
