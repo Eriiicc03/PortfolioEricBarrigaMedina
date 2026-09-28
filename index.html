@@ -52,6 +52,7 @@
         <ul class="site-nav__list" id="menu-principal">
           <li><a class="site-nav__link" href="#perfil">Perfil</a></li>
           <li><a class="site-nav__link" href="#competencias">Competencias</a></li>
+          <li><a class="site-nav__link" href="#proyectos">Proyectos</a></li>
           <li><a class="site-nav__link" href="#trayectoria">Trayectoria</a></li>
           <li><a class="site-nav__link" href="#contacto">Contacto</a></li>
         </ul>
@@ -78,8 +79,8 @@
               Contactar
               <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
             </a>
-            <a class="btn btn--ghost" href="#perfil">
-              Conocer mi perfil
+            <a class="btn btn--ghost" href="#proyectos">
+              Ver proyectos
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg>
             </a>
           </div>
@@ -286,6 +287,250 @@
               <li class="chip chip--learning">Accesibilidad web<span class="visually-hidden"> (consolidando)</span></li>
             </ul>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROYECTOS ============
+         Para añadir un proyecto nuevo, copia un <article class="project"> completo
+         y cambia textos, etiquetas y enlaces. Ver README → "Cómo añadir un proyecto". -->
+    <section class="section" id="proyectos" aria-labelledby="proyectos-title">
+      <div class="container">
+        <header class="section__header">
+          <p class="section__eyebrow">03 · Proyectos</p>
+          <h2 class="section__title" id="proyectos-title">Proyectos con código que puedes revisar</h2>
+          <p class="section__intro">
+            Cada proyecto enlaza a su repositorio en GitHub e indica qué competencias demuestra,
+            para que sea fácil comprobar lo que sé hacer.
+          </p>
+        </header>
+
+        <div class="projects">
+          <!-- Proyecto destacado -->
+          <article class="project project--featured" data-reveal>
+            <div class="project__visual" aria-hidden="true">
+              <div class="mock-browser">
+                <div class="mock-browser__bar">
+                  <span class="mock-browser__dot"></span>
+                  <span class="mock-browser__dot"></span>
+                  <span class="mock-browser__dot"></span>
+                  <span class="mock-browser__url">eriiicc03.github.io</span>
+                </div>
+                <div class="mock-browser__page">
+                  <span class="mock-line mock-line--title"></span>
+                  <span class="mock-line"></span>
+                  <span class="mock-line mock-line--short"></span>
+                  <span class="mock-cards"><span></span><span></span><span></span></span>
+                </div>
+              </div>
+            </div>
+            <div class="project__body">
+              <p class="project__meta">
+                <span class="badge badge--live">En producción</span>
+                <span>2026 · Frontend y despliegue</span>
+              </p>
+              <h3 class="project__title">Portfolio profesional</h3>
+              <p class="project__desc">
+                Esta misma web: un sitio que funciona a la vez como CV y como portfolio,
+                construido sin frameworks y publicado automáticamente en GitHub Pages con cada cambio.
+              </p>
+              <h4 class="project__subtitle">Qué demuestra</h4>
+              <ul class="project__proofs">
+                <li>HTML semántico y accesible: landmarks, jerarquía de títulos y navegación por teclado.</li>
+                <li>CSS propio organizado en capas (tokens, base, layout y componentes) y diseño responsive.</li>
+                <li>JavaScript sin dependencias: tema claro/oscuro, menú móvil y exportación del CV a PDF.</li>
+                <li>Despliegue continuo con GitHub Actions y flujo de trabajo con ramas.</li>
+              </ul>
+              <ul class="tags" aria-label="Tecnologías">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>GitHub Actions</li>
+              </ul>
+              <p class="project__links">
+                <a class="link-arrow" href="https://github.com/Eriiicc03/Eriiicc03.github.io" target="_blank" rel="noopener">
+                  Código
+                  <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                </a>
+                <a class="link-arrow" href="https://github.com/Eriiicc03/Eriiicc03.github.io/commits/main" target="_blank" rel="noopener">
+                  Historial de commits
+                  <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                </a>
+              </p>
+            </div>
+          </article>
+
+          <article class="project" data-reveal>
+            <div class="project__visual" aria-hidden="true">
+              <div class="diagram">
+                <span class="diagram__node">
+                  <span class="diagram__name">odoo:17</span>
+                  <span class="diagram__sub">puerto 8069</span>
+                </span>
+                <span class="diagram__link">depends_on</span>
+                <span class="diagram__node diagram__node--accent">
+                  <span class="diagram__name">postgres:15</span>
+                  <span class="diagram__sub">healthcheck ✓</span>
+                </span>
+              </div>
+              <div class="diagram__volumes">
+                <span>vol · odoo_web_data</span>
+                <span>vol · odoo_db_data</span>
+              </div>
+            </div>
+            <div class="project__body">
+              <p class="project__meta">
+                <span class="badge badge--done">Completado</span>
+                <span>2026 · Despliegue</span>
+              </p>
+              <h3 class="project__title">Odoo 17 con Docker Compose</h3>
+              <p class="project__desc">
+                Entorno ERP reproducible que se levanta con un solo comando: Odoo 17 y PostgreSQL 15
+                en contenedores separados y conectados por una red propia.
+              </p>
+              <h4 class="project__subtitle">Qué demuestra</h4>
+              <ul class="project__proofs">
+                <li>Orquestación de varios servicios con Docker Compose.</li>
+                <li>Arranque ordenado con <code>healthcheck</code> y <code>depends_on</code>: Odoo espera a que la base de datos esté lista.</li>
+                <li>Persistencia con volúmenes y configuración montada desde el host.</li>
+              </ul>
+              <ul class="tags" aria-label="Tecnologías">
+                <li>Docker</li>
+                <li>Docker Compose</li>
+                <li>PostgreSQL</li>
+                <li>Odoo</li>
+              </ul>
+              <p class="project__links">
+                <a class="link-arrow" href="https://github.com/Eriiicc03/Odoo" target="_blank" rel="noopener">
+                  Código
+                  <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                </a>
+              </p>
+            </div>
+          </article>
+
+          <article class="project" data-reveal>
+            <div class="project__visual" aria-hidden="true">
+              <div class="diagram">
+                <span class="diagram__node">
+                  <span class="diagram__name">supplier-api</span>
+                  <span class="diagram__sub">catálogo · stock</span>
+                </span>
+                <span class="diagram__link">REST</span>
+                <span class="diagram__node diagram__node--accent">
+                  <span class="diagram__name">store-api</span>
+                  <span class="diagram__sub">⟳ @Scheduled</span>
+                </span>
+              </div>
+              <div class="diagram__volumes">
+                <span>db · proveedor</span>
+                <span>db · tienda</span>
+              </div>
+            </div>
+            <div class="project__body">
+              <p class="project__meta">
+                <span class="badge badge--wip">En desarrollo</span>
+                <span>2026 · Backend</span>
+              </p>
+              <h3 class="project__title">Inventory Sync</h3>
+              <p class="project__desc">
+                Solución backend con arquitectura de microservicios que sincroniza el stock entre un
+                proveedor mayorista y una tienda online consumiendo APIs REST.
+              </p>
+              <h4 class="project__subtitle">Qué demuestra</h4>
+              <ul class="project__proofs">
+                <li>Diseño de dos microservicios desacoplados con Spring Boot (Web y Data JPA).</li>
+                <li>Sincronización periódica con tareas programadas y validación de datos.</li>
+                <li>Infraestructura definida con Docker Compose: servicios y bases de datos.</li>
+              </ul>
+              <p class="project__note">Arquitectura definida y documentada; el código se publica por fases.</p>
+              <ul class="tags" aria-label="Tecnologías">
+                <li>Java</li>
+                <li>Spring Boot</li>
+                <li>REST</li>
+                <li>Docker</li>
+              </ul>
+              <p class="project__links">
+                <a class="link-arrow" href="https://github.com/Eriiicc03/inventory-sync" target="_blank" rel="noopener">
+                  Repositorio
+                  <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                </a>
+              </p>
+            </div>
+          </article>
+
+          <article class="project" data-reveal>
+            <div class="project__visual" aria-hidden="true">
+              <div class="mock-calc">
+                <span class="mock-calc__screen">128</span>
+                <span class="mock-calc__keys">
+                  <span>7</span><span>8</span><span>9</span><span class="is-op">/</span>
+                  <span>4</span><span>5</span><span>6</span><span class="is-op">*</span>
+                  <span>1</span><span>2</span><span>3</span><span class="is-op">-</span>
+                  <span class="is-op">C</span><span>0</span><span class="is-eq">=</span><span class="is-op">+</span>
+                </span>
+              </div>
+            </div>
+            <div class="project__body">
+              <p class="project__meta">
+                <span class="badge badge--done">Completado</span>
+                <span>2026 · Java</span>
+              </p>
+              <h3 class="project__title">Calculadora en Java Swing</h3>
+              <p class="project__desc">
+                Aplicación de escritorio con interfaz gráfica para realizar las operaciones aritméticas básicas.
+              </p>
+              <h4 class="project__subtitle">Qué demuestra</h4>
+              <ul class="project__proofs">
+                <li>Programación orientada a objetos en Java: una clase propia que extiende <code>JFrame</code>.</li>
+                <li>Layouts de Swing: <code>BorderLayout</code> para la pantalla y <code>GridLayout</code> para el teclado.</li>
+                <li>Gestión de eventos con <code>ActionListener</code> y botones generados en un bucle.</li>
+              </ul>
+              <ul class="tags" aria-label="Tecnologías">
+                <li>Java</li>
+                <li>Swing</li>
+                <li>POO</li>
+              </ul>
+              <p class="project__links">
+                <a class="link-arrow" href="https://github.com/Eriiicc03/CalculadoraBasica" target="_blank" rel="noopener">
+                  Código
+                  <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                </a>
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="coursework" data-reveal>
+          <div class="coursework__header">
+            <h3 class="coursework__title">Prácticas recientes del ciclo</h3>
+            <a class="link-arrow" href="https://github.com/Eriiicc03?tab=repositories" target="_blank" rel="noopener">
+              Todos mis repositorios
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+            </a>
+          </div>
+          <ul class="coursework__list">
+            <li class="coursework__item">
+              <span class="coursework__module">Diseño de interfaces web</span>
+              <span class="coursework__name">Maquetación de layouts con CSS Grid</span>
+              <span class="coursework__detail">Áreas con nombre (<code>grid-template-areas</code>), unidades <code>fr</code> y rejillas anidadas.</span>
+            </li>
+            <li class="coursework__item">
+              <span class="coursework__module">Desarrollo en entorno cliente</span>
+              <span class="coursework__name">Entorno de desarrollo JavaScript con Vite y ESLint</span>
+              <span class="coursework__detail">Configuración del proyecto, servidor de desarrollo con recarga en caliente y reglas de linting.</span>
+            </li>
+            <li class="coursework__item">
+              <span class="coursework__module">Desarrollo en entorno cliente</span>
+              <span class="coursework__name">Menú de navegación generado con el DOM</span>
+              <span class="coursework__detail">Arrays, plantillas literales y comparación entre <code>innerHTML</code> y <code>createElement</code>.</span>
+            </li>
+            <li class="coursework__item">
+              <span class="coursework__module">Despliegue de aplicaciones web</span>
+              <span class="coursework__name">Documentación técnica en Markdown versionada con Git</span>
+              <span class="coursework__detail">Repositorio con historial de commits descriptivos y <code>.gitignore</code>.</span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>

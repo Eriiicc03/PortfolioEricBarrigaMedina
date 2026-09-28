@@ -591,3 +591,495 @@
   gap: var(--space-s);
   margin-top: var(--space-s);
 }
+
+/* --------------------------------------------------------------------------
+   Tarjeta de proyecto
+   -------------------------------------------------------------------------- */
+.project {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-l);
+  background-color: var(--color-surface);
+  transition: border-color var(--duration) ease, box-shadow var(--duration) ease, transform var(--duration) var(--ease-out);
+}
+
+.project:hover {
+  border-color: var(--color-line-strong);
+  box-shadow: var(--shadow-m);
+  transform: translateY(-3px);
+}
+
+/* Ilustración decorativa de cada proyecto sobre una trama de puntos */
+.project__visual {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--space-s);
+  min-height: 15rem;
+  padding: var(--space-l);
+  border-bottom: 1px solid var(--color-line);
+  background-color: var(--color-surface-2);
+  background-image: radial-gradient(var(--color-line-strong) 1px, transparent 1px);
+  background-size: 1rem 1rem;
+}
+
+.project__body {
+  display: grid;
+  gap: var(--space-s);
+  align-content: start;
+  padding: var(--space-l) var(--space-l) var(--space-xl);
+}
+
+.project__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs) var(--space-s);
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.project__title {
+  font-size: var(--step-2);
+}
+
+.project__desc {
+  color: var(--color-text);
+}
+
+.project__subtitle {
+  margin-top: var(--space-xs);
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project__proofs {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.project__proofs li {
+  position: relative;
+  padding-left: 1.6rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+/* Marca de verificación dibujada con bordes */
+.project__proofs li::before {
+  content: "";
+  position: absolute;
+  top: 0.45em;
+  left: 0.15rem;
+  width: 0.7rem;
+  height: 0.38rem;
+  border-bottom: 2px solid var(--color-accent);
+  border-left: 2px solid var(--color-accent);
+  transform: rotate(-45deg);
+}
+
+.project__note {
+  padding: var(--space-xs) var(--space-s);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 var(--radius-s) var(--radius-s) 0;
+  background-color: var(--color-accent-soft);
+  color: var(--color-ink);
+  font-size: 0.9rem;
+}
+
+.project__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-l);
+  margin-top: var(--space-xs);
+}
+
+.project code,
+.coursework code {
+  padding: 0.05em 0.35em;
+  border-radius: 0.3em;
+  background-color: var(--color-bg-alt);
+  color: var(--color-ink);
+  font-size: 0.85em;
+}
+
+@media (min-width: 60rem) {
+  .project--featured {
+    grid-template-columns: 1fr 1.1fr;
+    grid-template-rows: none;
+  }
+
+  .project--featured .project__visual {
+    border-right: 1px solid var(--color-line);
+    border-bottom: 0;
+  }
+
+  .project--featured .project__body {
+    padding: var(--space-xl) var(--space-2xl);
+  }
+
+  .project--featured .mock-browser {
+    width: min(100%, 26rem);
+  }
+
+  .project--featured .mock-browser__page {
+    gap: 0.65rem;
+    padding: 1.4rem;
+  }
+
+  .project--featured .mock-cards span {
+    height: 4rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Etiquetas de estado y tecnologías
+   -------------------------------------------------------------------------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-pill);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.badge::before {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.badge--live,
+.badge--done {
+  color: var(--color-success);
+}
+
+.badge--wip {
+  color: var(--color-accent);
+}
+
+.badge--wip::before {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1.5px currentColor;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: var(--space-xs);
+}
+
+.tags li {
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-s);
+  background-color: var(--color-bg-alt);
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   Enlace con flecha
+   -------------------------------------------------------------------------- */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--color-ink);
+  font-weight: 600;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 2px;
+}
+
+.link-arrow .icon {
+  transition: transform var(--duration) var(--ease-out);
+}
+
+.link-arrow:hover .icon {
+  transform: translate(2px, -2px);
+}
+
+/* --------------------------------------------------------------------------
+   Ilustraciones de proyectos (maquetas hechas solo con HTML y CSS)
+   -------------------------------------------------------------------------- */
+
+/* Navegador en miniatura */
+.mock-browser {
+  width: min(100%, 21rem);
+  overflow: hidden;
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-m);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-m);
+}
+
+.mock-browser__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.mock-browser__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--color-line-strong);
+}
+
+.mock-browser__url {
+  flex: 1;
+  margin-left: 0.4rem;
+  padding: 0.1rem 0.6rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-bg-alt);
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+}
+
+.mock-browser__page {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.mock-line {
+  width: 85%;
+  height: 0.45rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-line);
+}
+
+.mock-line--title {
+  width: 60%;
+  height: 0.85rem;
+  margin-bottom: 0.2rem;
+  background-color: var(--color-ink);
+}
+
+.mock-line--short {
+  width: 45%;
+}
+
+.mock-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.mock-cards span {
+  height: 2.8rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-s);
+  background-color: var(--color-surface-2);
+}
+
+.mock-cards span:first-child {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-soft);
+}
+
+/* Diagrama de servicios */
+.diagram {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+}
+
+.diagram__node {
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-m);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-s);
+  text-align: center;
+}
+
+.diagram__node--accent {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-accent-soft);
+}
+
+.diagram__name {
+  color: var(--color-ink);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.diagram__sub {
+  color: var(--color-muted);
+  font-size: 0.66rem;
+}
+
+/* Conector: texto encima de una línea discontinua con punta de flecha */
+.diagram__link {
+  position: relative;
+  min-width: 3rem;
+  padding-bottom: 0.45rem;
+  color: var(--color-muted);
+  font-size: 0.62rem;
+  text-align: center;
+}
+
+.diagram__link::before {
+  content: "";
+  position: absolute;
+  right: 0.3rem;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: repeating-linear-gradient(to right, var(--color-accent) 0 5px, transparent 5px 9px);
+}
+
+.diagram__link::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -3px;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: var(--color-accent);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.diagram__volumes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.diagram__volumes span {
+  padding: 0.15rem 0.5rem;
+  border: 1px dashed var(--color-line-strong);
+  border-radius: var(--radius-s);
+  background-color: var(--color-surface);
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+}
+
+/* Calculadora en miniatura (mismo teclado que el proyecto real) */
+.mock-calc {
+  display: grid;
+  gap: 0.45rem;
+  width: 9.25rem;
+  padding: 0.6rem;
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-m);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-m);
+}
+
+.mock-calc__screen {
+  padding: 0.3rem 0.55rem;
+  border-radius: var(--radius-s);
+  background-color: var(--code-bg);
+  color: var(--code-text);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  text-align: right;
+}
+
+.mock-calc__keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.3rem;
+}
+
+.mock-calc__keys span {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border: 1px solid var(--color-line);
+  border-radius: 0.35rem;
+  background-color: var(--color-surface-2);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.mock-calc__keys .is-op {
+  color: var(--color-accent);
+}
+
+.mock-calc__keys .is-eq {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+/* --------------------------------------------------------------------------
+   Prácticas del ciclo
+   -------------------------------------------------------------------------- */
+.coursework__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-s) var(--space-l);
+  margin-bottom: var(--space-l);
+}
+
+.coursework__title {
+  font-size: var(--step-2);
+}
+
+.coursework__list {
+  border-top: 1px solid var(--color-line);
+}
+
+.coursework__item {
+  display: grid;
+  gap: 0.2rem var(--space-xl);
+  padding-block: var(--space-m);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.coursework__module {
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.coursework__name {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.coursework__detail {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+@media (min-width: 48rem) {
+  .coursework__item {
+    grid-template-columns: 15rem 1fr;
+  }
+
+  .coursework__module {
+    grid-row: span 2;
+    padding-top: 0.2rem;
+  }
+}
