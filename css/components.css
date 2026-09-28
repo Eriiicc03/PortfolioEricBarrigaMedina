@@ -132,6 +132,71 @@
   color: var(--color-invert-bg);
 }
 
+/* Botón de texto (acción secundaria sin borde) */
+.btn--text {
+  padding-inline: 0.5rem;
+  color: var(--color-muted);
+}
+
+.btn--text:hover {
+  color: var(--color-accent);
+}
+
+/* --------------------------------------------------------------------------
+   Botones de icono (menú y tema)
+   El display lo decide cada botón para no romper las reglas de visibilidad.
+   -------------------------------------------------------------------------- */
+.icon-btn {
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  transition: border-color var(--duration) ease, color var(--duration) ease, transform var(--duration) var(--ease-out);
+}
+
+.icon-btn:hover {
+  border-color: var(--color-line-strong);
+  color: var(--color-accent);
+}
+
+.icon-btn .icon {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.theme-toggle {
+  display: inline-grid;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  transform: rotate(-15deg);
+}
+
+/* Se muestra la luna en tema claro y el sol en tema oscuro */
+.theme-toggle .icon-sun,
+:root[data-theme="dark"] .theme-toggle .icon-moon {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-sun {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun {
+    display: block;
+  }
+
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon {
+    display: none;
+  }
+}
+
 /* --------------------------------------------------------------------------
    Indicador de disponibilidad
    -------------------------------------------------------------------------- */
@@ -583,6 +648,39 @@
 
 .contact__mail:hover {
   color: var(--color-accent);
+}
+
+/* Botón copiar correo */
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--color-invert-line);
+  border-radius: var(--radius-pill);
+  background: none;
+  color: var(--color-invert-ink);
+  font-size: var(--step--1);
+  font-weight: 500;
+  transition: border-color var(--duration) ease, color var(--duration) ease;
+}
+
+.copy-btn:hover {
+  border-color: var(--color-invert-ink);
+}
+
+.copy-btn .icon-check,
+.copy-btn.is-done .icon-copy {
+  display: none;
+}
+
+.copy-btn.is-done .icon-check {
+  display: block;
+}
+
+.copy-btn.is-done {
+  border-color: var(--color-success);
+  color: var(--color-success);
 }
 
 .contact__links {
@@ -1082,4 +1180,25 @@
     grid-row: span 2;
     padding-top: 0.2rem;
   }
+}
+
+/* --------------------------------------------------------------------------
+   Aparición al hacer scroll (la clase .reveal-ready la añade js/main.js)
+   Se usa la propiedad "translate" para no interferir con los "transform"
+   de los efectos hover.
+   -------------------------------------------------------------------------- */
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  translate: 0 1.25rem;
+  transition:
+    opacity 700ms var(--ease-out),
+    translate 700ms var(--ease-out),
+    border-color var(--duration) ease,
+    box-shadow var(--duration) ease,
+    transform var(--duration) var(--ease-out);
+}
+
+.reveal-ready [data-reveal].is-visible {
+  opacity: 1;
+  translate: none;
 }
