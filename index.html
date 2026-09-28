@@ -56,9 +56,9 @@
     }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <!-- Fuentes propias: se precargan las dos que aparecen en la primera pantalla -->
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Aplica el tema elegido antes de pintar la página para evitar parpadeos -->
   <script>
@@ -72,6 +72,7 @@
     })();
   </script>
 
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -128,7 +129,7 @@
 
   <header class="site-header">
     <div class="container site-header__inner">
-      <a class="brand" href="#inicio" aria-label="Eric Barriga Medina, volver al inicio">
+      <a class="brand" href="#inicio">
         <span class="brand__mark" aria-hidden="true">EB</span>
         <span class="brand__name">Eric Barriga</span>
       </a>
@@ -148,7 +149,7 @@
         </ul>
       </nav>
 
-      <button class="theme-toggle icon-btn" type="button" aria-pressed="false" data-theme-toggle hidden>
+      <button class="theme-toggle icon-btn js-only" type="button" aria-pressed="false" data-theme-toggle>
         <svg class="icon icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
         <svg class="icon icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
         <span class="visually-hidden">Tema oscuro</span>
@@ -187,7 +188,7 @@
               Ver proyectos
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg>
             </a>
-            <button class="btn btn--text" type="button" data-print hidden>
+            <button class="btn btn--text js-only" type="button" data-print>
               <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
               Guardar CV en PDF
             </button>
@@ -737,7 +738,7 @@
             <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
             ericbarrigamedina1@gmail.com
           </a>
-          <button class="copy-btn" type="button" data-copy="ericbarrigamedina1@gmail.com" hidden>
+          <button class="copy-btn js-only" type="button" data-copy="ericbarrigamedina1@gmail.com">
             <svg class="icon icon-copy" aria-hidden="true"><use href="#i-copy"/></svg>
             <svg class="icon icon-check" aria-hidden="true"><use href="#i-check"/></svg>
             <span data-copy-label>Copiar</span>
@@ -758,8 +759,8 @@
               GitHub
             </a>
           </li>
-          <li>
-            <button class="btn btn--light" type="button" data-print hidden>
+          <li class="js-only">
+            <button class="btn btn--light" type="button" data-print>
               <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
               Guardar CV en PDF
             </button>
