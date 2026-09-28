@@ -1,19 +1,22 @@
 /**
  * ============================================================================
  * PORTFOLIO · ERIC BARRIGA MEDINA
- * Interactividad de la página, sin librerías ni frameworks.
+ * Interactividad general de la página, sin librerías ni frameworks.
  *
  * La web funciona también sin JavaScript: este archivo solo añade comodidad.
  * Cada función se ocupa de una cosa y se activa al final del archivo:
  *
- *   iniciarTema()         → interruptor Hoja / Plano (claro / oscuro)
- *   iniciarMenu()         → menú desplegable en móvil
- *   iniciarCabecera()     → sombra de la cabecera al hacer scroll
- *   iniciarSeccionActiva()→ marca en el menú la sección que se está leyendo
- *   iniciarAparicion()    → los bloques aparecen suavemente al hacer scroll
- *   iniciarCopiarCorreo() → botón "Copiar" del correo
- *   iniciarImprimir()     → botón "Descargar hoja de datos (PDF)"
- *   iniciarAnio()         → año actual en el pie de página
+ *   iniciarTema()          → botón de tema claro / oscuro
+ *   iniciarMenu()          → menú desplegable en móvil
+ *   iniciarCabecera()      → borde de la cabecera al hacer scroll
+ *   iniciarSeccionActiva() → marca en el menú la sección que se está leyendo
+ *   iniciarAparicion()     → los bloques aparecen suavemente al hacer scroll
+ *   iniciarCopiarCorreo()  → botón "Copiar" del correo
+ *   iniciarImprimir()      → botón "Guardar CV en PDF"
+ *   iniciarAnio()          → año actual en el pie de página
+ *
+ * El hilo conductor (la línea que recorre la página) está aparte, en
+ * js/hilo-conductor.js.
  *
  * El HTML se conecta con este archivo mediante atributos data-...
  * (por ejemplo data-boton-tema o data-copiar), así las clases se pueden
@@ -28,15 +31,15 @@
   const menosMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   /* --------------------------------------------------------------------------
-     TEMA: HOJA (claro) ⇄ PLANO (oscuro)
+     TEMA CLARO / OSCURO
      Si la persona no ha elegido nada, se sigue el tema del sistema (lo hace
-     el CSS). Al pulsar el interruptor se guarda la elección en el navegador.
+     el CSS). Al pulsar el botón se guarda la elección en el navegador.
      -------------------------------------------------------------------------- */
   const CLAVE_TEMA = 'tema';
 
   function temaActual() {
     if (raiz.dataset.tema) return raiz.dataset.tema;
-    return sistemaOscuro.matches ? 'plano' : 'hoja';
+    return sistemaOscuro.matches ? 'oscuro' : 'claro';
   }
 
   function guardarTema(tema) {
@@ -51,13 +54,13 @@
     const boton = document.querySelector('[data-boton-tema]');
     if (!boton) return;
 
-    // aria-pressed="true" indica a los lectores de pantalla que el modo plano está activo
-    const actualizarBoton = () => boton.setAttribute('aria-pressed', String(temaActual() === 'plano'));
+    // aria-pressed="true" indica a los lectores de pantalla que el tema oscuro está activo
+    const actualizarBoton = () => boton.setAttribute('aria-pressed', String(temaActual() === 'oscuro'));
 
     actualizarBoton();
 
     boton.addEventListener('click', () => {
-      const nuevoTema = temaActual() === 'plano' ? 'hoja' : 'plano';
+      const nuevoTema = temaActual() === 'oscuro' ? 'claro' : 'oscuro';
       raiz.dataset.tema = nuevoTema;
       guardarTema(nuevoTema);
       actualizarBoton();
@@ -103,13 +106,13 @@
     });
 
     // Si la ventana se hace grande, el desplegable deja de existir
-    window.matchMedia('(min-width: 62rem)').addEventListener('change', (evento) => {
+    window.matchMedia('(min-width: 48rem)').addEventListener('change', (evento) => {
       if (evento.matches) abrirOCerrar(false);
     });
   }
 
   /* --------------------------------------------------------------------------
-     CABECERA: sombra al hacer scroll
+     CABECERA: borde inferior cuando la página tiene scroll
      -------------------------------------------------------------------------- */
   function iniciarCabecera() {
     const cabecera = document.querySelector('[data-cabecera]');
@@ -222,9 +225,9 @@
   }
 
   /* --------------------------------------------------------------------------
-     DESCARGAR LA HOJA DE DATOS EN PDF
+     GUARDAR EL CV EN PDF
      Abre el diálogo de impresión: css/impresion.css convierte la página en
-     un documento A4. Se cambia el título para que el PDF tenga buen nombre.
+     un CV de formato A4. Se cambia el título para que el PDF tenga buen nombre.
      -------------------------------------------------------------------------- */
   function iniciarImprimir() {
     document.querySelectorAll('[data-imprimir]').forEach((boton) => {
@@ -233,7 +236,7 @@
 
     const tituloOriginal = document.title;
     window.addEventListener('beforeprint', () => {
-      document.title = 'EBM-26 - Hoja de datos - Eric Barriga Medina';
+      document.title = 'CV - Eric Barriga Medina';
     });
     window.addEventListener('afterprint', () => {
       document.title = tituloOriginal;

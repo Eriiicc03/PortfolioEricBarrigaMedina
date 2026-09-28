@@ -2,37 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <!--
-    =============================================================================
-    PORTFOLIO DE ERIC BARRIGA MEDINA · "HOJA DE DATOS EBM-26"
-
-    Idea del diseño: el portfolio imita la hoja de datos (datasheet) de un chip
-    electrónico. Yo soy el componente "EBM-26" y cada parte de la hoja cuenta
-    una parte de mi CV:
-
-      Portada ............ presentación + el chip dibujado (Figura 1)
-      1 Perfil ........... "Descripción general" (características, aplicaciones...)
-      2 Arquitectura ..... "Diagrama de bloques" (cómo construyo una web)
-      3 Competencias ..... "Configuración de pines" (una tecnología por pin)
-      4 Proyectos ........ "Notas de aplicación" (proyectos con código)
-      5 Formación ........ "Historial de revisiones"
-      6 Contacto ......... "Información de pedido"
-
-    Cómo está organizado el código:
-      - Los textos se cambian directamente aquí, en este archivo.
-      - Los estilos están en la carpeta css/ (un archivo por tema, ver README).
-      - La interactividad está en js/principal.js.
-      - Las clases siguen el formato  bloque__elemento--variante
-        Ejemplo: .proyecto (bloque) · .proyecto__titulo (elemento) ·
-                 .proyecto--destacado (variante).
-    =============================================================================
-  -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Eric Barriga Medina · Desarrollador web full stack junior</title>
-  <meta name="description" content="Portfolio y CV de Eric Barriga Medina, estudiante de 2.º de DAW, presentado como la hoja de datos de un chip. Desarrollo web full stack con HTML, CSS, JavaScript, Vue, Java, Spring Boot, PostgreSQL y Docker.">
+  <meta name="description" content="Portfolio y CV de Eric Barriga Medina, estudiante de 2.º de DAW. Desarrollo web full stack con HTML, CSS, JavaScript, Vue, Java, Spring Boot, PostgreSQL y Docker. Realizando prácticas en empresa.">
   <meta name="author" content="Eric Barriga Medina">
-  <meta name="theme-color" content="#f3f0e8" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0f2a4a" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://eriiicc03.github.io/PortfolioEricBarrigaMedina/">
 
   <!-- Vista previa al compartir el enlace (LinkedIn, WhatsApp, etc.) -->
@@ -40,12 +15,12 @@
   <meta property="og:locale" content="es_ES">
   <meta property="og:url" content="https://eriiicc03.github.io/PortfolioEricBarrigaMedina/">
   <meta property="og:site_name" content="Eric Barriga Medina">
-  <meta property="og:title" content="Eric Barriga Medina · Hoja de datos EBM-26">
-  <meta property="og:description" content="Desarrollador web full stack junior: Java, Spring Boot, JavaScript, Vue, PostgreSQL y Docker. Portfolio presentado como la hoja de datos de un chip.">
+  <meta property="og:title" content="Eric Barriga Medina · Desarrollador web full stack junior">
+  <meta property="og:description" content="Portfolio y CV: proyectos con Java, Spring Boot, JavaScript, Vue, PostgreSQL y Docker. Realizando prácticas en empresa.">
   <meta property="og:image" content="https://eriiicc03.github.io/PortfolioEricBarrigaMedina/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Hoja de datos del componente EBM-26: Eric Barriga Medina, desarrollador web full stack junior">
+  <meta property="og:image:alt" content="Tarjeta con el nombre de Eric Barriga Medina, su rol y sus tecnologías principales">
   <meta property="profile:first_name" content="Eric">
   <meta property="profile:last_name" content="Barriga Medina">
   <meta name="twitter:card" content="summary_large_image">
@@ -81,39 +56,35 @@
     }
   </script>
 
-  <!-- Aplica el tema guardado ("hoja" o "plano") antes de pintar la página, así no parpadea -->
+  <!-- Fuentes propias: se precargan las dos que aparecen en la primera pantalla -->
+  <link rel="preload" href="assets/fuentes/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fuentes/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Aplica el tema elegido antes de pintar la página para evitar parpadeos -->
   <script>
     (function () {
       var raiz = document.documentElement;
       raiz.classList.add("con-js");
       try {
         var temaGuardado = localStorage.getItem("tema");
-        if (temaGuardado === "hoja" || temaGuardado === "plano") raiz.dataset.tema = temaGuardado;
+        if (temaGuardado === "claro" || temaGuardado === "oscuro") raiz.dataset.tema = temaGuardado;
       } catch (error) { /* el navegador no deja guardar datos: no pasa nada */ }
     })();
   </script>
 
-  <!-- Fuentes propias: se precargan las que se ven nada más entrar -->
-  <link rel="preload" href="assets/fuentes/ibm-plex-sans.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fuentes/ibm-plex-sans-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
-
-  <!-- Hojas de estilo (el orden importa: de lo más general a lo más concreto) -->
   <link rel="stylesheet" href="css/fuentes.css">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/estructura.css">
   <link rel="stylesheet" href="css/componentes.css">
-  <link rel="stylesheet" href="css/chip.css">
-  <link rel="stylesheet" href="css/diagramas.css">
+  <link rel="stylesheet" href="css/hilo.css">
   <link rel="stylesheet" href="css/impresion.css" media="print">
 
   <script src="js/principal.js" defer></script>
+  <script src="js/hilo-conductor.js" defer></script>
 </head>
 <body>
-  <!-- ======================================================================
-       ICONOS
-       Se dibujan una vez aquí y se reutilizan con <use href="#icono-...">
-       ====================================================================== -->
+  <!-- Iconos: se dibujan una vez aquí y se reutilizan con <use href="#icono-..."> -->
   <svg class="iconos" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
     <symbol id="icono-github" viewBox="0 0 16 16">
       <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
@@ -122,516 +93,367 @@
       <path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
     </symbol>
     <symbol id="icono-correo" viewBox="0 0 24 24">
-      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><rect x="3" y="5" width="18" height="14"/><path d="m3 7 9 6 9-6"/></g>
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></g>
     </symbol>
     <symbol id="icono-ubicacion" viewBox="0 0 24 24">
-      <g fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></g>
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></g>
+    </symbol>
+    <symbol id="icono-flecha-abajo" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 5v14m-7-7 7 7 7-7"/>
     </symbol>
     <symbol id="icono-flecha" viewBox="0 0 24 24">
-      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" d="M7 17 17 7M9 7h8v8"/>
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/>
     </symbol>
     <symbol id="icono-descargar" viewBox="0 0 24 24">
-      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" d="M12 4v11m-5-5 5 5 5-5M5 20h14"/>
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m-5-5 5 5 5-5M5 21h14"/>
     </symbol>
     <symbol id="icono-copiar" viewBox="0 0 24 24">
-      <g fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12"/><path d="M5 15V3h12"/></g>
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></g>
     </symbol>
     <symbol id="icono-hecho" viewBox="0 0 24 24">
-      <path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" d="M20 6 9 17l-5-5"/>
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/>
     </symbol>
     <symbol id="icono-menu" viewBox="0 0 24 24">
-      <path fill="none" stroke="currentColor" stroke-width="2" d="M3 6h18M3 12h18M3 18h18"/>
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/>
     </symbol>
     <symbol id="icono-cerrar" viewBox="0 0 24 24">
-      <path fill="none" stroke="currentColor" stroke-width="2" d="M5 5l14 14M19 5 5 19"/>
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/>
+    </symbol>
+    <symbol id="icono-sol" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g>
+    </symbol>
+    <symbol id="icono-luna" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
     </symbol>
   </svg>
 
   <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
 
-  <!-- ======================================================================
-       CABECERA FIJA: marca, índice de secciones y cambio de tema
-       ====================================================================== -->
   <header class="cabecera" data-cabecera>
     <div class="contenedor cabecera__interior">
       <a class="marca" href="#inicio">
-        <span class="marca__chip" aria-hidden="true"></span>
-        <span class="marca__codigo">EBM-26</span>
-        <span class="marca__nombre">Eric Barriga Medina</span>
+        <span class="marca__logo" aria-hidden="true">EB</span>
+        <span class="marca__nombre">Eric Barriga</span>
       </a>
 
-      <nav class="menu" aria-label="Índice" data-menu>
-        <button class="menu__boton" type="button" aria-expanded="false" aria-controls="menu-lista" data-menu-boton>
-          <svg class="icono icono--abrir" aria-hidden="true"><use href="#icono-menu"/></svg>
+      <nav class="menu" aria-label="Principal" data-menu>
+        <button class="menu__boton boton-icono" type="button" aria-expanded="false" aria-controls="menu-principal" data-menu-boton>
+          <svg class="icono icono--menu" aria-hidden="true"><use href="#icono-menu"/></svg>
           <svg class="icono icono--cerrar" aria-hidden="true"><use href="#icono-cerrar"/></svg>
-          Índice
+          <span class="solo-lectores">Menú</span>
         </button>
-        <!-- Para añadir una sección al menú, copia un <li> y cambia el número, el texto y el #id -->
-        <ol class="menu__lista" id="menu-lista">
-          <li><a class="menu__enlace" href="#perfil"><span class="menu__numero">1</span>Perfil</a></li>
-          <li><a class="menu__enlace" href="#arquitectura"><span class="menu__numero">2</span>Arquitectura</a></li>
-          <li><a class="menu__enlace" href="#competencias"><span class="menu__numero">3</span>Competencias</a></li>
-          <li><a class="menu__enlace" href="#proyectos"><span class="menu__numero">4</span>Proyectos</a></li>
-          <li><a class="menu__enlace" href="#formacion"><span class="menu__numero">5</span>Formación</a></li>
-          <li><a class="menu__enlace" href="#contacto"><span class="menu__numero">6</span>Contacto</a></li>
-        </ol>
+        <ul class="menu__lista" id="menu-principal">
+          <li><a class="menu__enlace" href="#perfil">Perfil</a></li>
+          <li><a class="menu__enlace" href="#competencias">Competencias</a></li>
+          <li><a class="menu__enlace" href="#proyectos">Proyectos</a></li>
+          <li><a class="menu__enlace" href="#trayectoria">Trayectoria</a></li>
+          <li><a class="menu__enlace" href="#contacto">Contacto</a></li>
+        </ul>
       </nav>
 
-      <!-- Interruptor de tema: "Hoja" (claro, papel) o "Plano" (oscuro, cianotipo) -->
-      <button class="boton-tema solo-con-js" type="button" aria-pressed="false" data-boton-tema>
-        <span class="boton-tema__etiqueta" aria-hidden="true">Hoja</span>
-        <span class="boton-tema__interruptor" aria-hidden="true"></span>
-        <span class="boton-tema__etiqueta" aria-hidden="true">Plano</span>
-        <span class="solo-lectores">Modo plano (tema oscuro)</span>
+      <button class="boton-tema boton-icono solo-con-js" type="button" aria-pressed="false" data-boton-tema>
+        <svg class="icono icono--luna" aria-hidden="true"><use href="#icono-luna"/></svg>
+        <svg class="icono icono--sol" aria-hidden="true"><use href="#icono-sol"/></svg>
+        <span class="solo-lectores">Tema oscuro</span>
       </button>
     </div>
   </header>
 
-  <main id="contenido">
-    <!-- ======================================================================
-         PORTADA
-         ====================================================================== -->
+  <!-- data-hilo: zona que recorre el hilo conductor (ver js/hilo-conductor.js) -->
+  <main class="zona-hilo" id="contenido" data-hilo>
+    <!-- ============ INICIO ============ -->
     <section class="portada" id="inicio" aria-labelledby="portada-titulo">
-      <div class="contenedor">
-        <!-- Franja superior, como en las hojas de datos de verdad -->
-        <div class="portada__franja">
-          <p>EBM-26 · Hoja de datos</p>
-          <p>Rev. 2026.09 · Documento vivo</p>
-        </div>
+      <div class="contenedor portada__rejilla">
+        <div class="portada__texto">
+          <p class="estado"><span class="estado__punto" aria-hidden="true"></span>Realizando prácticas en empresa · curso 2026-27</p>
+          <h1 class="portada__titulo" id="portada-titulo">Eric Barriga Medina</h1>
+          <p class="portada__puesto">Desarrollador web <strong>full stack</strong> junior</p>
+          <p class="portada__intro">
+            Construyo aplicaciones web de principio a fin: interfaces con HTML, CSS, JavaScript y Vue,
+            lógica de servidor con Java y Spring Boot, y entornos reproducibles con Docker.
+            Estudio 2.º de DAW y estoy haciendo las prácticas en un equipo de desarrollo.
+          </p>
 
-        <div class="portada__rejilla">
-          <div class="portada__texto">
-            <p class="estado">
-              <span class="estado__led" aria-hidden="true"></span>
-              Realizando prácticas en empresa · curso 2026-27
-            </p>
+          <!-- Solo en el CV impreso / PDF -->
+          <ul class="contacto-impreso solo-impresion">
+            <li>ericbarrigamedina1@gmail.com</li>
+            <li>github.com/Eriiicc03</li>
+            <li>linkedin.com/in/eric-barriga-medina-5753632b2</li>
+            <li>Mataró (Barcelona)</li>
+          </ul>
 
-            <h1 class="portada__titulo" id="portada-titulo">Eric Barriga Medina</h1>
-            <p class="portada__puesto">Desarrollador web <strong>full stack</strong> junior</p>
-            <p class="portada__lema">Del hardware y las redes al desarrollo de aplicaciones web.</p>
+          <div class="portada__acciones">
+            <a class="boton boton--principal" href="#contacto">
+              Contactar
+              <svg class="icono" aria-hidden="true"><use href="#icono-correo"/></svg>
+            </a>
+            <a class="boton boton--borde" href="#proyectos">
+              Ver proyectos
+              <svg class="icono" aria-hidden="true"><use href="#icono-flecha-abajo"/></svg>
+            </a>
+            <button class="boton boton--texto solo-con-js" type="button" data-imprimir>
+              <svg class="icono" aria-hidden="true"><use href="#icono-descargar"/></svg>
+              Guardar CV en PDF
+            </button>
+          </div>
 
-            <p class="portada__intro">
-              Construyo aplicaciones web de principio a fin: interfaces con HTML, CSS, JavaScript y Vue,
-              lógica de servidor con Java y Spring Boot, y entornos reproducibles con Docker.
-              Estudio 2.º de DAW y estoy haciendo las prácticas en un equipo de desarrollo.
-            </p>
-
-            <div class="portada__acciones">
-              <a class="boton boton--principal" href="#contacto">
-                <svg class="icono" aria-hidden="true"><use href="#icono-correo"/></svg>
-                Contactar
+          <ul class="portada__enlaces">
+            <li>
+              <svg class="icono" aria-hidden="true"><use href="#icono-ubicacion"/></svg>
+              Mataró, Barcelona
+            </li>
+            <li>
+              <a href="https://github.com/Eriiicc03" rel="me noopener" target="_blank">
+                <svg class="icono" aria-hidden="true"><use href="#icono-github"/></svg>
+                GitHub
               </a>
-              <a class="boton" href="#proyectos">Ver proyectos</a>
-              <button class="boton boton--texto solo-con-js" type="button" data-imprimir>
-                <svg class="icono" aria-hidden="true"><use href="#icono-descargar"/></svg>
-                Descargar hoja de datos (PDF)
-              </button>
-            </div>
-
-            <ul class="portada__enlaces">
-              <li>
-                <svg class="icono" aria-hidden="true"><use href="#icono-ubicacion"/></svg>
-                Mataró, Barcelona
-              </li>
-              <li>
-                <a href="https://github.com/Eriiicc03" rel="me noopener" target="_blank">
-                  <svg class="icono" aria-hidden="true"><use href="#icono-github"/></svg>
-                  GitHub
-                </a>
-              </li>
-              <li>
-                <a href="https://www.linkedin.com/in/eric-barriga-medina-5753632b2/" rel="me noopener" target="_blank">
-                  <svg class="icono" aria-hidden="true"><use href="#icono-linkedin"/></svg>
-                  LinkedIn
-                </a>
-              </li>
-            </ul>
-
-            <!-- Solo aparece en el PDF (css/impresion.css) -->
-            <ul class="contacto-impreso solo-impresion">
-              <li>ericbarrigamedina1@gmail.com</li>
-              <li>github.com/Eriiicc03</li>
-              <li>linkedin.com/in/eric-barriga-medina-5753632b2</li>
-              <li>Mataró (Barcelona)</li>
-            </ul>
-          </div>
-
-          <!-- ================================================================
-               FIGURA 1 · EL CHIP
-               Cada pin es una tecnología y su número coincide con la tabla de
-               la sección 3. Si añades o cambias una tecnología, hazlo en los
-               dos sitios. Al pulsar un pin, la página salta a su fila.
-               Lados: izquierda 1-7 (arriba → abajo), abajo 8-14 (izq. → der.),
-                      derecha 15-21 (abajo → arriba), arriba 22-28 (der. → izq.)
-               Variante .pin--pruebas = tecnología que estoy consolidando.
-               ================================================================ -->
-          <figure class="figura figura--chip">
-            <div class="chip" aria-hidden="true">
-              <div class="chip__cuerpo">
-                <span class="chip__marca-pin1"></span>
-                <span class="chip__codigo">EBM-26</span>
-                <span class="chip__nombre">E. BARRIGA M.</span>
-                <span class="chip__lote">DAW · 2026 · ES</span>
-                <span class="chip__led">PWR</span>
-              </div>
-
-              <ul class="chip__lado chip__lado--izquierda">
-                <li class="pin"><a class="pin__enlace" href="#pin-1" tabindex="-1"><span class="pin__nombre">HTML</span><span class="pin__numero">1</span></a></li>
-                <li class="pin"><a class="pin__enlace" href="#pin-2" tabindex="-1"><span class="pin__nombre">CSS</span><span class="pin__numero">2</span></a></li>
-                <li class="pin"><a class="pin__enlace" href="#pin-3" tabindex="-1"><span class="pin__nombre">RWD</span><span class="pin__numero">3</span></a></li>
-                <li class="pin"><a class="pin__enlace" href="#pin-4" tabindex="-1"><span class="pin__nombre">JS</span><span class="pin__numero">4</span></a></li>
-                <li class="pin pin--pruebas"><a class="pin__enlace" href="#pin-5" tabindex="-1"><span class="pin__nombre">VUE</span><span class="pin__numero">5</span></a></li>
-                <li class="pin pin--pruebas"><a class="pin__enlace" href="#pin-6" tabindex="-1"><span class="pin__nombre">QSR</span><span class="pin__numero">6</span></a></li>
-                <li class="pin"><a class="pin__enlace" href="#pin-7" tabindex="-1"><span class="pin__nombre">JAVA</span><span class="pin__numero">7</span></a></li>
-              </ul>
-
-              <ul class="chip__lado chip__lado--abajo">
-                <li class="pin"><a class="pin__enlace" href="#pin-8" tabindex="-1"><span class="pin__nombre">SWING</span><span class="pin__numero">8</span></a></li>
-                <li class="pin pin--pruebas"><a class="pin__enlace" href="#pin-9" tabindex="-1"><span class="pin__nombre">SPRNG</span><span class="pin__numero">9</span></a></li>
-                <li class="pin pin--pruebas"><a class="pin__enlace" href="#pin-10" tabindex="-1"><span class="pin__nombre">REST</span><span class="pin__numero">10</span></a></li>
-                <li class="pin pin--pruebas"><a class="pin__enlace" href="#pin-11" tabindex="-1"><span class="pin__nombre">PY</span><span class="pin__numero">11</span></a></li>
-                <li class="pin"><a class="pin__enlace" href="#pin-12" tabindex="-1"><span class="pin__nombre">SQL</span><span class="pin__numero">12</span></a></li>
-                <li class="pin"><a class="pin__enlace" href="#pin-13" tabindex="-1"><span class="pin__nombre">PGSQL</span><span class="pin__numero">13</span></a></li>
-                <li class="pin"><a class="pin__enlace" href="#pin-14" tabindex="-1"><span class="pin__nombre">E-R</span><span class="pin__numero">14</span></a></li>
-              </ul>
-
-              <ul class="chip__lado chip__lado--derecha">
-                <li class="pin"><a class="pin__enlace" href="#pin-15" tabindex="-1"><span class="pin__nombre">GIT</span><span class="pin__numero">15</span></a></li>
-                <li class="pin"><a class="pin__enlace" href="#pin-16" tabindex="-1"><span class="pin__nombre">DOCKR</span><span class="pin__numero">16</span></a></li>
-                <li class="pin"><a class="pin__enlace" href="#pin-17" tabindex="-1"><span class="pin__nombre">VITE</span><span class="pin__numero">17</span></a></li>
-                <li class="pin"><a class="pin__enlace" href="#pin-18" tabindex="-1"><span class="pin__nombre">LINT</span><span class="pin__numero">18</span></a></li>
-                <li class="pin pin--pruebas"><a class="pin__enlace" href="#pin-19" tabindex="-1"><span class="pin__nombre">CI</span><span class="pin__numero">19</span></a></li>
-                <li class="pin"><a class="pin__enlace" href="#pin-20" tabindex="-1"><span class="pin__nombre">LINUX</span><span class="pin__numero">20</span></a></li>
-                <li class="pin"><a class="pin__enlace" href="#pin-21" tabindex="-1"><span class="pin__nombre">WIN</span><span class="pin__numero">21</span></a></li>
-              </ul>
-
-              <ul class="chip__lado chip__lado--arriba">
-                <li class="pin"><a class="pin__enlace" href="#pin-22" tabindex="-1"><span class="pin__nombre">NET</span><span class="pin__numero">22</span></a></li>
-                <li class="pin"><a class="pin__enlace" href="#pin-23" tabindex="-1"><span class="pin__nombre">HW</span><span class="pin__numero">23</span></a></li>
-                <li class="pin pin--pruebas"><a class="pin__enlace" href="#pin-24" tabindex="-1"><span class="pin__nombre">ERP</span><span class="pin__numero">24</span></a></li>
-                <li class="pin"><a class="pin__enlace" href="#pin-25" tabindex="-1"><span class="pin__nombre">CC</span><span class="pin__numero">25</span></a></li>
-                <li class="pin"><a class="pin__enlace" href="#pin-26" tabindex="-1"><span class="pin__nombre">MD</span><span class="pin__numero">26</span></a></li>
-                <li class="pin"><a class="pin__enlace" href="#pin-27" tabindex="-1"><span class="pin__nombre">FLOW</span><span class="pin__numero">27</span></a></li>
-                <li class="pin pin--pruebas"><a class="pin__enlace" href="#pin-28" tabindex="-1"><span class="pin__nombre">A11Y</span><span class="pin__numero">28</span></a></li>
-              </ul>
-            </div>
-            <figcaption class="figura__pie">
-              <strong>Figura 1.</strong> Encapsulado EBM-26, vista superior. Cada pin es una tecnología:
-              la función de cada uno está en la <a href="#competencias">sección 3</a>.
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================================================================
-         1 · PERFIL  ("Descripción general")
-         ====================================================================== -->
-    <section class="seccion" id="perfil" aria-labelledby="perfil-titulo">
-      <div class="contenedor">
-        <header class="seccion__cabecera">
-          <span class="seccion__numero" aria-hidden="true">1</span>
-          <div>
-            <p class="seccion__tecnico">Descripción general</p>
-            <h2 class="seccion__titulo" id="perfil-titulo">Perfil profesional</h2>
-          </div>
-        </header>
-
-        <!-- Las tres columnas típicas de la primera página de una hoja de datos -->
-        <div class="triada">
-          <div class="triada__columna" data-aparecer>
-            <h3 class="subtitulo"><span class="subtitulo__numero">1.1</span> Características</h3>
-            <ul class="lista-puntos">
-              <li><strong>Full stack:</strong> interfaces con HTML, CSS, JavaScript y Vue; servidor con Java y Spring Boot.</li>
-              <li><strong>Base de sistemas</strong> del Grado Medio de SMX: Linux, redes locales y hardware.</li>
-              <li>Entornos reproducibles con <strong>Docker</strong> y control de versiones con <strong>Git</strong>.</li>
-              <li>Código documentado: commits claros, README y ramas ordenadas.</li>
-              <li>Castellano y catalán nativos; inglés intermedio.</li>
-            </ul>
-          </div>
-
-          <div class="triada__columna" data-aparecer>
-            <h3 class="subtitulo"><span class="subtitulo__numero">1.2</span> Aplicaciones</h3>
-            <p class="triada__nota">Dónde puedo aportar en un equipo:</p>
-            <ul class="lista-puntos">
-              <li>Desarrollo de aplicaciones web completas (frontend y backend).</li>
-              <li>Backend con Java, Spring Boot y bases de datos SQL.</li>
-              <li>Frontend con HTML, CSS, JavaScript y Vue.</li>
-              <li>Despliegue y mantenimiento de entornos con Docker y Linux.</li>
-            </ul>
-          </div>
-
-          <div class="triada__columna" data-aparecer>
-            <h3 class="subtitulo"><span class="subtitulo__numero">1.3</span> Descripción</h3>
-            <p>
-              Estudio segundo curso del CFGS de Desarrollo de Aplicaciones Web en el Institut Thos i Codina
-              y estoy realizando las prácticas en empresa. Llegué a la programación desde el Grado Medio de
-              Sistemas Microinformáticos y Redes, así que entiendo lo que hay debajo de una aplicación:
-              el sistema operativo, la red y el despliegue, no solo el código.
-            </p>
-            <p>
-              Me interesan especialmente el backend con Java y Spring Boot, el despliegue con contenedores
-              y las interfaces con Vue. Al terminar el ciclo quiero seguir creciendo como desarrollador
-              junior dentro de un equipo.
-            </p>
-          </div>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/eric-barriga-medina-5753632b2/" rel="me noopener" target="_blank">
+                <svg class="icono" aria-hidden="true"><use href="#icono-linkedin"/></svg>
+                LinkedIn
+              </a>
+            </li>
+          </ul>
         </div>
 
-        <!-- Tabla de datos rápidos -->
-        <div class="tabla-marco" data-aparecer>
-          <table class="tabla tabla--clave-valor">
-            <caption class="tabla__titulo"><strong>Tabla 1-1.</strong> Información del dispositivo</caption>
-            <tbody>
-              <tr><th scope="row">Referencia</th><td>EBM-26 · Eric Barriga Medina</td></tr>
-              <tr><th scope="row">Formación actual</th><td>CFGS Desarrollo de Aplicaciones Web · 2.º curso</td></tr>
-              <tr><th scope="row">Situación</th><td>Realizando prácticas en empresa (curso 2026-27)</td></tr>
-              <tr><th scope="row">Perfil</th><td>Full stack · Java y JavaScript</td></tr>
-              <tr><th scope="row">Ubicación</th><td>Mataró (Barcelona)</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================================================================
-         2 · ARQUITECTURA  ("Diagrama de bloques")
-         Cada bloque es una capa de una aplicación web. La marca ◐ indica
-         tecnologías que estoy consolidando (clase .bloque__item--pruebas).
-         ====================================================================== -->
-    <section class="seccion seccion--alterna" id="arquitectura" aria-labelledby="arquitectura-titulo">
-      <div class="contenedor">
-        <header class="seccion__cabecera">
-          <span class="seccion__numero" aria-hidden="true">2</span>
-          <div>
-            <p class="seccion__tecnico">Diagrama de bloques funcional</p>
-            <h2 class="seccion__titulo" id="arquitectura-titulo">Cómo construyo una aplicación web</h2>
+        <figure class="tarjeta-codigo" aria-labelledby="tarjeta-codigo-pie" data-hilo-inicio>
+          <div class="tarjeta-codigo__barra">
+            <span class="tarjeta-codigo__puntos" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="tarjeta-codigo__archivo">perfil.js</span>
           </div>
-        </header>
-
-        <p class="seccion__intro">
-          Así encajan las tecnologías que uso en una aplicación completa, desde el navegador hasta la base de datos,
-          todo sobre un entorno de contenedores y una base de sistemas que traigo del Grado Medio.
-        </p>
-
-        <figure class="figura" data-aparecer>
-          <div class="diagrama-bloques">
-            <div class="diagrama-bloques__entorno">
-              <p class="diagrama-bloques__etiqueta">Entorno · Docker · Docker Compose · Git · GitHub Actions</p>
-
-              <div class="diagrama-bloques__fila">
-                <div class="bloque">
-                  <p class="bloque__tipo">Cliente</p>
-                  <h3 class="bloque__titulo">Navegador</h3>
-                  <ul class="bloque__lista">
-                    <li>HTML5 semántico</li>
-                    <li>CSS3 · Flexbox y Grid</li>
-                    <li>JavaScript y DOM</li>
-                    <li class="bloque__item--pruebas">Vue 3 · Quasar</li>
-                  </ul>
-                </div>
-
-                <p class="conexion"><span class="conexion__texto">HTTP · JSON</span></p>
-
-                <div class="bloque bloque--central">
-                  <p class="bloque__tipo">Servidor</p>
-                  <h3 class="bloque__titulo">API</h3>
-                  <ul class="bloque__lista">
-                    <li>Java · POO</li>
-                    <li class="bloque__item--pruebas">Spring Boot</li>
-                    <li class="bloque__item--pruebas">APIs REST</li>
-                  </ul>
-                </div>
-
-                <p class="conexion"><span class="conexion__texto">SQL · JPA</span></p>
-
-                <div class="bloque">
-                  <p class="bloque__tipo">Datos</p>
-                  <h3 class="bloque__titulo">Base de datos</h3>
-                  <ul class="bloque__lista">
-                    <li>SQL</li>
-                    <li>PostgreSQL</li>
-                    <li>Modelo entidad-relación</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <p class="diagrama-bloques__base">
-              <strong>Base de sistemas (CFGM SMX)</strong> · Linux · Windows · Redes TCP/IP · Hardware
-            </p>
-          </div>
-          <figcaption class="figura__pie">
-            <strong>Figura 2.</strong> Diagrama de bloques de una aplicación web full stack.
-            <span class="leyenda-mini">● uso con soltura · ◐ consolidando</span>
-          </figcaption>
+          <pre class="tarjeta-codigo__cuerpo" tabindex="0"><code><span class="cod-comentario">// Mi perfil en una sola constante</span>
+<span class="cod-palabra">const</span> <span class="cod-variable">eric</span> = {
+  <span class="cod-propiedad">rol</span>: <span class="cod-texto">"Full Stack Developer Jr."</span>,
+  <span class="cod-propiedad">formacion</span>: [<span class="cod-texto">"CFGM SMX"</span>, <span class="cod-texto">"CFGS DAW"</span>],
+  <span class="cod-propiedad">stack</span>: {
+    <span class="cod-propiedad">front</span>: [<span class="cod-texto">"HTML"</span>, <span class="cod-texto">"CSS"</span>, <span class="cod-texto">"JS"</span>, <span class="cod-texto">"Vue"</span>],
+    <span class="cod-propiedad">back</span>: [<span class="cod-texto">"Java"</span>, <span class="cod-texto">"Spring Boot"</span>],
+    <span class="cod-propiedad">datos</span>: [<span class="cod-texto">"SQL"</span>, <span class="cod-texto">"PostgreSQL"</span>],
+    <span class="cod-propiedad">ops</span>: [<span class="cod-texto">"Git"</span>, <span class="cod-texto">"Docker"</span>, <span class="cod-texto">"Linux"</span>],
+  },
+  <span class="cod-propiedad">ahora</span>: <span class="cod-texto">"prácticas en empresa"</span>,
+  <span class="cod-propiedad">aprendiendo</span>: <span class="cod-booleano">true</span>,
+};<span class="tarjeta-codigo__cursor" aria-hidden="true"></span></code></pre>
+          <figcaption class="solo-lectores" id="tarjeta-codigo-pie">Resumen del perfil escrito como un objeto de JavaScript.</figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- ======================================================================
-         3 · COMPETENCIAS  ("Configuración de pines")
-         Cada fila es un pin del chip (Figura 1). El id="pin-N" permite saltar
-         a la fila al pulsar el pin. Estado:
-           <span class="estado-pin">Operativo</span>                      → uso con soltura
-           <span class="estado-pin estado-pin--pruebas">En pruebas</span> → lo estoy consolidando
-         ====================================================================== -->
-    <section class="seccion" id="competencias" aria-labelledby="competencias-titulo">
+    <!-- ============ PERFIL ============ -->
+    <section class="seccion" id="perfil" aria-labelledby="perfil-titulo">
       <div class="contenedor">
         <header class="seccion__cabecera">
-          <span class="seccion__numero" aria-hidden="true">3</span>
-          <div>
-            <p class="seccion__tecnico">Configuración y funciones de los pines</p>
-            <h2 class="seccion__titulo" id="competencias-titulo">Competencias técnicas</h2>
-          </div>
+          <p class="seccion__etiqueta"><span class="nodo solo-con-js" aria-hidden="true" data-nodo></span><span class="seccion__numero">01 · </span>Perfil</p>
+          <h2 class="seccion__titulo" id="perfil-titulo">Del hardware y las redes al desarrollo full stack</h2>
         </header>
 
-        <p class="seccion__intro">
-          Cada pin del chip es una tecnología. Solo incluyo lo que puedo explicar o demostrar:
-          <strong>Operativo</strong> significa que la uso con soltura; <strong>En pruebas</strong>, que la estoy consolidando este curso.
-        </p>
-
-        <!-- Dos tablas: pines 1-14 (izquierda) y pines 15-28 (derecha) -->
-        <div class="tablas-pines">
-          <div class="tabla-marco" data-aparecer>
-            <table class="tabla tabla-pines">
-              <caption class="tabla__titulo"><strong>Tabla 3-1.</strong> Pines 1 a 14: desarrollo</caption>
-              <thead>
-                <tr>
-                  <th scope="col" class="tabla-pines__col-pin">Pin</th>
-                  <th scope="col">Tecnología y función</th>
-                  <th scope="col" class="tabla-pines__col-estado">Estado</th>
-                </tr>
-              </thead>
-
-              <!-- Grupo: Frontend -->
-              <tbody>
-                <tr class="tabla__grupo"><th scope="rowgroup" colspan="3">Frontend · interfaces</th></tr>
-                <tr id="pin-1"><td class="tabla-pines__pin">1</td><td><strong>HTML5 semántico</strong><span class="tabla__detalle">Estructura de contenidos coherente y accesible.</span></td><td><span class="estado-pin">Operativo</span></td></tr>
-                <tr id="pin-2"><td class="tabla-pines__pin">2</td><td><strong>CSS3 · Flexbox y Grid</strong><span class="tabla__detalle">Maquetación con rejillas, variables y CSS propio.</span></td><td><span class="estado-pin">Operativo</span></td></tr>
-                <tr id="pin-3"><td class="tabla-pines__pin">3</td><td><strong>Diseño responsive</strong><span class="tabla__detalle">Interfaces que funcionan en móvil, tableta y escritorio.</span></td><td><span class="estado-pin">Operativo</span></td></tr>
-                <tr id="pin-4"><td class="tabla-pines__pin">4</td><td><strong>JavaScript (ES6+) y DOM</strong><span class="tabla__detalle">Lógica en el navegador y manipulación del DOM.</span></td><td><span class="estado-pin">Operativo</span></td></tr>
-                <tr id="pin-5"><td class="tabla-pines__pin">5</td><td><strong>Vue 3</strong><span class="tabla__detalle">Componentes y reactividad.</span></td><td><span class="estado-pin estado-pin--pruebas">En pruebas</span></td></tr>
-                <tr id="pin-6"><td class="tabla-pines__pin">6</td><td><strong>Quasar</strong><span class="tabla__detalle">Framework de componentes sobre Vue.</span></td><td><span class="estado-pin estado-pin--pruebas">En pruebas</span></td></tr>
-              </tbody>
-
-              <!-- Grupo: Backend -->
-              <tbody>
-                <tr class="tabla__grupo"><th scope="rowgroup" colspan="3">Backend · lógica de servidor</th></tr>
-                <tr id="pin-7"><td class="tabla-pines__pin">7</td><td><strong>Java · POO</strong><span class="tabla__detalle">Programación orientada a objetos.</span></td><td><span class="estado-pin">Operativo</span></td></tr>
-                <tr id="pin-8"><td class="tabla-pines__pin">8</td><td><strong>Java Swing</strong><span class="tabla__detalle">Aplicaciones de escritorio con interfaz gráfica y eventos.</span></td><td><span class="estado-pin">Operativo</span></td></tr>
-                <tr id="pin-9"><td class="tabla-pines__pin">9</td><td><strong>Spring Boot</strong><span class="tabla__detalle">Servicios web y acceso a datos con Spring.</span></td><td><span class="estado-pin estado-pin--pruebas">En pruebas</span></td></tr>
-                <tr id="pin-10"><td class="tabla-pines__pin">10</td><td><strong>APIs REST</strong><span class="tabla__detalle">Diseño y consumo de servicios HTTP con JSON.</span></td><td><span class="estado-pin estado-pin--pruebas">En pruebas</span></td></tr>
-                <tr id="pin-11"><td class="tabla-pines__pin">11</td><td><strong>Python</strong><span class="tabla__detalle">Fundamentos del lenguaje y primeros scripts.</span></td><td><span class="estado-pin estado-pin--pruebas">En pruebas</span></td></tr>
-              </tbody>
-
-              <!-- Grupo: Datos -->
-              <tbody>
-                <tr class="tabla__grupo"><th scope="rowgroup" colspan="3">Datos · bases de datos</th></tr>
-                <tr id="pin-12"><td class="tabla-pines__pin">12</td><td><strong>SQL</strong><span class="tabla__detalle">Consultas y manipulación de datos relacionales.</span></td><td><span class="estado-pin">Operativo</span></td></tr>
-                <tr id="pin-13"><td class="tabla-pines__pin">13</td><td><strong>PostgreSQL</strong><span class="tabla__detalle">Base de datos relacional, también en contenedores.</span></td><td><span class="estado-pin">Operativo</span></td></tr>
-                <tr id="pin-14"><td class="tabla-pines__pin">14</td><td><strong>Modelo entidad-relación</strong><span class="tabla__detalle">Diseño de bases de datos antes de programar.</span></td><td><span class="estado-pin">Operativo</span></td></tr>
-              </tbody>
-            </table>
+        <div class="perfil">
+          <div class="perfil__texto">
+            <p class="perfil__entradilla">
+              Soy estudiante de segundo curso del CFGS de Desarrollo de Aplicaciones Web en el Institut Thos i Codina.
+              Llegué a la programación desde el Grado Medio de Sistemas Microinformáticos y Redes, así que entiendo
+              lo que hay debajo de una aplicación: el sistema operativo, la red y el despliegue, no solo el código.
+            </p>
+            <p>
+              Me siento cómodo trabajando en todo el recorrido de una aplicación web: maquetar interfaces
+              semánticas y responsive, programar la lógica en Java o JavaScript, modelar la base de datos
+              y dejarlo todo funcionando en contenedores Docker, versionado con Git y documentado.
+            </p>
+            <p>
+              Me interesan especialmente el <strong>backend con Java y Spring Boot</strong>, el <strong>despliegue con contenedores</strong>
+              y las interfaces bien construidas con Vue. Ahora estoy realizando las prácticas del ciclo en un equipo
+              de desarrollo y, al terminarlo, quiero seguir creciendo como desarrollador junior.
+            </p>
           </div>
 
-          <div class="tabla-marco" data-aparecer>
-            <table class="tabla tabla-pines">
-              <caption class="tabla__titulo"><strong>Tabla 3-2.</strong> Pines 15 a 28: entorno y forma de trabajar</caption>
-              <thead>
-                <tr>
-                  <th scope="col" class="tabla-pines__col-pin">Pin</th>
-                  <th scope="col">Tecnología y función</th>
-                  <th scope="col" class="tabla-pines__col-estado">Estado</th>
-                </tr>
-              </thead>
+          <aside class="datos" aria-label="Datos rápidos">
+            <dl class="datos__lista">
+              <div class="datos__fila">
+                <dt>Ubicación</dt>
+                <dd>Mataró (Barcelona)</dd>
+              </div>
+              <div class="datos__fila">
+                <dt>Formación actual</dt>
+                <dd>CFGS DAW · 2.º curso</dd>
+              </div>
+              <div class="datos__fila">
+                <dt>Situación</dt>
+                <dd>Prácticas en empresa (en curso)</dd>
+              </div>
+              <div class="datos__fila">
+                <dt>Perfil</dt>
+                <dd>Full stack · Java y JavaScript</dd>
+              </div>
+              <div class="datos__fila">
+                <dt>Idiomas</dt>
+                <dd>Castellano, catalán e inglés</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
 
-              <!-- Grupo: Despliegue y herramientas -->
-              <tbody>
-                <tr class="tabla__grupo"><th scope="rowgroup" colspan="3">Despliegue y herramientas</th></tr>
-                <tr id="pin-15"><td class="tabla-pines__pin">15</td><td><strong>Git y GitHub</strong><span class="tabla__detalle">Control de versiones con ramas y pull requests.</span></td><td><span class="estado-pin">Operativo</span></td></tr>
-                <tr id="pin-16"><td class="tabla-pines__pin">16</td><td><strong>Docker y Docker Compose</strong><span class="tabla__detalle">Contenedores y orquestación de varios servicios.</span></td><td><span class="estado-pin">Operativo</span></td></tr>
-                <tr id="pin-17"><td class="tabla-pines__pin">17</td><td><strong>Vite</strong><span class="tabla__detalle">Entorno de desarrollo frontend con recarga en caliente.</span></td><td><span class="estado-pin">Operativo</span></td></tr>
-                <tr id="pin-18"><td class="tabla-pines__pin">18</td><td><strong>ESLint</strong><span class="tabla__detalle">Reglas de calidad y estilo para JavaScript.</span></td><td><span class="estado-pin">Operativo</span></td></tr>
-                <tr id="pin-19"><td class="tabla-pines__pin">19</td><td><strong>GitHub Actions</strong><span class="tabla__detalle">Validación y despliegue automáticos (como esta web).</span></td><td><span class="estado-pin estado-pin--pruebas">En pruebas</span></td></tr>
-              </tbody>
+        <ul class="fortalezas">
+          <li class="fortaleza" data-aparecer>
+            <span class="fortaleza__letra" aria-hidden="true">A</span>
+            <h3 class="fortaleza__titulo">Base de sistemas</h3>
+            <p>Vengo de SMX: Linux, redes y hardware no me son ajenos. Montar y depurar un entorno forma parte de mi trabajo, no es un obstáculo.</p>
+          </li>
+          <li class="fortaleza" data-aparecer>
+            <span class="fortaleza__letra" aria-hidden="true">B</span>
+            <h3 class="fortaleza__titulo">Visión full stack</h3>
+            <p>Del HTML semántico a una API REST con Spring Boot y PostgreSQL: entiendo cómo encajan las piezas de una aplicación web.</p>
+          </li>
+          <li class="fortaleza" data-aparecer>
+            <span class="fortaleza__letra" aria-hidden="true">C</span>
+            <h3 class="fortaleza__titulo">Aprendizaje constante</h3>
+            <p>Aprendo por mi cuenta desde 2023 y lo dejo por escrito: repositorios con commits claros, README y código que otros pueden revisar.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-              <!-- Grupo: Sistemas y redes -->
-              <tbody>
-                <tr class="tabla__grupo"><th scope="rowgroup" colspan="3">Sistemas y redes · base de SMX</th></tr>
-                <tr id="pin-20"><td class="tabla-pines__pin">20</td><td><strong>Linux (terminal)</strong><span class="tabla__detalle">Uso diario y administración básica.</span></td><td><span class="estado-pin">Operativo</span></td></tr>
-                <tr id="pin-21"><td class="tabla-pines__pin">21</td><td><strong>Windows</strong><span class="tabla__detalle">Instalación y configuración de sistemas de escritorio.</span></td><td><span class="estado-pin">Operativo</span></td></tr>
-                <tr id="pin-22"><td class="tabla-pines__pin">22</td><td><strong>Redes locales TCP/IP</strong><span class="tabla__detalle">Configuración de red y resolución de problemas.</span></td><td><span class="estado-pin">Operativo</span></td></tr>
-                <tr id="pin-23"><td class="tabla-pines__pin">23</td><td><strong>Montaje de equipos</strong><span class="tabla__detalle">Hardware y mantenimiento de ordenadores.</span></td><td><span class="estado-pin">Operativo</span></td></tr>
-                <tr id="pin-24"><td class="tabla-pines__pin">24</td><td><strong>ERP Odoo</strong><span class="tabla__detalle">Despliegue y configuración de un ERP.</span></td><td><span class="estado-pin estado-pin--pruebas">En pruebas</span></td></tr>
-              </tbody>
+    <!-- ============ COMPETENCIAS ============ -->
+    <section class="seccion seccion--alterna" id="competencias" aria-labelledby="competencias-titulo">
+      <div class="contenedor">
+        <header class="seccion__cabecera">
+          <p class="seccion__etiqueta"><span class="nodo solo-con-js" aria-hidden="true" data-nodo></span><span class="seccion__numero">02 · </span>Competencias</p>
+          <h2 class="seccion__titulo" id="competencias-titulo">Tecnologías que sé explicar y demostrar</h2>
+          <p class="seccion__intro">
+            Agrupadas por área. Distingo lo que ya uso con soltura de lo que estoy consolidando durante este curso.
+          </p>
+        </header>
 
-              <!-- Grupo: Forma de trabajar -->
-              <tbody>
-                <tr class="tabla__grupo"><th scope="rowgroup" colspan="3">Forma de trabajar</th></tr>
-                <tr id="pin-25"><td class="tabla-pines__pin">25</td><td><strong>Conventional Commits</strong><span class="tabla__detalle">Mensajes de commit claros y con formato común.</span></td><td><span class="estado-pin">Operativo</span></td></tr>
-                <tr id="pin-26"><td class="tabla-pines__pin">26</td><td><strong>Documentación en Markdown</strong><span class="tabla__detalle">README y documentación técnica de cada proyecto.</span></td><td><span class="estado-pin">Operativo</span></td></tr>
-                <tr id="pin-27"><td class="tabla-pines__pin">27</td><td><strong>Trabajo con ramas</strong><span class="tabla__detalle">Flujo main · develop · feature con merges ordenados.</span></td><td><span class="estado-pin">Operativo</span></td></tr>
-                <tr id="pin-28"><td class="tabla-pines__pin">28</td><td><strong>Accesibilidad web</strong><span class="tabla__detalle">Contraste, foco visible y navegación con teclado.</span></td><td><span class="estado-pin estado-pin--pruebas">En pruebas</span></td></tr>
-              </tbody>
-            </table>
-          </div>
+        <ul class="leyenda">
+          <li><span class="chip">Uso con soltura</span></li>
+          <li><span class="chip chip--aprendiendo">Consolidando</span></li>
+        </ul>
+
+        <div class="rejilla-competencias">
+          <article class="grupo-competencias" data-aparecer>
+            <h3 class="grupo-competencias__titulo">Frontend</h3>
+            <p class="grupo-competencias__descripcion">Interfaces semánticas, accesibles y adaptadas a cualquier pantalla.</p>
+            <ul class="chips">
+              <li class="chip">HTML5 semántico</li>
+              <li class="chip">CSS3 · Flexbox y Grid</li>
+              <li class="chip">Diseño responsive</li>
+              <li class="chip">JavaScript (ES6+) y DOM</li>
+              <li class="chip chip--aprendiendo">Vue 3<span class="solo-lectores"> (consolidando)</span></li>
+              <li class="chip chip--aprendiendo">Quasar<span class="solo-lectores"> (consolidando)</span></li>
+            </ul>
+          </article>
+
+          <article class="grupo-competencias" data-aparecer>
+            <h3 class="grupo-competencias__titulo">Backend</h3>
+            <p class="grupo-competencias__descripcion">Lógica de negocio, programación orientada a objetos y servicios web.</p>
+            <ul class="chips">
+              <li class="chip">Java · POO</li>
+              <li class="chip">Java Swing</li>
+              <li class="chip chip--aprendiendo">Spring Boot<span class="solo-lectores"> (consolidando)</span></li>
+              <li class="chip chip--aprendiendo">APIs REST<span class="solo-lectores"> (consolidando)</span></li>
+              <li class="chip chip--aprendiendo">Python<span class="solo-lectores"> (consolidando)</span></li>
+            </ul>
+          </article>
+
+          <article class="grupo-competencias" data-aparecer>
+            <h3 class="grupo-competencias__titulo">Bases de datos</h3>
+            <p class="grupo-competencias__descripcion">Diseño y consulta de datos relacionales.</p>
+            <ul class="chips">
+              <li class="chip">SQL</li>
+              <li class="chip">PostgreSQL</li>
+              <li class="chip">Modelo entidad-relación</li>
+            </ul>
+          </article>
+
+          <article class="grupo-competencias" data-aparecer>
+            <h3 class="grupo-competencias__titulo">Despliegue y herramientas</h3>
+            <p class="grupo-competencias__descripcion">Control de versiones, contenedores y entorno de desarrollo.</p>
+            <ul class="chips">
+              <li class="chip">Git y GitHub</li>
+              <li class="chip">Docker y Docker Compose</li>
+              <li class="chip">Vite</li>
+              <li class="chip">ESLint</li>
+              <li class="chip chip--aprendiendo">GitHub Actions<span class="solo-lectores"> (consolidando)</span></li>
+            </ul>
+          </article>
+
+          <article class="grupo-competencias" data-aparecer>
+            <h3 class="grupo-competencias__titulo">Sistemas y redes</h3>
+            <p class="grupo-competencias__descripcion">La base que traigo del Grado Medio de SMX.</p>
+            <ul class="chips">
+              <li class="chip">Linux (terminal)</li>
+              <li class="chip">Windows</li>
+              <li class="chip">Redes locales TCP/IP</li>
+              <li class="chip">Montaje de equipos</li>
+              <li class="chip chip--aprendiendo">ERP Odoo<span class="solo-lectores"> (consolidando)</span></li>
+            </ul>
+          </article>
+
+          <article class="grupo-competencias" data-aparecer>
+            <h3 class="grupo-competencias__titulo">Forma de trabajar</h3>
+            <p class="grupo-competencias__descripcion">Hábitos que hacen el código mantenible en equipo.</p>
+            <ul class="chips">
+              <li class="chip">Conventional Commits</li>
+              <li class="chip">Documentación en Markdown</li>
+              <li class="chip">Trabajo con ramas</li>
+              <li class="chip chip--aprendiendo">Accesibilidad web<span class="solo-lectores"> (consolidando)</span></li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ======================================================================
-         4 · PROYECTOS  ("Notas de aplicación")
-         Para añadir un proyecto, copia un <article class="proyecto"> completo,
-         cambia el código (AN-05...), los textos y los enlaces. La parte
-         .proyecto__esquema es un dibujo opcional: puedes borrarla.
-         Estados: .proyecto__estado--publicado · --completado · --desarrollo
-         ====================================================================== -->
-    <section class="seccion seccion--alterna" id="proyectos" aria-labelledby="proyectos-titulo">
+    <!-- ============ PROYECTOS ============
+         Para añadir un proyecto nuevo, copia un <article class="proyecto"> completo
+         y cambia textos, etiquetas y enlaces. Ver README → "Cómo añadir un proyecto". -->
+    <section class="seccion" id="proyectos" aria-labelledby="proyectos-titulo">
       <div class="contenedor">
         <header class="seccion__cabecera">
-          <span class="seccion__numero" aria-hidden="true">4</span>
-          <div>
-            <p class="seccion__tecnico">Notas de aplicación</p>
-            <h2 class="seccion__titulo" id="proyectos-titulo">Proyectos con código verificable</h2>
-          </div>
+          <p class="seccion__etiqueta"><span class="nodo solo-con-js" aria-hidden="true" data-nodo></span><span class="seccion__numero">03 · </span>Proyectos</p>
+          <h2 class="seccion__titulo" id="proyectos-titulo">Proyectos con código que puedes revisar</h2>
+          <p class="seccion__intro">
+            Cada proyecto enlaza a su repositorio en GitHub e indica qué competencias demuestra,
+            para que sea fácil comprobar lo que sé hacer.
+          </p>
         </header>
 
-        <p class="seccion__intro">
-          Cada proyecto enlaza a su repositorio en GitHub y lista los resultados que se pueden comprobar en el código.
-        </p>
-
         <div class="proyectos">
-          <!-- AN-01 · Este portfolio -->
-          <article class="proyecto" data-aparecer>
-            <header class="proyecto__cabecera">
-              <span class="proyecto__codigo">AN-01</span>
-              <span class="proyecto__estado proyecto__estado--publicado">En producción</span>
-            </header>
-            <div class="proyecto__cuerpo">
-              <h3 class="proyecto__titulo">Portfolio profesional</h3>
-              <p class="proyecto__meta">2026 · Frontend y despliegue</p>
-              <div class="proyecto__esquema" aria-hidden="true">
-                <div class="mini-navegador">
-                  <div class="mini-navegador__barra"><span></span><span></span><span></span></div>
-                  <div class="mini-navegador__pagina">
-                    <span class="mini-navegador__linea mini-navegador__linea--titulo"></span>
-                    <span class="mini-navegador__linea"></span>
-                    <span class="mini-navegador__chip"></span>
-                  </div>
+          <!-- Proyecto destacado -->
+          <article class="proyecto proyecto--destacado" data-aparecer>
+            <div class="proyecto__dibujo" aria-hidden="true">
+              <div class="mini-navegador">
+                <div class="mini-navegador__barra">
+                  <span class="mini-navegador__punto"></span>
+                  <span class="mini-navegador__punto"></span>
+                  <span class="mini-navegador__punto"></span>
+                  <span class="mini-navegador__direccion">eriiicc03.github.io/Portfolio…</span>
+                </div>
+                <div class="mini-navegador__pagina">
+                  <span class="mini-navegador__linea mini-navegador__linea--titulo"></span>
+                  <span class="mini-navegador__linea"></span>
+                  <span class="mini-navegador__linea mini-navegador__linea--corta"></span>
+                  <span class="mini-navegador__tarjetas"><span></span><span></span><span></span></span>
                 </div>
               </div>
-              <p class="proyecto__descripcion">
-                Esta misma web: una hoja de datos que funciona como CV y portfolio, hecha sin frameworks
-                y publicada automáticamente en GitHub Pages con cada cambio.
+            </div>
+            <div class="proyecto__cuerpo">
+              <p class="proyecto__meta">
+                <span class="etiqueta-estado etiqueta-estado--produccion">En producción</span>
+                <span>2026 · Frontend y despliegue</span>
               </p>
-              <h4 class="proyecto__subtitulo">Resultados verificables</h4>
-              <ul class="proyecto__resultados">
-                <li>HTML semántico: tablas con encabezados, figuras con pie y títulos ordenados.</li>
-                <li>CSS propio organizado por archivos, con tema claro y oscuro.</li>
-                <li>JavaScript sin dependencias y exportación a PDF.</li>
-                <li>Despliegue continuo con GitHub Actions y flujo de ramas.</li>
+              <h3 class="proyecto__titulo">Portfolio profesional</h3>
+              <p class="proyecto__descripcion">
+                Esta misma web: un sitio que funciona a la vez como CV y como portfolio,
+                construido sin frameworks y publicado automáticamente en GitHub Pages con cada cambio.
+              </p>
+              <h4 class="proyecto__subtitulo">Qué demuestra</h4>
+              <ul class="proyecto__pruebas">
+                <li>HTML semántico y accesible: landmarks, jerarquía de títulos y navegación por teclado.</li>
+                <li>CSS propio organizado por archivos (variables, base, estructura y componentes) y diseño responsive.</li>
+                <li>JavaScript sin dependencias: un hilo conductor en SVG que se dibuja con el scroll, tema claro/oscuro y CV en PDF.</li>
+                <li>Despliegue continuo con GitHub Actions y flujo de trabajo con ramas.</li>
               </ul>
-              <ul class="proyecto__componentes">
+              <ul class="tecnologias">
                 <li>HTML</li>
                 <li>CSS</li>
                 <li>JavaScript</li>
@@ -639,41 +461,52 @@
               </ul>
               <p class="proyecto__enlaces">
                 <a class="enlace-flecha" href="https://github.com/Eriiicc03/PortfolioEricBarrigaMedina" target="_blank" rel="noopener">
-                  Ver código
+                  Código
+                  <svg class="icono" aria-hidden="true"><use href="#icono-flecha"/></svg>
+                </a>
+                <a class="enlace-flecha enlace-flecha--secundario" href="https://github.com/Eriiicc03/PortfolioEricBarrigaMedina/commits/main" target="_blank" rel="noopener">
+                  Historial de commits
                   <svg class="icono" aria-hidden="true"><use href="#icono-flecha"/></svg>
                 </a>
               </p>
             </div>
           </article>
 
-          <!-- AN-02 · Odoo con Docker -->
           <article class="proyecto" data-aparecer>
-            <header class="proyecto__cabecera">
-              <span class="proyecto__codigo">AN-02</span>
-              <span class="proyecto__estado proyecto__estado--completado">Completado</span>
-            </header>
-            <div class="proyecto__cuerpo">
-              <h3 class="proyecto__titulo">Odoo 17 con Docker Compose</h3>
-              <p class="proyecto__meta">2026 · Despliegue</p>
-              <div class="proyecto__esquema" aria-hidden="true">
-                <div class="esquema">
-                  <span class="esquema__nodo"><span class="esquema__nombre">odoo:17</span><span class="esquema__detalle">:8069</span></span>
-                  <span class="esquema__flecha">depends_on</span>
-                  <span class="esquema__nodo esquema__nodo--destacado"><span class="esquema__nombre">postgres:15</span><span class="esquema__detalle">healthcheck ✓</span></span>
-                </div>
-                <div class="esquema__volumenes"><span>odoo_web_data</span><span>odoo_db_data</span></div>
+            <div class="proyecto__dibujo" aria-hidden="true">
+              <div class="esquema">
+                <span class="esquema__nodo">
+                  <span class="esquema__nombre">odoo:17</span>
+                  <span class="esquema__detalle">puerto 8069</span>
+                </span>
+                <span class="esquema__flecha">depends_on</span>
+                <span class="esquema__nodo esquema__nodo--destacado">
+                  <span class="esquema__nombre">postgres:15</span>
+                  <span class="esquema__detalle">healthcheck ✓</span>
+                </span>
               </div>
+              <div class="esquema__volumenes">
+                <span>vol · odoo_web_data</span>
+                <span>vol · odoo_db_data</span>
+              </div>
+            </div>
+            <div class="proyecto__cuerpo">
+              <p class="proyecto__meta">
+                <span class="etiqueta-estado etiqueta-estado--completado">Completado</span>
+                <span>2026 · Despliegue</span>
+              </p>
+              <h3 class="proyecto__titulo">Odoo 17 con Docker Compose</h3>
               <p class="proyecto__descripcion">
                 Entorno ERP reproducible que se levanta con un solo comando: Odoo 17 y PostgreSQL 15
                 en contenedores separados y conectados por una red propia.
               </p>
-              <h4 class="proyecto__subtitulo">Resultados verificables</h4>
-              <ul class="proyecto__resultados">
+              <h4 class="proyecto__subtitulo">Qué demuestra</h4>
+              <ul class="proyecto__pruebas">
                 <li>Orquestación de varios servicios con Docker Compose.</li>
-                <li>Arranque ordenado con <code>healthcheck</code> y <code>depends_on</code>.</li>
-                <li>Datos persistentes con volúmenes y configuración montada desde el host.</li>
+                <li>Arranque ordenado con <code>healthcheck</code> y <code>depends_on</code>: Odoo espera a que la base de datos esté lista.</li>
+                <li>Persistencia con volúmenes y configuración montada desde el host.</li>
               </ul>
-              <ul class="proyecto__componentes">
+              <ul class="tecnologias">
                 <li>Docker</li>
                 <li>Docker Compose</li>
                 <li>PostgreSQL</li>
@@ -681,42 +514,49 @@
               </ul>
               <p class="proyecto__enlaces">
                 <a class="enlace-flecha" href="https://github.com/Eriiicc03/Odoo" target="_blank" rel="noopener">
-                  Ver código
+                  Código
                   <svg class="icono" aria-hidden="true"><use href="#icono-flecha"/></svg>
                 </a>
               </p>
             </div>
           </article>
 
-          <!-- AN-03 · Inventory Sync -->
           <article class="proyecto" data-aparecer>
-            <header class="proyecto__cabecera">
-              <span class="proyecto__codigo">AN-03</span>
-              <span class="proyecto__estado proyecto__estado--desarrollo">En desarrollo</span>
-            </header>
-            <div class="proyecto__cuerpo">
-              <h3 class="proyecto__titulo">Inventory Sync</h3>
-              <p class="proyecto__meta">2026 · Backend</p>
-              <div class="proyecto__esquema" aria-hidden="true">
-                <div class="esquema">
-                  <span class="esquema__nodo"><span class="esquema__nombre">supplier-api</span><span class="esquema__detalle">catálogo</span></span>
-                  <span class="esquema__flecha">REST</span>
-                  <span class="esquema__nodo esquema__nodo--destacado"><span class="esquema__nombre">store-api</span><span class="esquema__detalle">⟳ @Scheduled</span></span>
-                </div>
-                <div class="esquema__volumenes"><span>db proveedor</span><span>db tienda</span></div>
+            <div class="proyecto__dibujo" aria-hidden="true">
+              <div class="esquema">
+                <span class="esquema__nodo">
+                  <span class="esquema__nombre">supplier-api</span>
+                  <span class="esquema__detalle">catálogo · stock</span>
+                </span>
+                <span class="esquema__flecha">REST</span>
+                <span class="esquema__nodo esquema__nodo--destacado">
+                  <span class="esquema__nombre">store-api</span>
+                  <span class="esquema__detalle">⟳ @Scheduled</span>
+                </span>
               </div>
-              <p class="proyecto__descripcion">
-                Backend con arquitectura de microservicios que sincroniza el stock entre un proveedor
-                mayorista y una tienda online consumiendo APIs REST.
+              <div class="esquema__volumenes">
+                <span>db · proveedor</span>
+                <span>db · tienda</span>
+              </div>
+            </div>
+            <div class="proyecto__cuerpo">
+              <p class="proyecto__meta">
+                <span class="etiqueta-estado etiqueta-estado--desarrollo">En desarrollo</span>
+                <span>2026 · Backend</span>
               </p>
-              <h4 class="proyecto__subtitulo">Resultados verificables</h4>
-              <ul class="proyecto__resultados">
-                <li>Dos microservicios desacoplados con Spring Boot (Web y Data JPA).</li>
+              <h3 class="proyecto__titulo">Inventory Sync</h3>
+              <p class="proyecto__descripcion">
+                Solución backend con arquitectura de microservicios que sincroniza el stock entre un
+                proveedor mayorista y una tienda online consumiendo APIs REST.
+              </p>
+              <h4 class="proyecto__subtitulo">Qué demuestra</h4>
+              <ul class="proyecto__pruebas">
+                <li>Diseño de dos microservicios desacoplados con Spring Boot (Web y Data JPA).</li>
                 <li>Sincronización periódica con tareas programadas y validación de datos.</li>
-                <li>Infraestructura definida con Docker Compose.</li>
+                <li>Infraestructura definida con Docker Compose: servicios y bases de datos.</li>
               </ul>
               <p class="proyecto__nota">Arquitectura definida y documentada; el código se publica por fases.</p>
-              <ul class="proyecto__componentes">
+              <ul class="tecnologias">
                 <li>Java</li>
                 <li>Spring Boot</li>
                 <li>REST</li>
@@ -724,50 +564,48 @@
               </ul>
               <p class="proyecto__enlaces">
                 <a class="enlace-flecha" href="https://github.com/Eriiicc03/inventory-sync" target="_blank" rel="noopener">
-                  Ver repositorio
+                  Repositorio
                   <svg class="icono" aria-hidden="true"><use href="#icono-flecha"/></svg>
                 </a>
               </p>
             </div>
           </article>
 
-          <!-- AN-04 · Calculadora en Java -->
           <article class="proyecto" data-aparecer>
-            <header class="proyecto__cabecera">
-              <span class="proyecto__codigo">AN-04</span>
-              <span class="proyecto__estado proyecto__estado--completado">Completado</span>
-            </header>
-            <div class="proyecto__cuerpo">
-              <h3 class="proyecto__titulo">Calculadora en Java Swing</h3>
-              <p class="proyecto__meta">2026 · Java</p>
-              <div class="proyecto__esquema" aria-hidden="true">
-                <div class="mini-calculadora">
-                  <span class="mini-calculadora__pantalla">128</span>
-                  <span class="mini-calculadora__teclas">
-                    <span>7</span><span>8</span><span>9</span><span class="es-operacion">/</span>
-                    <span>4</span><span>5</span><span>6</span><span class="es-operacion">*</span>
-                    <span>1</span><span>2</span><span>3</span><span class="es-operacion">-</span>
-                    <span class="es-operacion">C</span><span>0</span><span class="es-igual">=</span><span class="es-operacion">+</span>
-                  </span>
-                </div>
+            <div class="proyecto__dibujo" aria-hidden="true">
+              <div class="mini-calculadora">
+                <span class="mini-calculadora__pantalla">128</span>
+                <span class="mini-calculadora__teclas">
+                  <span>7</span><span>8</span><span>9</span><span class="es-operacion">/</span>
+                  <span>4</span><span>5</span><span>6</span><span class="es-operacion">*</span>
+                  <span>1</span><span>2</span><span>3</span><span class="es-operacion">-</span>
+                  <span class="es-operacion">C</span><span>0</span><span class="es-igual">=</span><span class="es-operacion">+</span>
+                </span>
               </div>
-              <p class="proyecto__descripcion">
-                Aplicación de escritorio con interfaz gráfica para las operaciones aritméticas básicas.
+            </div>
+            <div class="proyecto__cuerpo">
+              <p class="proyecto__meta">
+                <span class="etiqueta-estado etiqueta-estado--completado">Completado</span>
+                <span>2026 · Java</span>
               </p>
-              <h4 class="proyecto__subtitulo">Resultados verificables</h4>
-              <ul class="proyecto__resultados">
-                <li>Clase propia que extiende <code>JFrame</code> (programación orientada a objetos).</li>
-                <li><code>BorderLayout</code> para la pantalla y <code>GridLayout</code> para el teclado.</li>
-                <li>Eventos con <code>ActionListener</code> y botones creados en un bucle.</li>
+              <h3 class="proyecto__titulo">Calculadora en Java Swing</h3>
+              <p class="proyecto__descripcion">
+                Aplicación de escritorio con interfaz gráfica para realizar las operaciones aritméticas básicas.
+              </p>
+              <h4 class="proyecto__subtitulo">Qué demuestra</h4>
+              <ul class="proyecto__pruebas">
+                <li>Programación orientada a objetos en Java: una clase propia que extiende <code>JFrame</code>.</li>
+                <li>Layouts de Swing: <code>BorderLayout</code> para la pantalla y <code>GridLayout</code> para el teclado.</li>
+                <li>Gestión de eventos con <code>ActionListener</code> y botones generados en un bucle.</li>
               </ul>
-              <ul class="proyecto__componentes">
+              <ul class="tecnologias">
                 <li>Java</li>
                 <li>Swing</li>
                 <li>POO</li>
               </ul>
               <p class="proyecto__enlaces">
                 <a class="enlace-flecha" href="https://github.com/Eriiicc03/CalculadoraBasica" target="_blank" rel="noopener">
-                  Ver código
+                  Código
                   <svg class="icono" aria-hidden="true"><use href="#icono-flecha"/></svg>
                 </a>
               </p>
@@ -775,200 +613,174 @@
           </article>
         </div>
 
-        <!-- Prácticas del ciclo: para añadir una, copia una fila <tr> -->
-        <div class="tabla-marco tabla-marco--separada" data-aparecer>
-          <table class="tabla tabla-practicas">
-            <caption class="tabla__titulo">
-              <strong>Tabla 4-1.</strong> Notas de laboratorio: prácticas recientes del ciclo
-              <a class="enlace-flecha enlace-flecha--pequeno" href="https://github.com/Eriiicc03?tab=repositories" target="_blank" rel="noopener">
-                Todos mis repositorios
-                <svg class="icono" aria-hidden="true"><use href="#icono-flecha"/></svg>
-              </a>
-            </caption>
-            <thead>
-              <tr>
-                <th scope="col">Módulo</th>
-                <th scope="col">Práctica</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="tabla-practicas__modulo">Diseño de interfaces web</td>
-                <td><strong>Maquetación de layouts con CSS Grid</strong><span class="tabla__detalle">Áreas con nombre (<code>grid-template-areas</code>), unidades <code>fr</code> y rejillas anidadas.</span></td>
-              </tr>
-              <tr>
-                <td class="tabla-practicas__modulo">Desarrollo en entorno cliente</td>
-                <td><strong>Entorno de desarrollo JavaScript con Vite y ESLint</strong><span class="tabla__detalle">Configuración del proyecto, servidor con recarga en caliente y reglas de linting.</span></td>
-              </tr>
-              <tr>
-                <td class="tabla-practicas__modulo">Desarrollo en entorno cliente</td>
-                <td><strong>Menú de navegación generado con el DOM</strong><span class="tabla__detalle">Arrays, plantillas literales y <code>innerHTML</code> frente a <code>createElement</code>.</span></td>
-              </tr>
-              <tr>
-                <td class="tabla-practicas__modulo">Despliegue de aplicaciones web</td>
-                <td><strong>Documentación técnica en Markdown versionada con Git</strong><span class="tabla__detalle">Repositorio con historial de commits descriptivos y <code>.gitignore</code>.</span></td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="practicas" data-aparecer>
+          <div class="practicas__cabecera">
+            <h3 class="practicas__titulo">Prácticas recientes del ciclo</h3>
+            <a class="enlace-flecha" href="https://github.com/Eriiicc03?tab=repositories" target="_blank" rel="noopener">
+              Todos mis repositorios
+              <svg class="icono" aria-hidden="true"><use href="#icono-flecha"/></svg>
+            </a>
+          </div>
+          <ul class="practicas__lista">
+            <li class="practicas__item">
+              <span class="practicas__modulo">Diseño de interfaces web</span>
+              <span class="practicas__nombre">Maquetación de layouts con CSS Grid</span>
+              <span class="practicas__detalle">Áreas con nombre (<code>grid-template-areas</code>), unidades <code>fr</code> y rejillas anidadas.</span>
+            </li>
+            <li class="practicas__item">
+              <span class="practicas__modulo">Desarrollo en entorno cliente</span>
+              <span class="practicas__nombre">Entorno de desarrollo JavaScript con Vite y ESLint</span>
+              <span class="practicas__detalle">Configuración del proyecto, servidor de desarrollo con recarga en caliente y reglas de linting.</span>
+            </li>
+            <li class="practicas__item">
+              <span class="practicas__modulo">Desarrollo en entorno cliente</span>
+              <span class="practicas__nombre">Menú de navegación generado con el DOM</span>
+              <span class="practicas__detalle">Arrays, plantillas literales y comparación entre <code>innerHTML</code> y <code>createElement</code>.</span>
+            </li>
+            <li class="practicas__item">
+              <span class="practicas__modulo">Despliegue de aplicaciones web</span>
+              <span class="practicas__nombre">Documentación técnica en Markdown versionada con Git</span>
+              <span class="practicas__detalle">Repositorio con historial de commits descriptivos y <code>.gitignore</code>.</span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- ======================================================================
-         5 · FORMACIÓN  ("Historial de revisiones")
-         La fila más reciente va arriba. Para añadir una etapa, copia un <tr>.
-         ====================================================================== -->
-    <section class="seccion" id="formacion" aria-labelledby="formacion-titulo">
+    <!-- ============ TRAYECTORIA ============ -->
+    <section class="seccion seccion--alterna" id="trayectoria" aria-labelledby="trayectoria-titulo">
       <div class="contenedor">
         <header class="seccion__cabecera">
-          <span class="seccion__numero" aria-hidden="true">5</span>
-          <div>
-            <p class="seccion__tecnico">Historial de revisiones</p>
-            <h2 class="seccion__titulo" id="formacion-titulo">Formación y trayectoria</h2>
-          </div>
+          <p class="seccion__etiqueta"><span class="nodo solo-con-js" aria-hidden="true" data-nodo></span><span class="seccion__numero">04 · </span>Trayectoria</p>
+          <h2 class="seccion__titulo" id="trayectoria-titulo">Formación y próximo paso</h2>
         </header>
 
-        <div class="formacion">
-          <div class="tabla-marco" data-aparecer>
-            <table class="tabla tabla-revisiones">
-              <caption class="tabla__titulo"><strong>Tabla 5-1.</strong> Historial de revisiones</caption>
-              <thead>
-                <tr>
-                  <th scope="col" class="tabla-revisiones__col-version">Revisión</th>
-                  <th scope="col">Cambios</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="tabla-revisiones__actual">
-                  <td><span class="version">En curso</span><span class="tabla__detalle">Curso 2026-27</span></td>
-                  <td><strong>Prácticas en empresa · Desarrollo web</strong><span class="tabla__detalle">Formación en empresa del CFGS DAW: tareas reales de desarrollo dentro de un equipo profesional.</span></td>
-                </tr>
-                <tr>
-                  <td><span class="version">Rev. C</span><span class="tabla__detalle"><time datetime="2025">2025</time> – actualidad</span></td>
-                  <td><strong>CFGS Desarrollo de Aplicaciones Web (DAW)</strong><span class="tabla__lugar">Institut Thos i Codina · Mataró</span><span class="tabla__detalle">2.º curso: desarrollo en entorno cliente, diseño de interfaces web, despliegue de aplicaciones web y programación con frameworks. En 1.º: programación en Java, bases de datos, lenguajes de marcas y sistemas de gestión empresarial, y entornos de desarrollo.</span></td>
-                </tr>
-                <tr>
-                  <td><span class="version">Rev. B</span><span class="tabla__detalle"><time datetime="2023">2023</time> – <time datetime="2025">2025</time></span></td>
-                  <td><strong>CFGM Sistemas Microinformáticos y Redes (SMX)</strong><span class="tabla__lugar">Grado Medio · Formación Profesional</span><span class="tabla__detalle">Montaje y mantenimiento de equipos, sistemas operativos Linux y Windows, redes locales y servicios de red.</span></td>
-                </tr>
-                <tr>
-                  <td><span class="version">Rev. A</span><span class="tabla__detalle"><time datetime="2023">2023</time> – actualidad</span></td>
-                  <td><strong>Formación autodidacta en desarrollo web</strong><span class="tabla__lugar">Proyectos personales</span><span class="tabla__detalle">Aprendo con documentación oficial (MDN, Spring, Docker) y publico lo que construyo en GitHub.</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <div class="trayectoria">
+          <ol class="linea-tiempo">
+            <li class="linea-tiempo__hito linea-tiempo__hito--actual" data-aparecer>
+              <p class="linea-tiempo__fecha">Curso 2026-27</p>
+              <h3 class="linea-tiempo__titulo">Prácticas en empresa · Desarrollo web</h3>
+              <p class="linea-tiempo__lugar">En curso</p>
+              <p class="linea-tiempo__descripcion">
+                Formación en empresa del CFGS DAW: tareas reales de desarrollo dentro de un equipo
+                profesional y aprendizaje del flujo de trabajo de una empresa.
+              </p>
+            </li>
+            <li class="linea-tiempo__hito" data-aparecer>
+              <p class="linea-tiempo__fecha"><time datetime="2025">2025</time> – actualidad</p>
+              <h3 class="linea-tiempo__titulo">CFGS Desarrollo de Aplicaciones Web (DAW)</h3>
+              <p class="linea-tiempo__lugar">Institut Thos i Codina · Mataró</p>
+              <p class="linea-tiempo__descripcion">
+                2.º curso: desarrollo en entorno cliente, diseño de interfaces web, despliegue de aplicaciones
+                web y programación con frameworks. En 1.º: programación en Java, bases de datos, lenguajes de marcas
+                y sistemas de gestión empresarial, y entornos de desarrollo.
+              </p>
+            </li>
+            <li class="linea-tiempo__hito" data-aparecer>
+              <p class="linea-tiempo__fecha"><time datetime="2023">2023</time> – <time datetime="2025">2025</time></p>
+              <h3 class="linea-tiempo__titulo">CFGM Sistemas Microinformáticos y Redes (SMX)</h3>
+              <p class="linea-tiempo__lugar">Grado Medio · Formación Profesional</p>
+              <p class="linea-tiempo__descripcion">
+                Montaje y mantenimiento de equipos, sistemas operativos Linux y Windows, redes locales y servicios de red.
+              </p>
+            </li>
+            <li class="linea-tiempo__hito" data-aparecer>
+              <p class="linea-tiempo__fecha"><time datetime="2023">2023</time> – actualidad</p>
+              <h3 class="linea-tiempo__titulo">Formación autodidacta en desarrollo web</h3>
+              <p class="linea-tiempo__lugar">Proyectos personales</p>
+              <p class="linea-tiempo__descripcion">
+                Aprendo con documentación oficial (MDN, Spring, Docker) y publico lo que construyo en GitHub.
+              </p>
+            </li>
+          </ol>
 
-          <div class="formacion__lateral">
-            <div class="tabla-marco" data-aparecer>
-              <table class="tabla tabla--clave-valor">
-                <caption class="tabla__titulo"><strong>Tabla 5-2.</strong> Idiomas</caption>
-                <tbody>
-                  <tr><th scope="row">Castellano</th><td>Nativo</td></tr>
-                  <tr><th scope="row">Catalán</th><td>Nativo</td></tr>
-                  <tr><th scope="row">Inglés</th><td>Intermedio</td></tr>
-                </tbody>
-              </table>
-            </div>
+          <aside class="trayectoria__lateral" aria-label="Idiomas y objetivos">
+            <section class="panel" aria-labelledby="idiomas-titulo" data-aparecer>
+              <h3 class="panel__titulo" id="idiomas-titulo">Idiomas</h3>
+              <dl class="idiomas">
+                <div class="idiomas__fila">
+                  <dt>Castellano</dt>
+                  <dd>Nativo</dd>
+                </div>
+                <div class="idiomas__fila">
+                  <dt>Catalán</dt>
+                  <dd>Nativo</dd>
+                </div>
+                <div class="idiomas__fila">
+                  <dt>Inglés</dt>
+                  <dd>Intermedio</dd>
+                </div>
+              </dl>
+            </section>
 
-            <div class="panel" data-aparecer>
-              <h3 class="subtitulo"><span class="subtitulo__numero">5.3</span> Hoja de ruta</h3>
-              <ol class="lista-pasos">
-                <li>Completar las prácticas y el ciclo con un proyecto full stack.</li>
+            <section class="panel" aria-labelledby="objetivos-titulo" data-aparecer>
+              <h3 class="panel__titulo" id="objetivos-titulo">Hacia dónde voy</h3>
+              <ul class="panel__lista">
+                <li>Terminar el ciclo con un proyecto full stack completo.</li>
                 <li>Especializarme en backend con Java y en despliegue con contenedores.</li>
                 <li>Seguir formándome, con interés por la experiencia internacional.</li>
-              </ol>
-            </div>
-          </div>
+              </ul>
+            </section>
+          </aside>
         </div>
       </div>
     </section>
 
-    <!-- ======================================================================
-         6 · CONTACTO  ("Información de pedido")
-         ====================================================================== -->
+    <!-- ============ CONTACTO ============ -->
     <section class="seccion contacto" id="contacto" aria-labelledby="contacto-titulo">
-      <div class="contenedor">
-        <header class="seccion__cabecera">
-          <span class="seccion__numero" aria-hidden="true">6</span>
-          <div>
-            <p class="seccion__tecnico">Información de pedido</p>
-            <h2 class="seccion__titulo" id="contacto-titulo">Contacto</h2>
-          </div>
-        </header>
+      <div class="contenedor contacto__interior">
+        <p class="seccion__etiqueta"><span class="nodo solo-con-js" aria-hidden="true" data-nodo></span><span class="seccion__numero">05 · </span>Contacto</p>
+        <h2 class="contacto__titulo" id="contacto-titulo">¿Buscas a alguien para tu equipo? <span data-hilo-fin>Hablemos.</span></h2>
+        <p class="contacto__texto">
+          Si buscas un perfil junior con base de sistemas y ganas de aprender, o quieres comentar
+          alguno de mis proyectos, escríbeme. La forma más rápida es el correo electrónico.
+        </p>
 
-        <div class="contacto__rejilla">
-          <div class="contacto__texto">
-            <p class="contacto__frase">¿Hablamos?</p>
-            <p>
-              Si buscas un perfil junior con base de sistemas y ganas de aprender, o quieres comentar
-              alguno de mis proyectos, escríbeme. La forma más rápida es el correo electrónico.
-            </p>
-
-            <div class="contacto__correo">
-              <a class="contacto__enlace-correo" href="mailto:ericbarrigamedina1@gmail.com">
-                <svg class="icono" aria-hidden="true"><use href="#icono-correo"/></svg>
-                ericbarrigamedina1@gmail.com
-              </a>
-              <button class="boton-copiar solo-con-js" type="button" data-copiar="ericbarrigamedina1@gmail.com">
-                <svg class="icono icono--copiar" aria-hidden="true"><use href="#icono-copiar"/></svg>
-                <svg class="icono icono--hecho" aria-hidden="true"><use href="#icono-hecho"/></svg>
-                <span data-copiar-texto>Copiar</span>
-              </button>
-              <!-- Aviso para lectores de pantalla cuando se copia el correo -->
-              <span class="solo-lectores" role="status" data-copiar-aviso></span>
-            </div>
-
-            <ul class="contacto__enlaces">
-              <li>
-                <a class="boton boton--claro" href="https://www.linkedin.com/in/eric-barriga-medina-5753632b2/" rel="me noopener" target="_blank">
-                  <svg class="icono" aria-hidden="true"><use href="#icono-linkedin"/></svg>
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a class="boton boton--claro" href="https://github.com/Eriiicc03" rel="me noopener" target="_blank">
-                  <svg class="icono" aria-hidden="true"><use href="#icono-github"/></svg>
-                  GitHub
-                </a>
-              </li>
-              <li class="solo-con-js">
-                <button class="boton boton--claro" type="button" data-imprimir>
-                  <svg class="icono" aria-hidden="true"><use href="#icono-descargar"/></svg>
-                  Hoja de datos (PDF)
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Decodificador del código de referencia, como en las hojas de datos.
-               Si cambias el código, ajusta las posiciones en css/diagramas.css
-               (apartado "Decodificador"). -->
-          <figure class="figura decodificador">
-            <p class="decodificador__codigo" aria-hidden="true"><span>EBM</span>-<span>26</span>-<span>DAW</span>-<span>FS</span></p>
-            <dl class="decodificador__lista">
-              <div class="decodificador__parte"><dt>FS</dt><dd>Perfil full stack</dd></div>
-              <div class="decodificador__parte"><dt>DAW</dt><dd>CFGS Desarrollo de Aplicaciones Web</dd></div>
-              <div class="decodificador__parte"><dt>26</dt><dd>Curso 2026-27 · prácticas en empresa</dd></div>
-              <div class="decodificador__parte"><dt>EBM</dt><dd>Eric Barriga Medina</dd></div>
-            </dl>
-            <figcaption class="figura__pie">
-              <strong>Figura 3.</strong> Cómo se lee el código de referencia EBM-26-DAW-FS.
-            </figcaption>
-          </figure>
+        <div class="contacto__correo">
+          <a class="contacto__enlace-correo" href="mailto:ericbarrigamedina1@gmail.com">
+            <svg class="icono" aria-hidden="true"><use href="#icono-correo"/></svg>
+            ericbarrigamedina1@gmail.com
+          </a>
+          <button class="boton-copiar solo-con-js" type="button" data-copiar="ericbarrigamedina1@gmail.com">
+            <svg class="icono icono--copiar" aria-hidden="true"><use href="#icono-copiar"/></svg>
+            <svg class="icono icono--hecho" aria-hidden="true"><use href="#icono-hecho"/></svg>
+            <span data-copiar-texto>Copiar</span>
+          </button>
+          <span class="solo-lectores" role="status" data-copiar-aviso></span>
         </div>
+
+        <ul class="contacto__enlaces">
+          <li>
+            <a class="boton boton--claro" href="https://www.linkedin.com/in/eric-barriga-medina-5753632b2/" rel="me noopener" target="_blank">
+              <svg class="icono" aria-hidden="true"><use href="#icono-linkedin"/></svg>
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a class="boton boton--claro" href="https://github.com/Eriiicc03" rel="me noopener" target="_blank">
+              <svg class="icono" aria-hidden="true"><use href="#icono-github"/></svg>
+              GitHub
+            </a>
+          </li>
+          <li class="solo-con-js">
+            <button class="boton boton--claro" type="button" data-imprimir>
+              <svg class="icono" aria-hidden="true"><use href="#icono-descargar"/></svg>
+              Guardar CV en PDF
+            </button>
+          </li>
+        </ul>
       </div>
     </section>
   </main>
 
-  <!-- ======================================================================
-       PIE DE PÁGINA
-       ====================================================================== -->
   <footer class="pie">
     <div class="contenedor pie__interior">
-      <p>EBM-26 · Hoja de datos · © <span data-anio>2026</span> Eric Barriga Medina</p>
-      <p>Hecho con HTML, CSS y JavaScript · Última revisión: <time datetime="2026-09">septiembre de 2026</time></p>
-      <p class="solo-impresion">Versión interactiva: https://eriiicc03.github.io/PortfolioEricBarrigaMedina/</p>
+      <p>© <span data-anio>2026</span> Eric Barriga Medina</p>
+      <p>
+        Diseñado y programado con HTML, CSS y JavaScript ·
+        Última actualización: <time datetime="2026-09">septiembre de 2026</time>
+      </p>
+      <p class="solo-impresion">Versión interactiva y proyectos: https://eriiicc03.github.io/PortfolioEricBarrigaMedina/</p>
       <a class="pie__arriba" href="#inicio">Volver arriba ↑</a>
     </div>
   </footer>

@@ -1,34 +1,35 @@
-# EBM-26 · Portfolio profesional de Eric Barriga Medina
+# Portfolio profesional · Eric Barriga Medina
 
 [![Validar y desplegar](https://github.com/Eriiicc03/PortfolioEricBarrigaMedina/actions/workflows/deploy.yml/badge.svg)](https://github.com/Eriiicc03/PortfolioEricBarrigaMedina/actions/workflows/deploy.yml)
 ![HTML5](https://img.shields.io/badge/HTML5-semántico-e34f26)
 ![CSS3](https://img.shields.io/badge/CSS3-propio-1572b6)
 ![JavaScript](https://img.shields.io/badge/JavaScript-sin_dependencias-f7df1e)
 
-Mi portfolio y currículum presentados como **la hoja de datos (datasheet) de un chip electrónico**.
-Yo soy el componente **EBM-26**: cada pin del chip es una tecnología que domino y cada apartado de la
-hoja cuenta una parte de mi perfil. Una empresa puede entender quién soy en segundos y comprobar,
-con proyectos reales enlazados a su código, lo que sé hacer.
+Web personal que funciona a la vez como **currículum** y como **portfolio**: permite a una empresa
+entender mi perfil en pocos segundos y comprobar, con proyectos reales enlazados a su código,
+lo que sé hacer. Un **hilo conductor** recorre toda la página: nace en mi código y se va dibujando
+a medida que se baja, sección a sección, hasta llegar al contacto.
 
 ### 🔗 Web publicada: **[eriiicc03.github.io/PortfolioEricBarrigaMedina](https://eriiicc03.github.io/PortfolioEricBarrigaMedina/)**
 
-![Portada del portfolio: el chip EBM-26 con sus 28 pines](docs/captura-hoja.png)
+![Portada: el hilo conductor nace en la tarjeta de código y baja hacia el perfil](docs/captura-escritorio.png)
 
 ---
 
 ## Índice
 
 1. [Objetivo](#objetivo)
-2. [La idea: una hoja de datos](#la-idea-una-hoja-de-datos)
-3. [Tecnologías](#tecnologías)
-4. [Características](#características)
-5. [Estructura del proyecto](#estructura-del-proyecto)
-6. [Cómo visualizarlo en local](#cómo-visualizarlo-en-local)
-7. [Cómo editar la web a mano](#cómo-editar-la-web-a-mano)
-8. [Despliegue](#despliegue)
-9. [Flujo de trabajo con Git y versiones](#flujo-de-trabajo-con-git-y-versiones)
-10. [Calidad y validación](#calidad-y-validación)
-11. [Autor y licencia](#autor-y-licencia)
+2. [La idea: el hilo conductor](#la-idea-el-hilo-conductor)
+3. [Contenido de la web](#contenido-de-la-web)
+4. [Tecnologías](#tecnologías)
+5. [Características](#características)
+6. [Estructura del proyecto](#estructura-del-proyecto)
+7. [Cómo visualizarlo en local](#cómo-visualizarlo-en-local)
+8. [Cómo editar la web a mano](#cómo-editar-la-web-a-mano)
+9. [Despliegue](#despliegue)
+10. [Flujo de trabajo con Git y versiones](#flujo-de-trabajo-con-git-y-versiones)
+11. [Calidad y validación](#calidad-y-validación)
+12. [Autor y licencia](#autor-y-licencia)
 
 ---
 
@@ -39,82 +40,88 @@ Práctica **PR01 · Portfolio profesional** del módulo *0614 · Despliegue de a
 
 El objetivo es un sitio que:
 
-- Transmita una **identidad profesional propia**, diferente a la típica plantilla de portfolio.
-- Funcione como **CV**: presentación, perfil, competencias, formación, idiomas y contacto.
-- Aporte **evidencias verificables**: cada proyecto enlaza a su repositorio y lista qué se puede comprobar en el código.
-- Se consulte bien desde el **móvil** y se mantenga **vivo**, añadiendo proyectos a medida que los hago.
+- Transmita una **identidad profesional propia** y se consulte con comodidad desde el **móvil**.
+- Sirva como **CV**: presentación, perfil, competencias, formación, idiomas y contacto.
+- Aporte **evidencias verificables**: cada proyecto enlaza a su repositorio e indica qué competencias demuestra.
+- Se mantenga **vivo**: está pensado para añadir proyectos nuevos en pocos minutos.
 
-## La idea: una hoja de datos
+## La idea: el hilo conductor
 
-Vengo del Grado Medio de Sistemas Microinformáticos y Redes (hardware y redes) y he llegado al desarrollo
-web full stack. Para contarlo, la web imita la documentación técnica de un componente electrónico:
+Llegué al desarrollo web desde el Grado Medio de Sistemas Microinformáticos y Redes. Para contar ese
+recorrido, una línea abstracta atraviesa la web de arriba abajo:
 
-| Sección de la web | Apartado de una hoja de datos | Qué contiene |
-| :-- | :-- | :-- |
-| **Portada** | Primera página + dibujo del encapsulado | Nombre, puesto, estado actual y el **chip EBM-26** con 28 pines (Figura 1). |
-| **1 · Perfil** | Descripción general | *Características*, *Aplicaciones* (dónde puedo aportar) y *Descripción*, más una tabla de datos rápidos. |
-| **2 · Arquitectura** | Diagrama de bloques funcional | Cómo construyo una aplicación: cliente ⇄ servidor ⇄ datos, sobre Docker y una base de sistemas. |
-| **3 · Competencias** | Configuración de pines | Tablas con la función y el estado de cada pin (tecnología): *Operativo* o *En pruebas*. |
-| **4 · Proyectos** | Notas de aplicación (AN-01…) | Proyectos reales con esquema, resultados verificables, tecnologías y enlace al código. |
-| **5 · Formación** | Historial de revisiones | Formación y trayectoria como revisiones del documento, idiomas y hoja de ruta. |
-| **6 · Contacto** | Información de pedido | Correo, LinkedIn, GitHub y el decodificador del código de referencia **EBM-26-DAW-FS**. |
+1. **Nace en la tarjeta de código** de la portada (`perfil.js`).
+2. **Baja por el margen** de cada sección y **se enciende un nodo** cuando llega a su título.
+3. Entre sección y sección **hace una curva o un bucle** por el espacio vacío, sin pisar nunca el texto.
+4. **Termina subrayando "Hablemos."** en la sección de contacto.
 
-Hay dos temas visuales: **Hoja** (papel técnico, claro) y **Plano** (cianotipo azul, oscuro). En el tema Plano
-el chip se convierte en su dibujo técnico hecho solo con líneas.
+La línea se va dibujando con el scroll, con un punto brillante en la punta y el camino pendiente en
+punteado. Se recalcula sola si cambia el tamaño de la pantalla y respeta la opción de *reducir
+movimiento* (en ese caso aparece dibujada entera).
 
-<p align="center">
-  <img src="docs/captura-plano.png" alt="La portada en tema Plano: el chip dibujado como un plano técnico" width="720">
-</p>
+![El hilo en tema oscuro, con un nodo encendido en cada sección](docs/captura-oscuro.png)
+
+## Contenido de la web
+
+| Sección | Qué contiene |
+| :-- | :-- |
+| **Inicio** | Nombre, perfil profesional objetivo, estado actual, contacto directo y enlaces a GitHub y LinkedIn. |
+| **01 · Perfil** | Presentación redactada para una empresa: qué sé hacer, qué me interesa y hacia dónde voy. |
+| **02 · Competencias** | Tecnologías agrupadas por área, distinguiendo lo que uso con soltura de lo que estoy consolidando. |
+| **03 · Proyectos** | Proyectos reales con enlace al código y la lista de competencias que demuestran, más las prácticas recientes del ciclo. |
+| **04 · Trayectoria** | Formación (CFGS DAW, CFGM SMX, formación autodidacta), prácticas en empresa, idiomas y objetivos. |
+| **05 · Contacto** | Correo (con botón para copiarlo), LinkedIn, GitHub y botón para descargar el CV en PDF. |
 
 ## Tecnologías
 
-- **HTML5 semántico**: `header`, `nav`, `main`, `section`, `article`, `figure` con `figcaption`, tablas con `caption`, `thead`, `th scope` y grupos `tbody`.
-- **CSS3 propio**, sin frameworks: variables, Grid, Flexbox, tipografía fluida con `clamp()`, `color-mix()`, `writing-mode`, unidades `em` y `ch` para los dibujos, `@media (prefers-color-scheme)`, `@media (prefers-reduced-motion)` y hoja de impresión con `@page`.
+- **HTML5 semántico**: `header`, `nav`, `main`, `section`, `article`, `aside`, `footer`, listas de definición y jerarquía de títulos coherente.
+- **CSS3 propio**, sin frameworks: variables, Grid, Flexbox, tipografía fluida con `clamp()`, `color-mix()`, `@media (prefers-color-scheme)`, `@media (prefers-reduced-motion)` y hoja de impresión.
+- **SVG** generado con JavaScript para el hilo conductor (curvas de Bézier calculadas a partir de la posición real de cada sección).
 - **JavaScript** (ES2020+) sin librerías.
 - **GitHub Actions** + **GitHub Pages** para validar y publicar automáticamente.
 - **html-validate** para comprobar el HTML en cada push.
-- Tipografía **IBM Plex** (Sans, Sans Condensed y Mono), alojada en el propio proyecto (licencia SIL OFL 1.1).
+- Fuentes autoalojadas: [Bricolage Grotesque](https://fonts.google.com/specimen/Bricolage+Grotesque), [Inter](https://rsms.me/inter/) y [JetBrains Mono](https://www.jetbrains.com/lp/mono/) (licencia SIL OFL 1.1).
 
 No hay paso de compilación: el código del repositorio es exactamente el que se publica.
 
 ## Características
 
-- 🔲 **Chip de 28 pines dibujado solo con HTML y CSS**. Al pulsar un pin, la página salta a la fila de esa tecnología en la tabla.
-- 🌗 **Tema Hoja / Plano** que respeta el modo del sistema y recuerda la elección.
-- 📄 **PDF con aspecto de datasheet**: el botón *Descargar hoja de datos (PDF)* genera un documento A4 de tres páginas con el pie "Página X de 3" y las URL de los repositorios.
-- 📱 **Responsive**: probado en anchos de 360, 390, 768, 992, 1024, 1200, 1280 y 1440 px, sin desbordamiento horizontal.
-- ♿ **Accesible**: tablas con encabezados, figuras con pie, foco visible, enlace para saltar al contenido, menú móvil con `aria-expanded`, sección activa con `aria-current`, contraste AA en los dos temas, animaciones desactivables y todo el contenido disponible **sin JavaScript**.
-- ⚡ **Rápido**: fuentes propias con precarga y fuentes de reserva con medidas ajustadas (sin saltos de maquetación), ningún recurso externo.
+- 🧵 **Hilo conductor** que se dibuja con el scroll y enciende un nodo en cada sección.
+- 📱 **Responsive *mobile-first***: probado en móvil (375–390 px), tableta (768–820 px) y escritorio (1024–1440 px).
+- 🌗 **Tema claro y oscuro**: sigue la preferencia del sistema y recuerda la elección.
+- 📄 **CV en PDF desde la propia web**: el botón *Guardar CV en PDF* usa `css/impresion.css` para generar un currículum A4 de dos páginas con las URL de los repositorios.
+- ♿ **Accesible**: enlace para saltar al contenido, foco visible, menú móvil con `aria-expanded`, sección activa con `aria-current`, contraste AA, el hilo es decorativo (`aria-hidden`) y todo el contenido funciona **sin JavaScript**.
+- ⚡ **Rápido**: fuentes propias con precarga y reservas ajustadas (sin saltos de maquetación); el hilo se mide con cálculos propios en lugar de pedirle al navegador punto por punto.
 - 🔎 **SEO**: metadatos, Open Graph con imagen para LinkedIn, datos estructurados `schema.org/Person`, `sitemap.xml` y `robots.txt`.
-- 🚧 **Página 404** temática: "Pin no conectado".
+- 🚧 **Página 404** personalizada.
 
 <p align="center">
-  <img src="docs/captura-movil.png" alt="La web en un móvil con el tema Plano" width="280">
+  <img src="docs/captura-movil.png" alt="El hilo conductor en un móvil con el tema oscuro" width="280">
 </p>
 
-**Hoja de datos en PDF generada desde la web:**
+**CV generado con el botón «Guardar CV en PDF»:**
 
-![Las tres páginas del PDF con aspecto de hoja de datos](docs/hoja-de-datos-pdf.png)
+![Las dos páginas del CV en PDF generado desde la web](docs/cv-pdf.png)
 
 ## Estructura del proyecto
 
 ```text
 .
-├── index.html                 # Toda la web: textos, chip, tablas y proyectos
-├── 404.html                   # Página de error "Pin no conectado"
+├── index.html                 # Toda la web: textos, proyectos, trayectoria...
+├── 404.html                   # Página de error personalizada
 ├── css/
-│   ├── fuentes.css            # Fuentes IBM Plex y fuentes de reserva
-│   ├── variables.css          # Colores, tamaños y espacios (temas Hoja y Plano)
+│   ├── fuentes.css            # Fuentes propias y fuentes de reserva
+│   ├── variables.css          # Colores, tamaños y espacios (tema claro y oscuro)
 │   ├── base.css               # Estilos de las etiquetas HTML y utilidades
-│   ├── estructura.css         # Cabecera, portada, secciones, contacto y pie
-│   ├── componentes.css        # Botones, tablas, tarjetas de proyecto, listas...
-│   ├── chip.css               # El chip de la portada (Figura 1)
-│   ├── diagramas.css          # Diagrama de bloques, esquemas y decodificador
-│   └── impresion.css          # Versión PDF (hoja de datos A4)
+│   ├── estructura.css         # Cabecera, portada, secciones, rejillas y pie
+│   ├── componentes.css        # Botones, tarjetas, chips, línea de tiempo...
+│   ├── hilo.css               # Aspecto del hilo conductor y de los nodos
+│   └── impresion.css          # Versión para imprimir / PDF (CV A4)
 ├── js/
-│   └── principal.js           # Tema, menú móvil, sección activa, copiar, PDF
+│   ├── principal.js           # Tema, menú móvil, sección activa, copiar, PDF
+│   └── hilo-conductor.js      # Cálculo y dibujo del hilo conductor
 ├── assets/
-│   ├── fuentes/               # Archivos .woff2 de IBM Plex
+│   ├── fuentes/               # Archivos .woff2
 │   └── img/                   # Favicon, icono para móvil e imagen para redes
 ├── docs/                      # Capturas de este README (no se publican)
 ├── .github/workflows/
@@ -127,17 +134,17 @@ No hay paso de compilación: el código del repositorio es exactamente el que se
 
 ### Nombres de clases
 
-Todas las clases, ids y variables están en castellano y siguen el formato **BEM**
+Clases, ids, variables y funciones están en castellano y siguen el formato **BEM**
 (`bloque__elemento--variante`):
 
 | Ejemplo | Qué es |
 | :-- | :-- |
 | `.proyecto` | Bloque: una tarjeta de proyecto. |
 | `.proyecto__titulo` | Elemento: el título dentro de la tarjeta. |
-| `.proyecto__estado--desarrollo` | Variante: el estado "En desarrollo". |
+| `.proyecto--destacado` | Variante: el proyecto que ocupa toda la fila. |
 
 El JavaScript no depende de las clases, sino de atributos `data-` (`data-boton-tema`, `data-copiar`,
-`data-imprimir`, `data-aparecer`…). Así se pueden cambiar los estilos sin romper la interactividad.
+`data-imprimir`, `data-aparecer`, `data-nodo`…). Así se pueden cambiar los estilos sin romper nada.
 
 ## Cómo visualizarlo en local
 
@@ -163,30 +170,33 @@ y abrir <http://localhost:8000>. También sirve la extensión *Live Server* de V
 Todo el código está comentado en castellano. Estos son los cambios más habituales:
 
 **Cambiar un texto.** Busca el texto en `index.html` y cámbialo. Cada sección empieza con un comentario
-grande (`1 · PERFIL`, `4 · PROYECTOS`…) para encontrarla rápido.
+(`PERFIL`, `PROYECTOS`…) para encontrarla rápido.
 
 **Cambiar los colores o tamaños.** Todo está en `css/variables.css`. Por ejemplo, `--color-acento`
-es el rojo del tema Hoja y el amarillo del tema Plano.
+es el bermellón de los botones y detalles.
+
+**Cambiar el hilo conductor.**
+- Color y grosor: `--color-hilo` y `--grosor-hilo` en `css/hilo.css`.
+- Recorrido: la sección *AJUSTES DEL RECORRIDO* al principio de `js/hilo-conductor.js`
+  (hacia dónde se abren las curvas, entre qué secciones hace bucles, etc.).
+- Por dónde pasa: cada nodo es un `<span class="nodo" data-nodo>` dentro del título de una sección.
+  Si añades una sección nueva, copia ese `<span>` en su título y el hilo pasará también por ella.
 
 **Añadir un proyecto.** En `index.html`, dentro de `<div class="proyectos">`, copia un
 `<article class="proyecto">` completo y cambia:
 
-1. El código (`AN-05`) y el estado: `proyecto__estado--publicado`, `--completado` o `--desarrollo`.
-2. Título, año, descripción, resultados verificables y tecnologías.
+1. El estado: `etiqueta-estado--produccion`, `--completado` o `--desarrollo`.
+2. Año, título, descripción, lista *Qué demuestra* y tecnologías.
 3. El enlace al repositorio.
-4. El dibujo `proyecto__esquema` es opcional: puedes reutilizar los que hay o borrarlo.
+4. El dibujo `proyecto__dibujo` es opcional: puedes reutilizar los que hay o borrarlo.
 
-**Añadir o cambiar una tecnología (un pin).** Hay que tocar dos sitios con el mismo número:
+**Añadir una tecnología.** En la sección de competencias, copia un `<li class="chip">` dentro del grupo
+que toque. Si la estás aprendiendo, usa `chip chip--aprendiendo`.
 
-1. La fila de la tabla en la sección 3 (`<tr id="pin-N">`). El estado es `estado-pin` (Operativo)
-   o `estado-pin estado-pin--pruebas` (En pruebas).
-2. El pin del chip en la portada (`<li class="pin">`, con `pin--pruebas` si está en pruebas).
-   El nombre corto debe tener 5 letras como máximo.
+**Añadir una etapa de formación.** En la trayectoria, copia un `<li class="linea-tiempo__hito">`
+(la más reciente va arriba).
 
-**Añadir una etapa de formación.** En la tabla de la sección 5, copia una fila `<tr>` y ponla arriba
-(la más reciente va primero).
-
-**Actualizar la fecha.** Cambia *Última revisión* en el pie de `index.html` y `<lastmod>` en `sitemap.xml`.
+**Actualizar la fecha.** Cambia *Última actualización* en el pie de `index.html` y `<lastmod>` en `sitemap.xml`.
 
 Después de editar, comprueba el HTML con `npx html-validate@9 index.html 404.html`.
 
@@ -218,24 +228,28 @@ El estado de cada despliegue se ve en la pestaña [Actions](https://github.com/E
 | `main` | Versión publicada. Cada push despliega la web. |
 | `develop` | Rama de integración donde se prueban los cambios. |
 | `feature/*`, `fix/*`, `docs/*` | Ramas cortas para cada tarea, integradas en `develop` con `git merge --no-ff`. |
-| `diseno-clasico` | Guarda el primer diseño del portfolio (antes de la hoja de datos). |
+| `diseno-clasico` | Primer diseño del portfolio. |
+| `diseno-hoja-de-datos` | Diseño alternativo "hoja de datos de un chip". |
 
 Los mensajes de commit siguen **[Conventional Commits](https://www.conventionalcommits.org/es/)**
-(`feat`, `fix`, `style`, `perf`, `docs`, `ci`, `chore`) y cada versión publicada lleva una etiqueta:
+(`feat`, `fix`, `style`, `perf`, `refactor`, `docs`, `ci`, `chore`) y cada versión publicada lleva una etiqueta:
 
 | Etiqueta | Versión |
 | :-- | :-- |
-| `v1.0.3` | Último estado del diseño clásico. |
-| `v2.0.0` | Rediseño "Hoja de datos EBM-26". |
+| `v1.0.3` | Diseño clásico. |
+| `v2.0.0` | Diseño "hoja de datos". |
+| `v3.0.0` | Diseño clásico en castellano + hilo conductor (actual). |
 
-**Volver al diseño anterior**, si hiciera falta:
+**Ver un diseño anterior** sin tocar nada (luego se vuelve con `git switch main`):
 
 ```bash
-git switch diseno-clasico   # solo para verlo (luego: git switch main)
+git switch diseno-clasico
 ```
 
+**Deshacer el diseño actual** con un commit nuevo (vuelve exactamente a la versión anterior):
+
 ```bash
-git switch main && git revert --no-edit -m 1 v2.0.0   # deshacer el rediseño con un commit nuevo
+git switch main && git revert --no-edit -m 1 v3.0.0
 ```
 
 ## Calidad y validación
@@ -246,10 +260,10 @@ git switch main && git revert --no-edit -m 1 v2.0.0   # deshacer el rediseño co
   | | Rendimiento | Accesibilidad | Buenas prácticas | SEO |
   | :-- | :-: | :-: | :-: | :-: |
   | Escritorio | 100 | 100 | 100 | 100 |
-  | Móvil | 95 | 100 | 100 | 100 |
+  | Móvil | 93 | 100 | 100 | 100 |
 
 - **Sin saltos de maquetación** (CLS 0) gracias a las fuentes de reserva ajustadas.
-- **Sin JavaScript** todo el contenido y la navegación siguen funcionando.
+- **Sin JavaScript** todo el contenido y la navegación siguen funcionando (el hilo simplemente no aparece).
 
 ## Autor y licencia
 
@@ -260,4 +274,4 @@ git switch main && git revert --no-edit -m 1 v2.0.0   # deshacer el rediseño co
 - 🐙 [GitHub](https://github.com/Eriiicc03)
 
 El **código** se distribuye bajo licencia [MIT](LICENSE). Los **textos y datos personales** son
-© Eric Barriga Medina. Las fuentes IBM Plex mantienen su licencia SIL Open Font License 1.1.
+© Eric Barriga Medina. Las fuentes tipográficas mantienen su licencia SIL Open Font License 1.1.

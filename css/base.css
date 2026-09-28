@@ -3,7 +3,7 @@
    Estilos generales de las etiquetas HTML (sin clases) y utilidades.
    ========================================================================== */
 
-/* ----- Reinicio: quita márgenes y medidas raras de los navegadores ----- */
+/* --- Reset --- */
 *,
 *::before,
 *::after {
@@ -18,47 +18,60 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scroll-behavior: smooth;
-  /* Deja hueco para la cabecera fija al saltar a una sección */
+  /* Evita que el header fijo tape el título al navegar por anclas */
   scroll-padding-top: calc(var(--alto-cabecera) + 1rem);
 }
 
-/* Fondo de papel milimetrado: dos degradados forman la cuadrícula */
 body {
   min-height: 100vh;
-  background-color: var(--color-papel);
-  background-image:
-    linear-gradient(var(--color-rejilla) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-rejilla) 1px, transparent 1px);
-  background-size: 1.5rem 1.5rem;
+  background-color: var(--color-fondo);
   color: var(--color-texto);
   font-family: var(--fuente-texto);
   font-size: var(--texto-m);
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   transition: background-color var(--duracion) ease, color var(--duracion) ease;
 }
 
 img,
-svg {
+svg,
+video {
   display: block;
   max-width: 100%;
 }
 
-button {
+input,
+button,
+textarea,
+select {
   font: inherit;
   color: inherit;
+}
+
+button {
   cursor: pointer;
 }
 
-/* Las listas con clase no llevan viñetas (las que no tienen clase, sí).
-   :where() hace que esta regla sea fácil de sobrescribir. */
+/* El atributo hidden siempre gana, aunque un componente defina display */
+[hidden] {
+  display: none !important;
+}
+
+/* Controles que necesitan JavaScript: ocultos si no se ejecuta.
+   La clase .con-js se añade en el <head> antes de pintar, así no hay saltos. */
+html:not(.con-js) .solo-con-js {
+  display: none !important;
+}
+
+/* :where() deja la especificidad a 0 para que cualquier clase pueda sobrescribirlo */
 :where(ul[class], ol[class]) {
   list-style: none;
   padding: 0;
 }
 
-/* ----- Texto ----- */
+/* --- Tipografía --- */
 h1,
 h2,
 h3,
@@ -66,8 +79,14 @@ h4 {
   color: var(--color-tinta);
   font-family: var(--fuente-titulos);
   font-weight: 700;
-  line-height: 1.05;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   text-wrap: balance;
+}
+
+h3 {
+  font-size: var(--texto-l);
+  letter-spacing: -0.01em;
 }
 
 p {
@@ -81,22 +100,20 @@ strong {
 
 a {
   color: inherit;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
-  transition: color var(--duracion) ease;
+  transition: color var(--duracion) ease, text-decoration-color var(--duracion) ease;
 }
 
 a:hover {
   color: var(--color-acento);
+  text-decoration-color: currentColor;
 }
 
-code {
-  padding: 0.05em 0.3em;
-  border: 1px solid var(--color-linea);
-  background-color: var(--color-papel);
-  color: var(--color-tinta);
+code,
+pre {
   font-family: var(--fuente-mono);
-  font-size: 0.85em;
 }
 
 ::selection {
@@ -104,17 +121,14 @@ code {
   color: var(--color-sobre-acento);
 }
 
-/* ----- Foco visible (navegación con teclado) ----- */
+/* --- Foco visible y accesible --- */
 :focus-visible {
   outline: 3px solid var(--color-acento);
   outline-offset: 3px;
+  border-radius: 4px;
 }
 
-/* ==========================================================================
-   UTILIDADES
-   ========================================================================== */
-
-/* Oculta algo a la vista pero lo deja para lectores de pantalla */
+/* --- Utilidades de accesibilidad --- */
 .solo-lectores {
   position: absolute !important;
   width: 1px;
@@ -127,41 +141,31 @@ code {
   border: 0;
 }
 
-/* Solo se ve en el PDF (ver css/impresion.css) */
+.saltar-contenido {
+  position: absolute;
+  top: var(--espacio-s);
+  left: var(--espacio-s);
+  z-index: 100;
+  padding: var(--espacio-xs) var(--espacio-m);
+  border-radius: var(--radio-s);
+  background-color: var(--color-tinta);
+  color: var(--color-fondo);
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform var(--duracion) var(--curva);
+}
+
+.saltar-contenido:focus {
+  transform: translateY(0);
+}
+
+/* Contenido que solo aparece en el CV impreso (ver css/impresion.css) */
 .solo-impresion {
   display: none;
 }
 
-/* Botones que necesitan JavaScript: si no se ejecuta, se ocultan.
-   La clase .con-js la pone el script del <head> antes de pintar. */
-html:not(.con-js) .solo-con-js {
-  display: none !important;
-}
-
-/* El atributo hidden siempre gana */
-[hidden] {
-  display: none !important;
-}
-
-/* Enlace "Saltar al contenido": aparece al pulsar Tab */
-.saltar-contenido {
-  position: absolute;
-  top: var(--espacio-2);
-  left: var(--espacio-2);
-  z-index: 100;
-  padding: var(--espacio-2) var(--espacio-4);
-  background-color: var(--color-tinta);
-  color: var(--color-papel);
-  font-family: var(--fuente-mono);
-  text-decoration: none;
-  transform: translateY(-200%);
-}
-
-.saltar-contenido:focus {
-  transform: none;
-}
-
-/* Contenedor del sprite de iconos: no ocupa espacio */
+/* El sprite de iconos no ocupa espacio, pero sus <symbol> siguen disponibles */
 .iconos {
   position: absolute;
   width: 0;
@@ -175,7 +179,7 @@ html:not(.con-js) .solo-con-js {
   flex-shrink: 0;
 }
 
-/* Si la persona prefiere menos movimiento, se quitan animaciones */
+/* Respeta a quien prefiere menos movimiento */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

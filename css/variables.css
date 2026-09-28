@@ -1,138 +1,145 @@
 /* ==========================================================================
    VARIABLES DE DISEÑO
-   Aquí se definen los colores, fuentes, tamaños y espacios de toda la web.
+   Colores, tipografías, tamaños, espacios, esquinas y sombras de toda la web.
    Si cambias un valor aquí, cambia en todas partes.
-
-   Hay dos temas:
-     - "Hoja"  (claro):  papel de hoja de datos con tinta negra y rojo.
-     - "Plano" (oscuro): cianotipo azul, como un plano técnico.
+   Ejemplo: --color-acento es el color principal (el bermellón).
    ========================================================================== */
 
 :root {
   color-scheme: light;
 
-  /* ----- Colores · tema HOJA (claro) ----- */
-  --color-papel: #f3f0e8;            /* fondo general */
-  --color-papel-alterno: #ebe7dc;    /* fondo de las secciones alternas */
-  --color-superficie: #fbfaf6;       /* fondo de tarjetas y tablas */
-  --color-tinta: #141414;            /* títulos y líneas gruesas */
-  --color-texto: #2d2d2d;            /* texto normal */
-  --color-texto-suave: #5d5b55;      /* texto secundario */
-  --color-linea: #cfc9bb;            /* líneas finas */
-  --color-acento: #c8102e;           /* rojo señal: detalles importantes */
-  --color-acento-suave: #f6dcd9;     /* fondo suave del acento */
-  --color-sobre-acento: #ffffff;     /* texto encima del acento */
-  --color-led: #1a7a43;              /* LED de estado (verde) */
-  --color-rejilla: rgb(20 20 20 / 0.05); /* cuadrícula de fondo */
+  /* --- Color · tema claro (papel cálido + tinta + bermellón) --- */
+  --color-fondo: #f5f3ee;
+  --color-fondo-alterno: #edeae3;
+  --color-superficie: #ffffff;
+  --color-superficie-2: #f9f8f5;
+  --color-tinta: #15171c;
+  --color-texto: #373b45;
+  --color-suave: #5f6573;
+  --color-linea: #e0dcd3;
+  --color-linea-fuerte: #c8c2b6;
+  --color-acento: #b93a12;
+  --color-acento-suave: #f7e3da;
+  --color-sobre-acento: #ffffff;
+  --color-exito: #1a7a43;
 
-  /* Chip de la portada */
-  --chip-cuerpo: #1d1d1f;            /* plástico negro del chip */
-  --chip-texto: #d9d6cc;             /* serigrafía del chip */
-  --chip-patilla: linear-gradient(#d9d9d9, #9a9a9a); /* metal de los pines */
-  --chip-borde-patilla: #7a7a7a;
-  --chip-borde: #0a0a0a;
-  --chip-sombra: inset 0 0 0 0.35em rgb(255 255 255 / 0.05), 0 0.9em 1.6em -0.8em rgb(0 0 0 / 0.55);
+  /* Bloque invertido (sección de contacto) */
+  --color-invertido-fondo: #15171c;
+  --color-invertido-tinta: #f5f3ee;
+  --color-invertido-suave: #a9adb8;
+  --color-invertido-linea: #30333b;
 
-  /* Bloque invertido (sección de contacto y cabeceras de tarjetas) */
-  --color-invertido-fondo: #141414;
-  --color-invertido-texto: #f3f0e8;
-  --color-invertido-suave: #b3afa4;
-  --color-invertido-acento: #ff5a6e;
+  /* Tarjeta de código (oscura en ambos temas) */
+  --codigo-fondo: #15171c;
+  --codigo-barra: #1c1f25;
+  --codigo-linea: #2b2f37;
+  --codigo-texto: #d6d9e0;
+  --codigo-comentario: #8a91a0;
+  --codigo-palabra: #ff8a5c;
+  --codigo-variable: #f1efe9;
+  --codigo-propiedad: #8ec5ff;
+  --codigo-cadena: #b5e08a;
+  --codigo-booleano: #ffcf66;
 
-  /* ----- Tipografía ----- */
-  --fuente-texto: "IBM Plex Sans", "Plex Sans Reserva", Arial, Helvetica, sans-serif;
-  --fuente-titulos: "IBM Plex Sans Condensed", "Plex Condensed Reserva", "Arial Narrow", Arial, sans-serif;
-  --fuente-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  /* --- Tipografía --- */
+  --fuente-titulos: "Bricolage Grotesque", "Bricolage Reserva", ui-sans-serif, system-ui, sans-serif;
+  --fuente-texto: "Inter", "Inter Reserva", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fuente-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-  /* Tamaños de letra fluidos: crecen suavemente de móvil a escritorio */
-  --texto-xs: 0.75rem;
-  --texto-s: clamp(0.82rem, 0.8rem + 0.1vw, 0.875rem);
+  /* Escala fluida: crece suavemente entre móvil y escritorio */
+  --texto-s: clamp(0.82rem, 0.8rem + 0.1vw, 0.88rem);
   --texto-m: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
-  --texto-l: clamp(1.15rem, 1.07rem + 0.4vw, 1.375rem);
-  --texto-xl: clamp(1.6rem, 1.3rem + 1.4vw, 2.5rem);
-  --texto-portada: clamp(2.9rem, 1.6rem + 6vw, 6.25rem);
+  --texto-l: clamp(1.15rem, 1.08rem + 0.35vw, 1.35rem);
+  --texto-xl: clamp(1.35rem, 1.2rem + 0.75vw, 1.8rem);
+  --texto-2xl: clamp(1.9rem, 1.45rem + 2.2vw, 3.1rem);
+  --texto-portada: clamp(2.75rem, 1.7rem + 5.2vw, 5.4rem);
 
-  /* ----- Espacios ----- */
-  --espacio-1: 0.25rem;
-  --espacio-2: 0.5rem;
-  --espacio-3: 0.75rem;
-  --espacio-4: 1rem;
-  --espacio-5: 1.5rem;
-  --espacio-6: 2rem;
-  --espacio-7: 3rem;
-  --espacio-8: 4.5rem;
-  --espacio-seccion: clamp(3.5rem, 2.5rem + 5vw, 7rem);
+  /* --- Espaciado --- */
+  --espacio-2xs: 0.25rem;
+  --espacio-xs: 0.5rem;
+  --espacio-s: 0.75rem;
+  --espacio-m: 1rem;
+  --espacio-l: 1.5rem;
+  --espacio-xl: 2rem;
+  --espacio-2xl: 3rem;
+  --espacio-3xl: 4.5rem;
+  --espacio-seccion: clamp(4rem, 2.8rem + 5vw, 7.5rem);
 
-  /* ----- Medidas generales ----- */
-  --ancho-maximo: 73rem;                         /* ancho máximo del contenido */
+  /* --- Layout --- */
+  --ancho-maximo: 72rem;
   --margen-lateral: clamp(1rem, 0.6rem + 2vw, 2rem);
-  --alto-cabecera: 3.75rem;
-  --grosor-linea: 2px;                           /* líneas gruesas "de plano" */
-  --radio: 2px;                                  /* esquinas casi rectas, estilo técnico */
-  --sombra-dura: 5px 5px 0 var(--color-tinta);   /* sombra sólida al pasar el ratón */
+  --alto-cabecera: 4rem;
 
-  /* ----- Movimiento ----- */
-  --curva: cubic-bezier(0.2, 0.9, 0.3, 1);
-  --duracion: 200ms;
+  /* --- Forma --- */
+  --radio-s: 0.5rem;
+  --radio-m: 0.875rem;
+  --radio-l: 1.25rem;
+  --radio-pastilla: 999px;
+
+  --sombra-s: 0 1px 2px rgb(21 23 28 / 0.06);
+  --sombra-m: 0 10px 30px -12px rgb(21 23 28 / 0.18);
+  --sombra-l: 0 30px 60px -25px rgb(21 23 28 / 0.35);
+
+  /* --- Movimiento --- */
+  --curva: cubic-bezier(0.22, 1, 0.36, 1);
+  --duracion: 220ms;
 }
 
-/* ----- Colores · tema PLANO (oscuro) -------------------------------------
-   Se aplica si el sistema está en modo oscuro (y no se ha elegido "hoja"),
-   o si se elige "plano" con el interruptor de la cabecera.
-   Los valores están repetidos en los dos bloques para que funcione sin JS. */
+/* --- Tema oscuro ---------------------------------------------------------
+   Se aplica si el sistema lo prefiere (y el usuario no ha elegido "claro")
+   o si el usuario lo elige con el botón (data-tema="oscuro").
+   Los valores se repiten en ambos selectores para que funcione sin JS. */
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-tema="hoja"]) {
+  :root:not([data-tema="claro"]) {
     color-scheme: dark;
-    --color-papel: #0f2a4a;
-    --color-papel-alterno: #0c233e;
-    --color-superficie: #12325a;
-    --color-tinta: #f2f6ff;
-    --color-texto: #d3e0f3;
-    --color-texto-suave: #9bb3d3;
-    --color-linea: #34557f;
-    --color-acento: #ffd24d;
-    --color-acento-suave: #33434a;
-    --color-sobre-acento: #0f2a4a;
-    --color-led: #5ee29a;
-    --color-rejilla: rgb(200 220 255 / 0.07);
-    --chip-cuerpo: transparent;
-    --chip-texto: #f2f6ff;
-    --chip-patilla: transparent;
-    --chip-borde-patilla: #f2f6ff;
-    --chip-borde: #f2f6ff;
-    --chip-sombra: none;
-    --color-invertido-fondo: #0a1f38;
-    --color-invertido-texto: #f2f6ff;
-    --color-invertido-suave: #9bb3d3;
-    --color-invertido-acento: #ffd24d;
-    --sombra-dura: 5px 5px 0 var(--color-acento);
+    --color-fondo: #0f1013;
+    --color-fondo-alterno: #14161a;
+    --color-superficie: #181a1f;
+    --color-superficie-2: #1d2026;
+    --color-tinta: #f1efe9;
+    --color-texto: #c9ccd4;
+    --color-suave: #9aa0ad;
+    --color-linea: #262930;
+    --color-linea-fuerte: #373b45;
+    --color-acento: #ff7a4d;
+    --color-acento-suave: #33201a;
+    --color-sobre-acento: #16110e;
+    --color-exito: #4ade80;
+    --color-invertido-fondo: #181a1f;
+    --color-invertido-tinta: #f1efe9;
+    --color-invertido-suave: #a9adb8;
+    --color-invertido-linea: #30333b;
+    --codigo-fondo: #121317;
+    --codigo-barra: #17191e;
+    --codigo-linea: #262930;
+    --sombra-m: 0 10px 30px -12px rgb(0 0 0 / 0.6);
+    --sombra-l: 0 30px 60px -25px rgb(0 0 0 / 0.8);
   }
 }
 
-:root[data-tema="plano"] {
+:root[data-tema="oscuro"] {
   color-scheme: dark;
-  --color-papel: #0f2a4a;
-  --color-papel-alterno: #0c233e;
-  --color-superficie: #12325a;
-  --color-tinta: #f2f6ff;
-  --color-texto: #d3e0f3;
-  --color-texto-suave: #9bb3d3;
-  --color-linea: #34557f;
-  --color-acento: #ffd24d;
-  --color-acento-suave: #33434a;
-  --color-sobre-acento: #0f2a4a;
-  --color-led: #5ee29a;
-  --color-rejilla: rgb(200 220 255 / 0.07);
-  --chip-cuerpo: transparent;
-  --chip-texto: #f2f6ff;
-  --chip-patilla: transparent;
-  --chip-borde-patilla: #f2f6ff;
-  --chip-borde: #f2f6ff;
-  --chip-sombra: none;
-  --color-invertido-fondo: #0a1f38;
-  --color-invertido-texto: #f2f6ff;
-  --color-invertido-suave: #9bb3d3;
-  --color-invertido-acento: #ffd24d;
-  --sombra-dura: 5px 5px 0 var(--color-acento);
+  --color-fondo: #0f1013;
+  --color-fondo-alterno: #14161a;
+  --color-superficie: #181a1f;
+  --color-superficie-2: #1d2026;
+  --color-tinta: #f1efe9;
+  --color-texto: #c9ccd4;
+  --color-suave: #9aa0ad;
+  --color-linea: #262930;
+  --color-linea-fuerte: #373b45;
+  --color-acento: #ff7a4d;
+  --color-acento-suave: #33201a;
+  --color-sobre-acento: #16110e;
+  --color-exito: #4ade80;
+  --color-invertido-fondo: #181a1f;
+  --color-invertido-tinta: #f1efe9;
+  --color-invertido-suave: #a9adb8;
+  --color-invertido-linea: #30333b;
+  --codigo-fondo: #121317;
+  --codigo-barra: #17191e;
+  --codigo-linea: #262930;
+  --sombra-m: 0 10px 30px -12px rgb(0 0 0 / 0.6);
+  --sombra-l: 0 30px 60px -25px rgb(0 0 0 / 0.8);
 }
