@@ -230,9 +230,6 @@
 }
 
 .section__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-s);
   color: var(--color-accent);
   font-family: var(--font-mono);
   font-size: var(--step--1);
@@ -243,8 +240,11 @@
 
 .section__eyebrow::after {
   content: "";
+  display: inline-block;
   width: 3rem;
   height: 1px;
+  margin-left: var(--space-s);
+  vertical-align: middle;
   background-color: currentColor;
 }
 
