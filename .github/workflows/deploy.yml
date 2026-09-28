@@ -1,0 +1,65 @@
+# Integración y despliegue continuo del portfolio
+#
+# - En cada push o pull request a main/develop: valida el HTML.
+# - Solo en main: si la validación pasa, publica la web en GitHub Pages.
+#
+# Requisito (una sola vez): Settings → Pages → Source: "GitHub Actions".
+
+name: Validar y desplegar
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validar:
+    name: Validar HTML
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v5
+
+      - name: Validar HTML con html-validate
+        run: npx --yes html-validate@9 index.html 404.html
+
+  desplegar:
+    name: Publicar en GitHub Pages
+    needs: validar
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v5
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Preparar solo los archivos públicos del sitio
+        run: |
+          mkdir _site
+          cp -r index.html 404.html robots.txt sitemap.xml css js assets _site/
+
+      - name: Subir el sitio
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      - name: Desplegar
+        id: deployment
+        uses: actions/deploy-pages@v4

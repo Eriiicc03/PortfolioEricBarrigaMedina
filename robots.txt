@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eriiicc03.github.io/sitemap.xml
