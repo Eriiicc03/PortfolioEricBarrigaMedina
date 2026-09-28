@@ -288,6 +288,44 @@
 }
 
 /* --------------------------------------------------------------------------
+   Proyectos
+   -------------------------------------------------------------------------- */
+.projects {
+  display: grid;
+  gap: var(--space-l);
+}
+
+.coursework {
+  margin-top: var(--space-3xl);
+}
+
+@media (min-width: 48rem) {
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* El proyecto destacado ocupa toda la fila */
+  .project--featured {
+    grid-column: 1 / -1;
+  }
+
+  /* Si la última tarjeta queda sola en su fila, ocupa todo el ancho */
+  .project:not(.project--featured):last-child:nth-child(even) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 64rem) {
+  .projects {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .project:not(.project--featured):last-child:nth-child(even) {
+    grid-column: auto;
+  }
+}
+
+/* --------------------------------------------------------------------------
    Trayectoria
    -------------------------------------------------------------------------- */
 .journey {
