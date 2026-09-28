@@ -131,12 +131,16 @@
 
     root.classList.add('reveal-ready');
 
+    // Los bloques que entran a la vez aparecen escalonados, con un retardo máximo
     const STAGGER_MS = 90;
+    const MAX_STAGGER_STEPS = 4;
+
     const observer = new IntersectionObserver((entries) => {
       entries
         .filter((entry) => entry.isIntersecting)
         .forEach((entry, index) => {
-          setTimeout(() => entry.target.classList.add('is-visible'), index * STAGGER_MS);
+          const delay = Math.min(index, MAX_STAGGER_STEPS) * STAGGER_MS;
+          setTimeout(() => entry.target.classList.add('is-visible'), delay);
           observer.unobserve(entry.target);
         });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
