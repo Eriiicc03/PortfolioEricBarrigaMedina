@@ -2,14 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <!--
-    PÁGINA 404 · se muestra cuando alguien entra en una dirección que no existe.
-    Las rutas empiezan por /PortfolioEricBarrigaMedina/ porque GitHub Pages
-    usa esta página para cualquier URL rota, esté en la carpeta que esté.
-    Si cambias el nombre del repositorio, cambia también estas rutas.
-  -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Error 404 · Pin no conectado · EBM-26</title>
+  <title>Página no encontrada · Eric Barriga Medina</title>
   <meta name="robots" content="noindex">
   <link rel="icon" href="/PortfolioEricBarrigaMedina/assets/img/favicon.svg" type="image/svg+xml">
 
@@ -19,12 +13,15 @@
       raiz.classList.add("con-js");
       try {
         var temaGuardado = localStorage.getItem("tema");
-        if (temaGuardado === "hoja" || temaGuardado === "plano") raiz.dataset.tema = temaGuardado;
-      } catch (error) { /* sin almacenamiento: no pasa nada */ }
+        if (temaGuardado === "claro" || temaGuardado === "oscuro") raiz.dataset.tema = temaGuardado;
+      } catch (error) { /* el navegador no deja guardar datos: no pasa nada */ }
     })();
   </script>
 
-  <link rel="preload" href="/PortfolioEricBarrigaMedina/assets/fuentes/ibm-plex-sans-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/PortfolioEricBarrigaMedina/assets/fuentes/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Rutas absolutas (incluyen el nombre del repositorio): esta página
+       se sirve para cualquier URL inexistente, esté en la carpeta que esté -->
   <link rel="stylesheet" href="/PortfolioEricBarrigaMedina/css/fuentes.css">
   <link rel="stylesheet" href="/PortfolioEricBarrigaMedina/css/variables.css">
   <link rel="stylesheet" href="/PortfolioEricBarrigaMedina/css/base.css">
@@ -32,20 +29,15 @@
   <link rel="stylesheet" href="/PortfolioEricBarrigaMedina/css/componentes.css">
 </head>
 <body>
-  <main class="error">
-    <div class="contenedor error__interior">
-      <div class="portada__franja">
-        <p>EBM-26 · Hoja de datos</p>
-        <p>Código de error 404 · NC</p>
-      </div>
-
-      <p class="error__codigo" aria-hidden="true">404</p>
-      <h1 class="error__titulo">Pin no conectado</h1>
-      <p class="error__texto">
-        En las hojas de datos, <strong>NC</strong> significa "no conectado": un pin que no lleva a ninguna parte.
-        Esta dirección tampoco existe. Puede que el enlace esté mal escrito o que la página se haya movido.
+  <main class="portada error">
+    <div class="contenedor portada__texto">
+      <p class="seccion__etiqueta">Error 404</p>
+      <h1 class="portada__titulo">Esta página no existe</h1>
+      <p class="portada__intro">
+        Puede que el enlace esté mal escrito o que la página se haya movido.
+        Todo el portfolio está en la página principal.
       </p>
-      <a class="boton boton--principal" href="/PortfolioEricBarrigaMedina/">Volver a la hoja de datos</a>
+      <a class="boton boton--principal" href="/PortfolioEricBarrigaMedina/">Volver al portfolio</a>
     </div>
   </main>
 </body>

@@ -1,0 +1,140 @@
+/* ==========================================================================
+   HILO CONDUCTOR
+   La línea que recorre la página (la crea js/hilo-conductor.js).
+   Aquí se decide su aspecto: color, grosor, punteado y los nodos.
+   ========================================================================== */
+
+:root {
+  /* Color del hilo (cambia solo con el tema) */
+  --color-hilo: #c8431a;
+  --color-hilo-guia: color-mix(in srgb, var(--color-hilo) 38%, transparent);
+  --grosor-hilo: 2.5px;
+
+  /* A qué distancia del texto va el hilo por el margen izquierdo:
+     un poco más de la mitad del margen, y como mucho 2.5rem */
+  --hilo-distancia: min(max(var(--margen-lateral) * 0.6, (100vw - var(--ancho-maximo)) * 0.3), 2.5rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) {
+    --color-hilo: #ff7a4d;
+  }
+}
+
+:root[data-tema="oscuro"] {
+  --color-hilo: #ff7a4d;
+}
+
+/* La zona del hilo es el <main>: el dibujo se coloca encima de los fondos
+   de las secciones, pero por debajo de los textos y las tarjetas. */
+.zona-hilo {
+  position: relative;
+}
+
+.zona-hilo > section > .contenedor {
+  position: relative;
+  z-index: 2;
+}
+
+/* ----- El dibujo SVG ----- */
+.hilo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Camino completo en punteado: lo que queda por recorrer */
+.hilo__recorrido {
+  fill: none;
+  stroke: var(--color-hilo-guia);
+  stroke-width: 1.5px;
+  stroke-dasharray: 1 7;
+  stroke-linecap: round;
+}
+
+/* Línea de color que se dibuja con el scroll */
+.hilo__trazo {
+  fill: none;
+  stroke: var(--color-hilo);
+  stroke-width: var(--grosor-hilo);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Punto brillante en la punta de la línea */
+.hilo__cabeza {
+  fill: var(--color-hilo);
+}
+
+.hilo__halo {
+  fill: var(--color-hilo);
+  opacity: 0.25;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: latido 1.8s var(--curva) infinite;
+}
+
+/* Punto final: aparece cuando el hilo termina de dibujarse */
+.hilo__final {
+  fill: var(--color-hilo);
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+/* Cuando el hilo llega al final, la punta deja de latir y se oculta */
+.hilo--completo .hilo__halo,
+.hilo--completo .hilo__cabeza {
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+.hilo--completo .hilo__final {
+  opacity: 1;
+}
+
+@keyframes latido {
+  from {
+    transform: scale(0.6);
+    opacity: 0.35;
+  }
+
+  to {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* ----- Nodos: un círculo en cada sección por el que pasa el hilo ----- */
+.seccion__etiqueta {
+  position: relative;
+}
+
+.nodo {
+  position: absolute;
+  top: 50%;
+  left: calc(-1 * var(--hilo-distancia));
+  width: 0.85rem;
+  height: 0.85rem;
+  border: 2px solid var(--color-hilo);
+  border-radius: 50%;
+  background-color: var(--color-superficie);
+  transform: translate(-50%, -50%);
+  transition: background-color 300ms ease, box-shadow 300ms ease, transform 300ms var(--curva);
+}
+
+/* Nodo encendido: el hilo ya ha pasado por aquí */
+.nodo.activo {
+  background-color: var(--color-hilo);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--color-hilo) 22%, transparent);
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+/* En el contacto (fondo oscuro) el interior del nodo toma ese fondo */
+.contacto .nodo {
+  background-color: var(--color-invertido-fondo);
+}
