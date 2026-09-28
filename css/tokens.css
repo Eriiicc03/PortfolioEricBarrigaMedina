@@ -17,7 +17,7 @@
   --color-muted: #5f6573;
   --color-line: #e0dcd3;
   --color-line-strong: #c8c2b6;
-  --color-accent: #c43e14;
+  --color-accent: #b93a12;
   --color-accent-soft: #f7e3da;
   --color-on-accent: #ffffff;
   --color-success: #1a7a43;
@@ -41,8 +41,8 @@
   --code-bool: #ffcf66;
 
   /* --- Tipografía --- */
-  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Bricolage Grotesque", "Bricolage Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", "Inter Fallback", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   /* Escala fluida: crece suavemente entre móvil y escritorio */
